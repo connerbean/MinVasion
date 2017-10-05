@@ -12,8 +12,8 @@
 
 // TODO: delete the following 3 lines when CItem and CGame are implemented
 #include "ItemVisitor.h"
-class CItem { public: virtual void Accept(CItemVisitor *visitor) = 0; protected: CItem(CGame *game) {} };
 class CGame;
+class CItem { public: virtual void Accept(CItemVisitor *visitor) = 0; protected: CItem(CGame *game) {} };
 
 /**
  * A Villain character
