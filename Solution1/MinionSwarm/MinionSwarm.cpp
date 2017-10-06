@@ -62,7 +62,7 @@ BOOL CMinionSwarmApp::InitInstance()
 	InitCommonControlsEx(&InitCtrls);
 
 	CWinApp::InitInstance();
-
+	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
 	// Initialize OLE libraries
 	if (!AfxOleInit())
@@ -111,6 +111,7 @@ BOOL CMinionSwarmApp::InitInstance()
 
 int CMinionSwarmApp::ExitInstance()
 {
+	Gdiplus::GdiplusShutdown(gdiplusToken);
 	//TODO: handle additional resources you may have added
 	AfxOleTerm(FALSE);
 

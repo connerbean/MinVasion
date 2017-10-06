@@ -5,13 +5,17 @@
 #include "stdafx.h"
 #include "MinionSwarm.h"
 #include "ChildView.h"
+#include "Game.h"
+#include <algorithm>
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
-
-
+using namespace Gdiplus;
+using namespace std;
 // CChildView
+
 
 CChildView::CChildView()
 {
@@ -46,9 +50,14 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 void CChildView::OnPaint() 
 {
 	CPaintDC dc(this); // device context for painting
-	
 	// TODO: Add your message handler code here
-	
+	//CDoubleBufferDC dc(&paintDC); // device context for painting
+	Graphics graphics(dc.m_hDC);
+
+	CRect rect;
+	GetClientRect(&rect);
+
+	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
 	// Do not call CWnd::OnPaint() for painting messages
 }
 

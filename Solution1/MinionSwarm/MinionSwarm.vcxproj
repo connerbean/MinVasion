@@ -182,7 +182,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Desktop\Notes for School\CSE 335\335 Solutions\Step2\Step2\Step2\DoubleBufferDC.h" />
     <ClInclude Include="ChildView.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="ItemVisitor.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MinionSwarm.h" />
@@ -193,6 +196,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemVisitor.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MinionSwarm.cpp" />
@@ -211,6 +216,15 @@
     <None Include="res\MinionSwarm.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\..\Desktop\images\arya.png" />
+    <Image Include="..\..\..\..\..\Desktop\images\dave.png" />
+    <Image Include="..\..\..\..\..\Desktop\images\gru.png" />
+    <Image Include="..\..\..\..\..\Desktop\images\jerry.png" />
+    <Image Include="..\..\..\..\..\Desktop\images\juicer.png" />
+    <Image Include="..\..\..\..\..\Desktop\images\mutant.png" />
+    <Image Include="..\..\..\..\..\Desktop\images\new-game.png" />
+    <Image Include="..\..\..\..\..\Desktop\images\pokeball.png" />
+    <Image Include="..\..\..\..\..\Desktop\images\stuart.png" />
     <Image Include="res\MinionSwarm.ico" />
     <Image Include="res\Toolbar.bmp" />
   </ItemGroup>

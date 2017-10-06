@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\images">
+      <UniqueIdentifier>{69f95f37-36ab-4ac0-acbb-35cb51d14a60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -42,6 +45,15 @@
     <ClInclude Include="Villain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Desktop\Notes for School\CSE 335\335 Solutions\Step2\Step2\Step2\DoubleBufferDC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MinionSwarm.cpp">
@@ -62,6 +74,12 @@
     <ClCompile Include="Villain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MinionSwarm.rc">
@@ -79,6 +97,33 @@
     </Image>
     <Image Include="res\Toolbar.bmp">
       <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Desktop\images\arya.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Desktop\images\dave.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Desktop\images\gru.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Desktop\images\jerry.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Desktop\images\juicer.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Desktop\images\mutant.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Desktop\images\new-game.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Desktop\images\pokeball.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Desktop\images\stuart.png">
+      <Filter>Resource Files\images</Filter>
     </Image>
   </ItemGroup>
 </Project>
