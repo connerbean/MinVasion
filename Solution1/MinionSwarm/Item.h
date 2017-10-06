@@ -78,8 +78,19 @@ protected:
 
 private:
 	CGame *mGame;
+	/**
+	* X coordinate
+	*/
 	int mX = 0;
+
+	/**
+	* Y coordinate
+	*/
 	int mY = 0;
+
+	/**
+	* File name for image
+	*/
 	std::wstring mFile;
 
 	/// The image of this tile

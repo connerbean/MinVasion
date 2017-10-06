@@ -45,10 +45,19 @@ public:
 		// From here on you are drawing virtual pixels
 	}
 private:
+	/**
+	* mScale is the average of scaleX and scaleY
+	*/
 	Gdiplus::REAL  mScale = 0;
 
+	/**
+	* Offset for X
+	*/
 	Gdiplus::REAL mXOffset = 0;
 
+	/**
+	* Offset for Y
+	*/
 	Gdiplus::REAL mYOffset = 0;
 };
 
