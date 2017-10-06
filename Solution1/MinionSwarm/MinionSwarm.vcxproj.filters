@@ -54,6 +54,9 @@
     <ClInclude Include="..\..\..\..\..\Desktop\Notes for School\CSE 335\335 Solutions\Step2\Step2\Step2\DoubleBufferDC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Clock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MinionSwarm.cpp">
@@ -78,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Clock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
