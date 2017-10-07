@@ -184,23 +184,34 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Desktop\Notes for School\CSE 335\335 Solutions\Step2\Step2\Step2\DoubleBufferDC.h" />
     <ClInclude Include="ChildView.h" />
+    <ClInclude Include="Clock.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Gru.h" />
+    <ClInclude Include="GruVisitor.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemVisitor.h" />
     <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="Minion.h" />
     <ClInclude Include="MinionSwarm.h" />
+    <ClInclude Include="MinionVisitor.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Villain.h" />
+    <ClInclude Include="VillainVisitor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Gru.cpp" />
+    <ClCompile Include="GruVisitor.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemVisitor.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="Minion.cpp" />
     <ClCompile Include="MinionSwarm.cpp" />
+    <ClCompile Include="MinionVisitor.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -208,6 +219,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Villain.cpp" />
+    <ClCompile Include="VillainVisitor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MinionSwarm.rc" />
