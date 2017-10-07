@@ -69,7 +69,7 @@ public:
 
 	///  Get the city this item is in
 	/// \returns City pointer
-	CGame *GetGame() { return mGame; }
+	//CGame *GetGame() { return mGame; }
 	
 	///  Copy constructor (disabled)
 	CItem(const CItem &) = delete;

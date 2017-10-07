@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Item.h"
+#include "Game.h"
 
 using namespace std;
 using namespace Gdiplus;

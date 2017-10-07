@@ -6,7 +6,14 @@
 *  Class that hold all the pieces to the game
 */
 #pragma once
+#include <memory>
+
+
 using namespace Gdiplus;
+using namespace std;
+
+class CItem;
+
 class CGame
 {
 	/// Game area width in virtual pixels
@@ -15,8 +22,14 @@ class CGame
 	/// Game area height in virtual pixels
 	const static int Height = 1100;
 public:
+
+	/**
+	* Add fish to the aquarium
+	*/
+	//void CGame::Add(std::shared_ptr<CItem> item);
+
 	CGame();
-	~CGame();
+	virtual ~CGame();
 	/**
 	* Draw the game area
 	* \param graphics The GDI+ graphics context to draw on
