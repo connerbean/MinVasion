@@ -8,13 +8,7 @@
 
 #pragma once
 
-//#include "Item.h" // TODO: uncomment me when CItem is implemented
-
-// TODO: delete the following 3 lines when CItem and CGame are implemented
-#include "ItemVisitor.h"
-#include "Item.h"
-class CGame;
-//class CItem { public: virtual void Accept(CItemVisitor *visitor) = 0; protected: CItem(CGame *game) {} };
+#include "Item.h" 
 
 /**
  * A Villain character
