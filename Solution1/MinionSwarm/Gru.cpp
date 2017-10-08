@@ -6,7 +6,7 @@ using namespace Gdiplus;
 using namespace std;
 
 /// Item filename 
-const wstring GruImageName = L"images/Gru.png";
+const wstring GruImageName = L"images/gru.png";
 
 /**
 * Constructor
