@@ -16,6 +16,8 @@ using namespace Gdiplus;
 using namespace std;
 // CChildView
 
+/// Frame duration in milliseconds
+const int FrameDuration = 30;
 
 CChildView::CChildView()
 {
@@ -28,6 +30,7 @@ CChildView::~CChildView()
 
 BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -54,6 +57,7 @@ void CChildView::OnPaint()
 	CPaintDC dc(this); // device context for painting
 	// TODO: Add your message handler code here
 	//CDoubleBufferDC dc(&paintDC); // device context for painting
+	// Do not call CWnd::OnPaint() for painting messages
 	Graphics graphics(dc.m_hDC);
 
 	CRect rect;
@@ -66,3 +70,14 @@ void CChildView::OnPaint()
 	Gru->Draw(&graphics);
 }
 
+
+/**
+* Handle timer events
+* \param nIDEvent The timer event ID
+*/
+void CChildView::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: Add your message handler code here and/or call default
+	Invalidate();
+	CWnd::OnTimer(nIDEvent);
+}

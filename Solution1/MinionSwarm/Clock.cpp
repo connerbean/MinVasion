@@ -71,9 +71,8 @@ void CClock::DisplayTime(Gdiplus::Graphics *graphics)
 	wstring fin = m + L":" + s;	      // final printable wstring
 
 	FontFamily fontFamily(L"Arial");
-	Gdiplus::Font font(&fontFamily, 16);
+	Gdiplus::Font font(&fontFamily, 46);
 
-	// TODO: Change 622,622 to actual point on game
-	SolidBrush green(Color(0, 64, 0));
-	graphics->DrawString(fin.c_str(), -1, &font, PointF(622, 622), &green);
+	SolidBrush green(Color(0, 94, 0));
+	graphics->DrawString(fin.c_str(), -1, &font, PointF(1050, -550), &green);
 }
