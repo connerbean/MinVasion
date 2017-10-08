@@ -26,7 +26,7 @@ public:
 	/**
 	* Add fish to the aquarium
 	*/
-	//void CGame::Add(std::shared_ptr<CItem> item);
+	void CGame::Add(std::shared_ptr<CItem> item);
 
 	CGame();
 	virtual ~CGame();
@@ -56,6 +56,7 @@ public:
 		graphics->ScaleTransform(mScale, mScale);
 
 		// From here on you are drawing virtual pixels
+
 	}
 private:
 	/**

@@ -7,7 +7,7 @@
 #include "ChildView.h"
 #include "Game.h"
 #include <algorithm>
-
+#include "Gru.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -47,6 +47,8 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 	return TRUE;
 }
 
+
+
 void CChildView::OnPaint() 
 {
 	CPaintDC dc(this); // device context for painting
@@ -59,5 +61,8 @@ void CChildView::OnPaint()
 
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
 	// Do not call CWnd::OnPaint() for painting messages
+	auto Gru = make_shared<CGru>(&mGame);
+	Gru->SetLocation(100, -200);
+	Gru->Draw(&graphics);
 }
 
