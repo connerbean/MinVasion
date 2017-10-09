@@ -40,7 +40,7 @@ void CGru::Draw(Gdiplus::Graphics *graphics)
     double hit = mGruImage->GetHeight();
     graphics->DrawImage(mGruImage.get(),
         float(GetX() - wid / 2), float(GetY() - hit / 2),
-        mGruImage->GetWidth(), mGruImage->GetHeight());
+        float(mGruImage->GetWidth()), float(mGruImage->GetHeight()));
 }
 
 /**

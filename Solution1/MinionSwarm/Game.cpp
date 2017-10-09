@@ -35,8 +35,8 @@ void CGame::Delete(std::shared_ptr<CItem> item)
 
 void CGame::Translation(CPoint point)
 {
-	point.x = (point.x - mXOffset) / mScale;
-	point.y = (point.y - mYOffset) / mScale;
+	point.x = long((point.x - mXOffset) / mScale);
+	point.y = long((point.y - mYOffset) / mScale);
 }
 
 /**
@@ -44,8 +44,8 @@ void CGame::Translation(CPoint point)
 */
 std::shared_ptr<CItem> CGame::HitTest(int x, int y)
 {
-	x = (x - mXOffset) / mScale;
-	y = (y - mYOffset) / mScale;
+	x = int((x - mXOffset) / mScale);
+	y = int((y - mYOffset) / mScale);
  	for (auto i = mItems.rbegin(); i != mItems.rend(); i++)
 	{
 		if ((*i)->HitTest(x, y))
