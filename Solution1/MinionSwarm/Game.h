@@ -7,7 +7,7 @@
 */
 #pragma once
 #include <memory>
-
+#include <vector>
 
 using namespace Gdiplus;
 using namespace std;
@@ -22,6 +22,8 @@ class CGame
 	/// Game area height in virtual pixels
 	const static int Height = 1100;
 public:
+	void CGame::Translation(CPoint point);
+	void CGame::Delete(std::shared_ptr<CItem> item);
 
 	/**
 	* Add fish to the aquarium
@@ -30,6 +32,15 @@ public:
 
 	CGame();
 	virtual ~CGame();
+
+	/** Test an x,y click location to see if it clicked
+	* on some item in the aquarium.
+	* \param x X location
+	* \param y Y location
+	* \returns Pointer to item we clicked on or nullptr if none.
+	*/
+	std::shared_ptr<CItem> CGame::HitTest(int x, int y);
+
 	/**
 	* Draw the game area
 	* \param graphics The GDI+ graphics context to draw on
@@ -73,5 +84,7 @@ private:
 	* Offset for Y
 	*/
 	Gdiplus::REAL mYOffset = 0;
+
+	std::vector<std::shared_ptr<CItem> > mItems;
 };
 

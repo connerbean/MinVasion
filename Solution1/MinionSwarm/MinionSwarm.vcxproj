@@ -182,9 +182,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Desktop\Notes for School\CSE 335\335 Solutions\Step2\Step2\Step2\DoubleBufferDC.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="Clock.h" />
+    <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Gru.h" />
     <ClInclude Include="GruVisitor.h" />

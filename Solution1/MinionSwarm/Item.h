@@ -58,7 +58,7 @@ public:
 	* \param x X location on the aquarium to test
 	* \param y Y location on the aquarium to test
 	* \return true if clicked on */
-	virtual bool HitTest(int x, int y);
+	virtual bool HitTest(int x, int y) = 0;
 
 	//virtual std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode> &node);
 	//virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode> &node);
