@@ -5,6 +5,7 @@
 
 #pragma once
 #include "Game.h"
+#include "Clock.h"
 
 // CChildView window
 
@@ -30,15 +31,17 @@ public:
 
 	// Generated message map functions
 protected:
-	afx_msg void OnPaint();
+	afx_msg void OnPaint();		///< Where items get painted
 	DECLARE_MESSAGE_MAP()
 
 private:
 	CGame mGame;
+	CClock mClock;			///< clock object for keeping time
+	bool mFirstDraw = true; ///< Boolean for first draw
+	long long mLastTime;    ///< Last time we read the timer
+	double mTimeFreq;       ///< Rate the timer updates
 public:
-	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
-	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
-	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
-	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);	///< Event handler for update on timer function
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);		///< Event handler for erasing flicker
 };
 

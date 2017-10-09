@@ -17,6 +17,8 @@ using namespace Gdiplus;
 using namespace std;
 // CChildView
 
+/// Frame duration in milliseconds
+const int FrameDuration = 30;
 
 CChildView::CChildView()
 {
@@ -29,9 +31,7 @@ CChildView::~CChildView()
 
 BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
-	ON_WM_MOUSEMOVE()
-	ON_WM_LBUTTONDOWN()
-	ON_WM_LBUTTONUP()
+	ON_WM_TIMER()
 	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
@@ -58,56 +58,66 @@ void CChildView::OnPaint()
 {
 	CPaintDC paintDC(this);     // device context for painting
 	CDoubleBufferDC dc(&paintDC); // device context for painting
+
+	// TODO: Add your message handler code here
+	// Do not call CWnd::OnPaint() for painting messages
 	Graphics graphics(dc.m_hDC);
 
 	CRect rect;
 	GetClientRect(&rect);
 
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
-	// Do not call CWnd::OnPaint() for painting messages
+
+	mClock.DisplayTime(&graphics);	// displays timer in correct location in correct format
+
+	// if its the first draw, start timer
+	if (mFirstDraw)
+	{
+		mFirstDraw = false;
+		SetTimer(1, FrameDuration, nullptr);
+
+		LARGE_INTEGER time, freq;
+		QueryPerformanceCounter(&time);
+		QueryPerformanceFrequency(&freq);
+
+		mLastTime = time.QuadPart;
+		mTimeFreq = double(freq.QuadPart);
+	}
+
+	LARGE_INTEGER time;
+	QueryPerformanceCounter(&time);
+	long long diff = time.QuadPart - mLastTime;
+	double elapsed = double(diff) / mTimeFreq;
+	mLastTime = time.QuadPart;
+
+	mClock.Update(elapsed);		// adds elapsed time to overall time
+
 	auto Gru = make_shared<CGru>(&mGame);
-	Gru->SetLocation(100, 400);
+	Gru->SetLocation(100, -200);
 	Gru->Draw(&graphics);
-	mGame.Add(Gru);
-	
 }
 
 
-
-void CChildView::OnMouseMove(UINT nFlags, CPoint point)
+/**
+* Handle timer events
+* \param nIDEvent The timer event ID
+*/
+void CChildView::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: Add your message handler code here and/or call default
-
-	CWnd::OnMouseMove(nFlags, point);
+	Invalidate();
+	CWnd::OnTimer(nIDEvent);
 }
 
 
-void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
-{
-	
-	auto mGrabbedItem = mGame.HitTest(point.x, point.y);
-	if (mGrabbedItem != nullptr)
-	{
-		// We have selected an item
-		// Move it to the end of the list of items
-		mGame.Delete(mGrabbedItem);
-		mGame.Add(mGrabbedItem);
-	}
-}
-
-/** Called when the left mouse button is released
-* \param nFlags Flags associated with the mouse button release
-* \param point Where the button was pressed
+/**
+* Erase the background
+*
+* This is disabled to eliminate flicker
+* \param pDC Device context
+* \returns FALSE
 */
-void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
-{
-	OnMouseMove(nFlags, point);
-}
-
-
 BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 {
-	// TODO: Add your message handler code here and/or call default
-
-	return false;
+	return FALSE;
 }
