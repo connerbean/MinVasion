@@ -11,6 +11,7 @@ public:
 
     /// Copy constructor (disabled)
     CMinion(const CMinion &) = delete;
+// Fake comment
 
     // Virtual destructor
     virtual  ~CMinion();
