@@ -3,13 +3,14 @@
 //
 
 #include "stdafx.h"
+#include "DoubleBufferDC.h"
 #include "MinionSwarm.h"
 #include "ChildView.h"
 #include "Game.h"
-#include <algorithm>
 #include "Gru.h"
 #include "Minion.h"
-#include "DoubleBufferDC.h"
+#include "Villain.h"
+#include <algorithm>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -100,6 +101,18 @@ void CChildView::OnPaint()
 	auto Minion = make_shared<CMinion>(&mGame);
 	Minion->SetLocation(-200, -400);
 	Minion->Draw(&graphics);
+
+	auto villainArya = make_shared<CVillain>(&mGame, CVillain::Types::Arya);
+	villainArya->SetLocation(0, 250);
+	villainArya->Draw(&graphics);
+
+	auto villainJuicer = make_shared<CVillain>(&mGame, CVillain::Types::Juicer);
+	villainJuicer->SetLocation(-250, -250);
+	villainJuicer->Draw(&graphics);
+
+	auto villainPokeball = make_shared<CVillain>(&mGame, CVillain::Types::Pokeball);
+	villainPokeball->SetLocation(250, -250);
+	villainPokeball->Draw(&graphics);
 }
 
 

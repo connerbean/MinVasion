@@ -16,7 +16,10 @@
 class CVillain : public CItem
 {
 public:
-	CVillain(CGame *game);
+	/// Types of villain
+	enum Types { Arya, Juicer, Pokeball };
+
+	CVillain(CGame *game, Types villainType);
 
 	///  Default constructor (disabled)
 	CVillain() = delete;
@@ -26,8 +29,21 @@ public:
 
 	virtual ~CVillain();
 
+	virtual void Draw(Gdiplus::Graphics * graphics) override;
+
+	bool HitTest(int x, int y) override;
+
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor *visitor) override { visitor->VisitVillain(this); }
+
+private:
+	void LoadImage(std::wstring name);
+
+	/// The type of villain
+	Types mType;
+
+	/// Pointer to villain image
+	std::unique_ptr<Gdiplus::Bitmap> mVillainImage;
 };
 
