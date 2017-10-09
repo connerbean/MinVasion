@@ -43,6 +43,9 @@ private:
 	/// The type of villain
 	Types mType;
 
+	/// The point multiplier for this villain
+	int mMultiplier = 1;
+
 	/// Pointer to villain image
 	std::unique_ptr<Gdiplus::Bitmap> mVillainImage;
 };

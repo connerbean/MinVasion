@@ -27,14 +27,17 @@ CVillain::CVillain(CGame * game, Types villainType) : CItem(game)
 	if (villainType == Types::Arya)
 	{
 		LoadImage(AryaImage);
+		mMultiplier = 1;
 	}
 	else if (villainType == Types::Juicer)
 	{
 		LoadImage(JuicerImage);
+		mMultiplier = 2;
 	}
 	else if (villainType == Types::Pokeball)
 	{
 		LoadImage(PokeballImage);
+		mMultiplier = 3;
 	}
 }
 
@@ -53,7 +56,7 @@ void CVillain::Draw(Gdiplus::Graphics *graphics)
 	double hit = mVillainImage->GetHeight();
 	graphics->DrawImage(mVillainImage.get(),
 		float(GetX() - wid / 2), float(GetY() - hit / 2),
-		mVillainImage->GetWidth(), mVillainImage->GetHeight());
+		float(mVillainImage->GetWidth()), float(mVillainImage->GetHeight()));
 }
 
 /**
