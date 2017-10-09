@@ -21,6 +21,7 @@ public:
     bool HitTest(int x, int y);
 
 
+
     /** Accept a visitor
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor *visitor) override { visitor->VisitGru(this); }
