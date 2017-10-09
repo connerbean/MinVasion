@@ -10,7 +10,7 @@ const wstring GruImageName = L"images/gru.png";
 
 /**
 * Constructor
-* \param game GAme this item is a member of
+* \param game Game this item is a member of
 */
 CGru::CGru(CGame *game) : CItem(game)
 {

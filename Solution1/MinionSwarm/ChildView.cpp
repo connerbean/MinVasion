@@ -8,6 +8,7 @@
 #include "Game.h"
 #include <algorithm>
 #include "Gru.h"
+#include "Minion.h"
 #include "DoubleBufferDC.h"
 
 #ifdef _DEBUG
@@ -95,6 +96,10 @@ void CChildView::OnPaint()
 	auto Gru = make_shared<CGru>(&mGame);
 	Gru->SetLocation(100, -200);
 	Gru->Draw(&graphics);
+
+	auto Minion = make_shared<CMinion>(&mGame);
+	Minion->SetLocation(-200, -400);
+	Minion->Draw(&graphics);
 }
 
 

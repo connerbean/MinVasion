@@ -1,6 +1,5 @@
 #pragma once
 
-#include<memory>
 #include "Item.h"
 class CMinion : public CItem
 {
@@ -16,7 +15,14 @@ public:
     // Virtual destructor
     virtual  ~CMinion();
 
+	// Draws graphical images
+	virtual void Draw(Gdiplus::Graphics * graphics);
+
     /** Accept a visitor
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor *visitor) override { visitor->VisitMinion(this); }
+
+private:
+	// Poiner to item images
+	std::unique_ptr<Gdiplus::Bitmap> mMinionImage;
 };

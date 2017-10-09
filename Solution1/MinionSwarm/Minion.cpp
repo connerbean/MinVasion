@@ -6,13 +6,20 @@ using namespace Gdiplus;
 using namespace std;
 
 /// Item filename 
-const wstring MinionImageName = L"images/Minion.png";
+const wstring MinionImageName = L"images/dave.png";
 
 /** Constructor
-* \param aquarium The aquarium this is a member of
+* \param game The Game this is a member of
 */
 CMinion::CMinion(CGame *game) : CItem(game)
 {
+	mMinionImage = unique_ptr<Bitmap>(Bitmap::FromFile(MinionImageName.c_str()));
+	if (mMinionImage->GetLastStatus() != Ok)
+	{
+		wstring msg(L"Failed to open ");
+		msg += MinionImageName;
+		AfxMessageBox(msg.c_str());
+	}
 }
 
 /**
@@ -20,4 +27,17 @@ CMinion::CMinion(CGame *game) : CItem(game)
 */
 CMinion::~CMinion()
 {
+}
+
+/**
+* Draw this item
+* \param graphics Graphics device to draw on
+*/
+void CMinion::Draw(Gdiplus::Graphics *graphics)
+{
+	double wid = mMinionImage->GetWidth();
+	double hit = mMinionImage->GetHeight();
+	graphics->DrawImage(mMinionImage.get(),
+		float(GetX() - wid / 2), float(GetY() - hit / 2),
+		mMinionImage->GetWidth(), mMinionImage->GetHeight());
 }
