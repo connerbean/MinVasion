@@ -27,4 +27,5 @@ public:
 private:
     // Poiner to item images
     std::unique_ptr<Gdiplus::Bitmap> mGruImage;
+
 };
