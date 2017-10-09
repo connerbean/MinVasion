@@ -8,6 +8,7 @@
 #include "Game.h"
 #include <algorithm>
 #include "Gru.h"
+#include "DoubleBufferDC.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -31,6 +32,7 @@ CChildView::~CChildView()
 BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
 	ON_WM_TIMER()
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
@@ -54,9 +56,10 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 
 void CChildView::OnPaint() 
 {
-	CPaintDC dc(this); // device context for painting
+	CPaintDC paintDC(this);     // device context for painting
+	CDoubleBufferDC dc(&paintDC); // device context for painting
+
 	// TODO: Add your message handler code here
-	//CDoubleBufferDC dc(&paintDC); // device context for painting
 	// Do not call CWnd::OnPaint() for painting messages
 	Graphics graphics(dc.m_hDC);
 
@@ -104,4 +107,17 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 	// TODO: Add your message handler code here and/or call default
 	Invalidate();
 	CWnd::OnTimer(nIDEvent);
+}
+
+
+/**
+* Erase the background
+*
+* This is disabled to eliminate flicker
+* \param pDC Device context
+* \returns FALSE
+*/
+BOOL CChildView::OnEraseBkgnd(CDC* pDC)
+{
+	return FALSE;
 }

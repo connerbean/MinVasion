@@ -42,5 +42,6 @@ private:
 	double mTimeFreq;       ///< Rate the timer updates
 public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);	///< Event handler for update on timer function
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);		///< Event handler for erasing flicker
 };
 
