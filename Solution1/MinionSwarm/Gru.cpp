@@ -10,7 +10,7 @@ const wstring GruImageName = L"images/gru.png";
 
 /**
 * Constructor
-* \param game GAme this item is a member of
+* \param game Game this item is a member of
 */
 CGru::CGru(CGame *game) : CItem(game)
 {
@@ -40,7 +40,7 @@ void CGru::Draw(Gdiplus::Graphics *graphics)
     double hit = mGruImage->GetHeight();
     graphics->DrawImage(mGruImage.get(),
         float(GetX() - wid / 2), float(GetY() - hit / 2),
-        mGruImage->GetWidth(), mGruImage->GetHeight());
+        float(mGruImage->GetWidth()), float(mGruImage->GetHeight()));
 }
 
 /**
