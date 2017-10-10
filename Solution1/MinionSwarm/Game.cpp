@@ -3,6 +3,7 @@
 #include "Item.h"
 #include "PlayArea.h"
 #include "Gru.h"
+#include "Minion.h"
 
 CGame::CGame()
 {

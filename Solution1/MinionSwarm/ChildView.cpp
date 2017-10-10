@@ -8,6 +8,7 @@
 #include "Game.h"
 #include <algorithm>
 #include "Gru.h"
+#include "Minion.h"
 #include "DoubleBufferDC.h"
 #include "RestartSide.h"
 
@@ -25,7 +26,11 @@ CChildView::CChildView()
 {
 	auto Gru = make_shared<CGru>(&mGame);
 	mGame.Add(Gru);
-	
+	//Gru->Draw(&graphics);
+
+	auto Minion = make_shared<CMinion>(&mGame);
+	mGame.Add(Minion);
+	//Minoun->Draw(&graphics);
 }
 
 CChildView::~CChildView()
