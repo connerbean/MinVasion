@@ -4,7 +4,7 @@
 #include "PlayArea.h"
 #include "Gru.h"
 #include "Minion.h"
-
+#include "RestartSide.h"
 CGame::CGame()
 {
 }
@@ -107,6 +107,8 @@ void CGame::OnDraw(Gdiplus::Graphics * graphics, int width, int height)
 	{
 		item->Draw(graphics);
 	}
+	CRestartSide Restart;
+	Restart.Draw(graphics);
 
 
 }

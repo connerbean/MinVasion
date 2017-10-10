@@ -2,7 +2,7 @@
 #include "RestartSide.h"
 
 /// Item filename 
-const wstring GruImageName = L"images/new-game.png";
+const wstring NewGameImageName = L"images/new-game.png";
 
 /**
 * Draw this item
@@ -13,7 +13,7 @@ void CRestartSide::Draw(Gdiplus::Graphics *graphics)
 	double wid = mRestartImage->GetWidth();
 	double hit = mRestartImage->GetHeight();
 	graphics->DrawImage(mRestartImage.get(),
-		float(0), float(0),
+		float(-900), float(-500),
 		float(mRestartImage->GetWidth()), float(mRestartImage->GetHeight()));
 }
 
@@ -28,11 +28,11 @@ CRestartSide::~CRestartSide()
 */
 CRestartSide::CRestartSide()
 {
-	mRestartImage = unique_ptr<Bitmap>(Bitmap::FromFile(GruImageName.c_str()));
+	mRestartImage = unique_ptr<Bitmap>(Bitmap::FromFile(NewGameImageName.c_str()));
 	if (mRestartImage->GetLastStatus() != Ok)
 	{
 		wstring msg(L"Failed to open ");
-		msg += GruImageName;
+		msg += NewGameImageName;
 		AfxMessageBox(msg.c_str());
 	}
 }
