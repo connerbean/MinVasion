@@ -3,14 +3,15 @@
 //
 
 #include "stdafx.h"
+#include "DoubleBufferDC.h"
 #include "MinionSwarm.h"
 #include "ChildView.h"
 #include "Game.h"
-#include <algorithm>
 #include "Gru.h"
 #include "Minion.h"
-#include "DoubleBufferDC.h"
+#include "Villain.h"
 #include "RestartSide.h"
+#include <algorithm>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -26,11 +27,21 @@ CChildView::CChildView()
 {
 	auto Gru = make_shared<CGru>(&mGame);
 	mGame.Add(Gru);
-	//Gru->Draw(&graphics);
 
 	auto Minion = make_shared<CMinion>(&mGame);
 	mGame.Add(Minion);
-	//Minoun->Draw(&graphics);
+
+	auto villainArya = make_shared<CVillain>(&mGame, CVillain::Types::Arya);
+	villainArya->SetLocation(0, 250);
+	mGame.Add(villainArya);
+
+	auto villainJuicer = make_shared<CVillain>(&mGame, CVillain::Types::Juicer);
+	villainJuicer->SetLocation(-250, -250);
+	mGame.Add(villainJuicer);
+
+	auto villainPokeball = make_shared<CVillain>(&mGame, CVillain::Types::Pokeball);
+	villainPokeball->SetLocation(250, -250);
+	mGame.Add(villainPokeball);
 }
 
 CChildView::~CChildView()
@@ -172,7 +183,12 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 		{
 			int x = mGame.ConvertX(point.x);
 			int y = mGame.ConvertY(point.y);
-			mGrabbedItem->SetLocation(x,y);
+
+			// Only move item if it is draggable
+			if (mGrabbedItem->IsDraggable())
+			{
+				mGrabbedItem->SetLocation(x, y);
+			}
 			
 			/*if (mGrabbedItem->Killer() == true)
 			{

@@ -60,8 +60,9 @@ public:
 	* \return true if clicked on */
 	virtual bool HitTest(int x, int y) = 0;
 
-	//virtual std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode> &node);
-	//virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode> &node);
+	/** Gets whether this item is draggable
+	 * \return true if draggable, otherwise false*/
+	virtual bool IsDraggable() = 0;
 
 	///  Handle updates for animation
 	/// \param elapsed The time since the last update

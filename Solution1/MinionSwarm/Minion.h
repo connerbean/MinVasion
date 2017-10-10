@@ -21,6 +21,8 @@ public:
 	// Detects if two images overlap
 	bool HitTest(int x, int y);
 
+	bool IsDraggable() override { return false; }
+
     /** Accept a visitor
     * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor *visitor) override { visitor->VisitMinion(this); }
