@@ -22,8 +22,20 @@ class CGame
 	/// Game area height in virtual pixels
 	const static int Height = 1100;
 public:
-	void CGame::Translation(CPoint point);
+	///Converts the X value so pieces can be moved in the game
+	int CGame::ConvertX(int x);
+
+	///Converts the Y value so pieces can be moved in the game
+	int CGame::ConvertY(int y);
+
 	void CGame::Delete(std::shared_ptr<CItem> item);
+
+	/**
+	* Declartion for Update function
+	*
+	* \param elapsed The time since the last update
+	*/
+	void CGame::Update(double elapsed);
 
 	/**
 	* Add fish to the aquarium

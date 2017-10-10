@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Item.h"
 #include "PlayArea.h"
+#include "Gru.h"
 
 CGame::CGame()
 {
@@ -33,10 +34,18 @@ void CGame::Delete(std::shared_ptr<CItem> item)
 	}
 }
 
-void CGame::Translation(CPoint point)
+///Converts the Y value so pieces can be moved in the game
+int CGame::ConvertY(int y)
 {
-	point.x = (point.x - mXOffset) / mScale;
-	point.y = (point.y - mYOffset) / mScale;
+	y = (y - mYOffset) / mScale;
+	return y;
+}
+
+///Converts the X value so pieces can be moved in the game
+int CGame::ConvertX(int x)
+{
+	x = (x - mXOffset) / mScale;
+	return x;
 }
 
 /**
@@ -55,6 +64,17 @@ std::shared_ptr<CItem> CGame::HitTest(int x, int y)
 	}
 
 	return  nullptr;
+}
+
+/** Handle updates for animation
+* \param elapsed The time since the last update
+*/
+void CGame::Update(double elapsed)
+{
+	for (auto item : mItems)
+	{
+		item->Update(elapsed);
+	}
 }
 
 void CGame::OnDraw(Gdiplus::Graphics * graphics, int width, int height)
@@ -81,5 +101,10 @@ void CGame::OnDraw(Gdiplus::Graphics * graphics, int width, int height)
 	///Draw Board
 	CPlayArea grid;
 	grid.DrawGrid(graphics, width, height);
+
+	for (auto item : mItems)
+	{
+		item->Draw(graphics);
+	}
 
 }
