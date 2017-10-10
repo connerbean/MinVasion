@@ -107,4 +107,5 @@ void CGame::OnDraw(Gdiplus::Graphics * graphics, int width, int height)
 		item->Draw(graphics);
 	}
 
+
 }

@@ -51,9 +51,6 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Desktop\Notes for School\CSE 335\335 Solutions\Step2\Step2\Step2\DoubleBufferDC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Clock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -76,6 +73,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DoubleBufferDC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RestartSide.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -123,6 +123,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlayArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RestartSide.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

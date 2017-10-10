@@ -9,6 +9,7 @@
 #include <algorithm>
 #include "Gru.h"
 #include "DoubleBufferDC.h"
+#include "RestartSide.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -24,7 +25,7 @@ CChildView::CChildView()
 {
 	auto Gru = make_shared<CGru>(&mGame);
 	mGame.Add(Gru);
-	//Gru->Draw(&graphics);
+	
 }
 
 CChildView::~CChildView()
