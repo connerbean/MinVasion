@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MinionSwarm", "MinionSwarm\MinionSwarm.vcxproj", "{B9178318-541D-4861-A1D8-78ECDBC8D54D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Testing", "E:\Source\Repos\cse335-omar-project1\Solution1\Testing\Testing.vcxproj", "{2B49B3F8-5A23-4BC3-8A77-189C0B2B9671}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Testing", "Testing\Testing.vcxproj", "{2B49B3F8-5A23-4BC3-8A77-189C0B2B9671}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
