@@ -200,6 +200,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="CharacterVillain.h" />
+    <ClInclude Include="Vector.h" />
     <ClInclude Include="VillainVisitor.h" />
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +224,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="CharacterVillain.cpp" />
+    <ClCompile Include="Vector.cpp" />
     <ClCompile Include="VillainVisitor.cpp" />
   </ItemGroup>
   <ItemGroup>
