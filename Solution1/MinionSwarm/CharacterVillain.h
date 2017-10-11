@@ -1,5 +1,5 @@
 /**
- * \file Villain.h
+ * \file CharacterVillain.h
  *
  * \author Collin Dillinger
  *
@@ -8,26 +8,26 @@
 
 #pragma once
 
-#include "Item.h" 
+#include "Character.h" 
 
 /**
  * A Villain character
  */
-class CVillain : public CItem
+class CCharacterVillain : public CCharacter
 {
 public:
 	/// Types of villain
 	enum Types { Arya, Juicer, Pokeball };
 
-	CVillain(CGame *game, Types villainType);
+	CCharacterVillain(CGame *game, Types villainType);
 
 	///  Default constructor (disabled)
-	CVillain() = delete;
+	CCharacterVillain() = delete;
 
 	///  Copy constructor (disabled)
-	CVillain(const CVillain &) = delete;
+	CCharacterVillain(const CCharacterVillain &) = delete;
 
-	virtual ~CVillain();
+	virtual ~CCharacterVillain();
 
 	virtual void Draw(Gdiplus::Graphics * graphics) override;
 
@@ -37,7 +37,7 @@ public:
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
-	virtual void Accept(CItemVisitor *visitor) override { visitor->VisitVillain(this); }
+	virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitVillain(this); }
 
 private:
 	void LoadImage(std::wstring name);

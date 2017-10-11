@@ -1,5 +1,5 @@
 /**
-* \file Item.h
+* \file Character.h
 *
 * \author Matthew Rhodes
 *
@@ -11,11 +11,11 @@
 #include <string>
 #include <memory>
 //#include "XmlNode.h"
-#include "ItemVisitor.h"
+#include "CharacterVisitor.h"
 #include "Game.h"
 
 
-class CItem
+class CCharacter
 {
 public:
 
@@ -23,9 +23,9 @@ public:
 	static const std::wstring ImagesDirectory;
 
 	///  Default constructor (disabled)
-	CItem() = delete;
+	CCharacter() = delete;
 
-	virtual ~CItem();
+	virtual ~CCharacter();
 
 	void SetImage(const std::wstring &file);
 
@@ -35,7 +35,7 @@ public:
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
-	virtual void Accept(CItemVisitor *visitor) = 0;
+	virtual void Accept(CCharacterVisitor *visitor) = 0;
 
 	/**  The X location of the center of the tile
 	* \returns X location in pixels */
@@ -73,9 +73,9 @@ public:
 	//CGame *GetGame() { return mGame; }
 	
 	///  Copy constructor (disabled)
-	CItem(const CItem &) = delete;
+	CCharacter(const CCharacter &) = delete;
 protected:
-	CItem(CGame *game);
+	CCharacter(CGame *game);
 
 private:
 	CGame *mGame;

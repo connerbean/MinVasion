@@ -12,7 +12,7 @@
 using namespace Gdiplus;
 using namespace std;
 
-class CItem;
+class CCharacter;
 
 class CGame
 {
@@ -28,7 +28,7 @@ public:
 	///Converts the Y value so pieces can be moved in the game
 	int CGame::ConvertY(int y);
 
-	void CGame::Delete(std::shared_ptr<CItem> item);
+	void CGame::Delete(std::shared_ptr<CCharacter> item);
 
 	/**
 	* Declartion for Update function
@@ -40,7 +40,7 @@ public:
 	/**
 	* Add fish to the aquarium
 	*/
-	void CGame::Add(std::shared_ptr<CItem> item);
+	void CGame::Add(std::shared_ptr<CCharacter> item);
 
 	CGame();
 	virtual ~CGame();
@@ -51,7 +51,7 @@ public:
 	* \param y Y location
 	* \returns Pointer to item we clicked on or nullptr if none.
 	*/
-	std::shared_ptr<CItem> CGame::HitTest(int x, int y);
+	std::shared_ptr<CCharacter> CGame::HitTest(int x, int y);
 
 	/**
 	* Draw the game area
@@ -77,6 +77,6 @@ private:
 	*/
 	Gdiplus::REAL mYOffset = 0;
 
-	std::vector<std::shared_ptr<CItem> > mItems;
+	std::vector<std::shared_ptr<CCharacter> > mItems;
 };
 

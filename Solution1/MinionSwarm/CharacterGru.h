@@ -1,18 +1,18 @@
 #pragma once
-#include "Item.h"
-class CGru : public CItem
+#include "Character.h"
+class CCharacterGru : public CCharacter
 {
 public:
-    CGru(CGame *game);
+    CCharacterGru(CGame *game);
 
     /// Default constructor (disabled)
-    CGru() = delete;
+    CCharacterGru() = delete;
 
     /// Copy constructor (disabled)
-    CGru(const CGru &) = delete;
+    CCharacterGru(const CCharacterGru &) = delete;
 
     // Virtual destructor
-    virtual  ~CGru();
+    virtual  ~CCharacterGru();
 
     // Draws graphical images
     virtual void Draw(Gdiplus::Graphics * graphics);
@@ -24,7 +24,7 @@ public:
 
     /** Accept a visitor
     * \param visitor The visitor we accept */
-    virtual void Accept(CItemVisitor *visitor) override { visitor->VisitGru(this); }
+    virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitGru(this); }
 
 private:
     // Poiner to item images

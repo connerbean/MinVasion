@@ -1,11 +1,11 @@
 /**
- * \file Villain.cpp
+ * \file CharacterVillain.cpp
  *
  * \author Collin Dillinger
  */
 
 #include "stdafx.h"
-#include "Villain.h"
+#include "CharacterVillain.h"
 
 using namespace std;
 
@@ -22,7 +22,7 @@ const wstring PokeballImage = L"pokeball.png";
  * \param city The game this is a member of
  * \param villainType The type of villain this object will be
  */
-CVillain::CVillain(CGame * game, Types villainType) : CItem(game)
+CCharacterVillain::CCharacterVillain(CGame * game, Types villainType) : CCharacter(game)
 {
 	if (villainType == Types::Arya)
 	{
@@ -44,13 +44,13 @@ CVillain::CVillain(CGame * game, Types villainType) : CItem(game)
 /**
  *  Destructor.
  */
-CVillain::~CVillain()
+CCharacterVillain::~CCharacterVillain()
 {
 }
 
 /** Draw this item
  * \param graphics The graphics context to draw on */
-void CVillain::Draw(Gdiplus::Graphics *graphics)
+void CCharacterVillain::Draw(Gdiplus::Graphics *graphics)
 {
 	double wid = mVillainImage->GetWidth();
 	double hit = mVillainImage->GetHeight();
@@ -65,7 +65,7 @@ void CVillain::Draw(Gdiplus::Graphics *graphics)
  * \param y Y position to test
  * \return true if hit.
  */
-bool CVillain::HitTest(int x, int y)
+bool CCharacterVillain::HitTest(int x, int y)
 {
 	double wid = mVillainImage->GetWidth();
 	double hit = mVillainImage->GetHeight();
@@ -105,7 +105,7 @@ bool CVillain::HitTest(int x, int y)
  * Load an image into a bitmap
  * \param name Filename to load from
  */
-void CVillain::LoadImage(std::wstring name)
+void CCharacterVillain::LoadImage(std::wstring name)
 {
 	wstring filename = ImagesDirectory + name;
 	mVillainImage = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));

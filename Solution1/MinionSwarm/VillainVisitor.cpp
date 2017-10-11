@@ -6,7 +6,7 @@
 
 #include "stdafx.h"
 #include "VillainVisitor.h"
-#include "Villain.h"
+#include "CharacterVillain.h"
 
 
 /**
@@ -24,7 +24,7 @@ CVillainVisitor::~CVillainVisitor()
 {
 }
 
-void CVillainVisitor::VisitVillain(CVillain *villain)
+void CVillainVisitor::VisitVillain(CCharacterVillain *villain)
 {
 
 }

@@ -6,7 +6,7 @@
 
 #include "stdafx.h"
 #include "GruVisitor.h"
-#include "Gru.h"
+#include "CharacterGru.h"
 
 
 /**
@@ -25,7 +25,7 @@ CGruVisitor::~CGruVisitor()
 }
 
 
-void CGruVisitor::VisitGru(CGru *gru)
+void CGruVisitor::VisitGru(CCharacterGru *gru)
 {
 
 }

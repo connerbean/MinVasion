@@ -10,14 +10,14 @@
 #include "resource.h"       // main symbols
 
 
-// CMinionSwarmApp:
+// CCharacterMinionSwarmApp:
 // See MinionSwarm.cpp for the implementation of this class
 //
 
-class CMinionSwarmApp : public CWinApp
+class CCharacterMinionSwarmApp : public CWinApp
 {
 public:
-	CMinionSwarmApp();
+	CCharacterMinionSwarmApp();
 
 
 // Overrides
@@ -36,4 +36,4 @@ private:
 	ULONG_PTR gdiplusToken;
 };
 
-extern CMinionSwarmApp theApp;
+extern CCharacterMinionSwarmApp theApp;

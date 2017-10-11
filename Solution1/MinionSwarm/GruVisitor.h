@@ -7,13 +7,13 @@
  */
 
 #pragma once
-#include "ItemVisitor.h"
+#include "CharacterVisitor.h"
 
 
 /**
  * Gru Visitor
  */
-class CGruVisitor : public CItemVisitor
+class CGruVisitor : public CCharacterVisitor
 {
 public:
 	/// Constructor
@@ -23,6 +23,6 @@ public:
 
 	/// Vistor Function
 	///\param gru Is the Gru Type
-	void VisitGru(CGru *gru);
+	void VisitGru(CCharacterGru *gru);
 };
 

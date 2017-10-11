@@ -6,7 +6,7 @@
 
 #include "stdafx.h"
 #include "MinionVisitor.h"
-#include "Minion.h"
+#include "CharacterMinion.h"
 
 
 /**
@@ -25,7 +25,7 @@ CMinionVisitor::~CMinionVisitor()
 }
 
 
-void CMinionVisitor::VisitMinion(CMinion *minion)
+void CMinionVisitor::VisitMinion(CCharacterMinion *minion)
 {
 
 }

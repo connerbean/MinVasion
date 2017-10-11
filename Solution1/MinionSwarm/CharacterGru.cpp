@@ -1,31 +1,32 @@
 #include "stdafx.h"
 #include <string>
-#include "Minion.h"
+#include "CharacterGru.h"
 
 using namespace Gdiplus;
 using namespace std;
 
 /// Item filename 
-const wstring MinionImageName = L"images/dave.png";
+const wstring GruImageName = L"images/gru.png";
 
-/** Constructor
-* \param game The Game this is a member of
+/**
+* Constructor
+* \param game Game this item is a member of
 */
-CMinion::CMinion(CGame *game) : CItem(game)
+CCharacterGru::CCharacterGru(CGame *game) : CCharacter(game)
 {
-	mMinionImage = unique_ptr<Bitmap>(Bitmap::FromFile(MinionImageName.c_str()));
-	if (mMinionImage->GetLastStatus() != Ok)
-	{
-		wstring msg(L"Failed to open ");
-		msg += MinionImageName;
-		AfxMessageBox(msg.c_str());
-	}
+    mGruImage = unique_ptr<Bitmap>(Bitmap::FromFile(GruImageName.c_str()));
+    if (mGruImage->GetLastStatus() != Ok)
+    {
+        wstring msg(L"Failed to open ");
+        msg += GruImageName;
+        AfxMessageBox(msg.c_str());
+    }
 }
 
 /**
 * Destructor
 */
-CMinion::~CMinion()
+CCharacterGru::~CCharacterGru()
 {
 }
 
@@ -33,13 +34,13 @@ CMinion::~CMinion()
 * Draw this item
 * \param graphics Graphics device to draw on
 */
-void CMinion::Draw(Gdiplus::Graphics *graphics)
+void CCharacterGru::Draw(Gdiplus::Graphics *graphics)
 {
-	double wid = mMinionImage->GetWidth();
-	double hit = mMinionImage->GetHeight();
-	graphics->DrawImage(mMinionImage.get(),
-		float(GetX() - wid / 2), float(GetY() - hit / 2),
-		float(mMinionImage->GetWidth()), float(mMinionImage->GetHeight()));
+    double wid = mGruImage->GetWidth();
+    double hit = mGruImage->GetHeight();
+    graphics->DrawImage(mGruImage.get(),
+        float(GetX() - wid / 2), float(GetY() - hit / 2),
+        float(mGruImage->GetWidth()), float(mGruImage->GetHeight()));
 }
 
 /**
@@ -48,10 +49,10 @@ void CMinion::Draw(Gdiplus::Graphics *graphics)
 * \param y Y position to test
 * \return true if hit.
 */
-bool CMinion::HitTest(int x, int y)
+bool CCharacterGru::HitTest(int x, int y)
 {
-	double wid = mMinionImage->GetWidth();
-	double hit = mMinionImage->GetHeight();
+	double wid = mGruImage->GetWidth();
+	double hit = mGruImage->GetHeight();
 
 	// Make x and y relative to the top-left corner of the bitmap image
 	// Subtracting the center makes x, y relative to the image center
@@ -67,7 +68,7 @@ bool CMinion::HitTest(int x, int y)
 	}
 
 	// Test to see if x, y are in the drawn part of the image
-	auto format = mMinionImage->GetPixelFormat();
+	auto format = mGruImage->GetPixelFormat();
 	if (format == PixelFormat32bppARGB || format == PixelFormat32bppPARGB)
 	{
 		// This image has an alpha map, which implements the 
@@ -75,7 +76,7 @@ bool CMinion::HitTest(int x, int y)
 		// clicked on a pixel where alpha is not zero, meaning
 		// the pixel shows on the screen.
 		Color color;
-		mMinionImage->GetPixel((int)testX, (int)testY, &color);
+		mGruImage->GetPixel((int)testX, (int)testY, &color);
 		return color.GetAlpha() != 0;
 	}
 	else {

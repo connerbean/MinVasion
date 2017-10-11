@@ -7,13 +7,13 @@
  */
 
 #pragma once
-#include "ItemVisitor.h"
+#include "CharacterVisitor.h"
 
 
 /**
  * Minion visitor
  */
-class CMinionVisitor : public CItemVisitor
+class CMinionVisitor : public CCharacterVisitor
 {
 public:
 	/// Constructor
@@ -23,7 +23,7 @@ public:
 
 	/// Visitor Function
 	/// \param minion IS the Minion type
-	void VisitMinion(CMinion *minion);
+	void VisitMinion(CCharacterMinion *minion);
 
 private:
 

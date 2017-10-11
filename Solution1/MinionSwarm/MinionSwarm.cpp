@@ -14,16 +14,16 @@
 #endif
 
 
-// CMinionSwarmApp
+// CCharacterMinionSwarmApp
 
-BEGIN_MESSAGE_MAP(CMinionSwarmApp, CWinApp)
-	ON_COMMAND(ID_APP_ABOUT, &CMinionSwarmApp::OnAppAbout)
+BEGIN_MESSAGE_MAP(CCharacterMinionSwarmApp, CWinApp)
+	ON_COMMAND(ID_APP_ABOUT, &CCharacterMinionSwarmApp::OnAppAbout)
 END_MESSAGE_MAP()
 
 
-// CMinionSwarmApp construction
+// CCharacterMinionSwarmApp construction
 
-CMinionSwarmApp::CMinionSwarmApp()
+CCharacterMinionSwarmApp::CCharacterMinionSwarmApp()
 {
 	// support Restart Manager
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_ALL_ASPECTS;
@@ -42,14 +42,14 @@ CMinionSwarmApp::CMinionSwarmApp()
 	// Place all significant initialization in InitInstance
 }
 
-// The one and only CMinionSwarmApp object
+// The one and only CCharacterMinionSwarmApp object
 
-CMinionSwarmApp theApp;
+CCharacterMinionSwarmApp theApp;
 
 
-// CMinionSwarmApp initialization
+// CCharacterMinionSwarmApp initialization
 
-BOOL CMinionSwarmApp::InitInstance()
+BOOL CCharacterMinionSwarmApp::InitInstance()
 {
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
@@ -109,7 +109,7 @@ BOOL CMinionSwarmApp::InitInstance()
 	return TRUE;
 }
 
-int CMinionSwarmApp::ExitInstance()
+int CCharacterMinionSwarmApp::ExitInstance()
 {
 	Gdiplus::GdiplusShutdown(gdiplusToken);
 	//TODO: handle additional resources you may have added
@@ -118,7 +118,7 @@ int CMinionSwarmApp::ExitInstance()
 	return CWinApp::ExitInstance();
 }
 
-// CMinionSwarmApp message handlers
+// CCharacterMinionSwarmApp message handlers
 
 
 // CAboutDlg dialog used for App About
@@ -154,13 +154,13 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 // App command to run the dialog
-void CMinionSwarmApp::OnAppAbout()
+void CCharacterMinionSwarmApp::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
 }
 
-// CMinionSwarmApp message handlers
+// CCharacterMinionSwarmApp message handlers
 
 
 

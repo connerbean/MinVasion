@@ -1,19 +1,19 @@
 #pragma once
 
-#include "Item.h"
-class CMinion : public CItem
+#include "Character.h"
+class CCharacterMinion : public CCharacter
 {
 public:
-    CMinion(CGame *game);
+    CCharacterMinion(CGame *game);
 
     /// Default constructor (disabled)
-    CMinion() = delete;
+    CCharacterMinion() = delete;
 
     /// Copy constructor (disabled)
-    CMinion(const CMinion &) = delete;
+    CCharacterMinion(const CCharacterMinion &) = delete;
 
     // Virtual destructor
-    virtual  ~CMinion();
+    virtual  ~CCharacterMinion();
 
 	// Draws graphical images
 	virtual void Draw(Gdiplus::Graphics * graphics);
@@ -25,7 +25,7 @@ public:
 
     /** Accept a visitor
     * \param visitor The visitor we accept */
-    virtual void Accept(CItemVisitor *visitor) override { visitor->VisitMinion(this); }
+    virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitMinion(this); }
 
 private:
 	// Poiner to item images

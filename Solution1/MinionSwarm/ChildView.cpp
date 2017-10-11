@@ -7,9 +7,9 @@
 #include "MinionSwarm.h"
 #include "ChildView.h"
 #include "Game.h"
-#include "Gru.h"
-#include "Minion.h"
-#include "Villain.h"
+#include "CharacterGru.h"
+#include "CharacterMinion.h"
+#include "CharacterVillain.h"
 #include "RestartSide.h"
 #include <algorithm>
 
@@ -25,21 +25,21 @@ const int FrameDuration = 30;
 
 CChildView::CChildView()
 {
-	auto Gru = make_shared<CGru>(&mGame);
+	auto Gru = make_shared<CCharacterGru>(&mGame);
 	mGame.Add(Gru);
 
-	auto Minion = make_shared<CMinion>(&mGame);
+	auto Minion = make_shared<CCharacterMinion>(&mGame);
 	mGame.Add(Minion);
 
-	auto villainArya = make_shared<CVillain>(&mGame, CVillain::Types::Arya);
+	auto villainArya = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Arya);
 	villainArya->SetLocation(0, 250);
 	mGame.Add(villainArya);
 
-	auto villainJuicer = make_shared<CVillain>(&mGame, CVillain::Types::Juicer);
+	auto villainJuicer = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Juicer);
 	villainJuicer->SetLocation(-250, -250);
 	mGame.Add(villainJuicer);
 
-	auto villainPokeball = make_shared<CVillain>(&mGame, CVillain::Types::Pokeball);
+	auto villainPokeball = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Pokeball);
 	villainPokeball->SetLocation(250, -250);
 	mGame.Add(villainPokeball);
 }

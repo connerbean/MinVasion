@@ -25,11 +25,11 @@ MinionSwarm.vcxproj.filters
 MinionSwarm.h
     This is the main header file for the application.  It includes other
     project specific headers (including Resource.h) and declares the
-    CMinionSwarmApp application class.
+    CCharacterMinionSwarmApp application class.
 
 MinionSwarm.cpp
     This is the main application source file that contains the application
-    class CMinionSwarmApp.
+    class CCharacterMinionSwarmApp.
 
 MinionSwarm.rc
     This is a listing of all of the Microsoft Windows resources that the

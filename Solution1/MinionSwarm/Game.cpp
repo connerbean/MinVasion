@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Game.h"
-#include "Item.h"
+#include "Character.h"
 #include "PlayArea.h"
-#include "Gru.h"
-#include "Minion.h"
+#include "CharacterGru.h"
+#include "CharacterMinion.h"
 #include "RestartSide.h"
 CGame::CGame()
 {
@@ -18,7 +18,7 @@ CGame::~CGame()
 * Add an item to the aquarium
 * \param item New item to add
 */
-void CGame::Add(std::shared_ptr<CItem> item)
+void CGame::Add(std::shared_ptr<CCharacter> item)
 {
 	mItems.push_back(item);
 }
@@ -26,7 +26,7 @@ void CGame::Add(std::shared_ptr<CItem> item)
 /**
 * Finds and deletes the selected item
 */
-void CGame::Delete(std::shared_ptr<CItem> item)
+void CGame::Delete(std::shared_ptr<CCharacter> item)
 {
 	auto loc = find(begin(mItems), end(mItems), item);
 	if (loc != end(mItems))
@@ -52,7 +52,7 @@ int CGame::ConvertX(int x)
 /**
 * Test to see if things in the aquarium have been hit
 */
-std::shared_ptr<CItem> CGame::HitTest(int x, int y)
+std::shared_ptr<CCharacter> CGame::HitTest(int x, int y)
 {
 	x = (x - mXOffset) / mScale;
 	y = (y - mYOffset) / mScale;

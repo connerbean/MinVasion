@@ -8,13 +8,13 @@
 
 
 #pragma once
-#include "ItemVisitor.h"
+#include "CharacterVisitor.h"
 
 
 /**
  * Villain Visitor
  */
-class CVillainVisitor : public CItemVisitor
+class CVillainVisitor : public CCharacterVisitor
 {
 public:
 	/// Constructor
@@ -25,6 +25,6 @@ public:
 
 	///Visitor Function
 	///\param villian Is the villain type
-	void VisitVillain(CVillain *villain);
+	void VisitVillain(CCharacterVillain *villain);
 };
 
