@@ -40,6 +40,11 @@ CChildView::CChildView()
 	auto villainPokeball = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Pokeball);
 	villainPokeball->SetLocation(250, -250);
 	mGame.Add(villainPokeball);
+
+	auto restartSide = make_shared<CRestartSide>(&mGame);
+	restartSide->SetLocation(-650, -420);
+	mGame.Add(restartSide);
+
 }
 
 CChildView::~CChildView()
@@ -159,6 +164,10 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 		// Move it to the end of the list of items
 		mGame.Delete(mGrabbedItem);
 		mGame.Add(mGrabbedItem);
+	}
+	if (mGrabbedItem->IsButton() == true)
+	{
+		mGame.Restart();
 	}
 }
 

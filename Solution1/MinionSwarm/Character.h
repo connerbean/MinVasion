@@ -64,6 +64,10 @@ public:
 	 * \return true if draggable, otherwise false*/
 	virtual bool IsDraggable() = 0;
 
+	/** Gets whether this item is a button or not
+	*  \return false because most items are not a button
+	*/
+	virtual bool IsButton() { return false; }
 	///  Handle updates for animation
 	/// \param elapsed The time since the last update
 	virtual void Update(double elapsed) {}

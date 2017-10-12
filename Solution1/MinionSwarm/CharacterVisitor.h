@@ -12,6 +12,7 @@
 class CCharacterMinion;
 class CCharacterGru;
 class CCharacterVillain;
+class CRestartSide;
 
 /** Item visitor base class */
 class CCharacterVisitor
@@ -31,5 +32,9 @@ public:
 	/** Visit a CCharacterVillain object
 	 * \param villain Villain we are visiting */
 	virtual void VisitVillain(CCharacterVillain *villain) {}
+
+	/** Visit a CRestart object
+	* \param button Button we are visiting */
+	virtual void VisitButton(CRestartSide *button) {}
 };
 

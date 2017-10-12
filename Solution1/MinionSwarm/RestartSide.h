@@ -1,22 +1,36 @@
 #pragma once
-#include "Game.h"
-class CRestartSide :
-	public CGame
+#include "Character.h"
+class CRestartSide : public CCharacter
 {
 public:
 	// Draws graphical images
 	virtual void Draw(Gdiplus::Graphics * graphics);
 
-	CRestartSide();
+	CRestartSide(CGame *game);
+
+
+	void NewGame();
+	/// Default constructor (disabled)
+	CRestartSide() = delete;
+
+	/// Copy constructor (disabled)
+	CRestartSide(const CRestartSide &) = delete;
+
 	virtual ~CRestartSide();
 
-	/**  The X location of the center of the tile
-	* \returns X location in pixels */
-	int GetX() const { return mX; }
+	// Detects if two images overlap
+	bool HitTest(int x, int y);
 
-	/**  The Y location of the center of the tile
-	* \returns Y location in pixels */
-	int GetY() const { return mY; }
+	/** Gets whether this item is draggable
+	* \return true if draggable, otherwise false*/
+	bool IsDraggable() override { return false; }
+
+	bool IsButton() { return true; }
+
+	/** Accept a visitor
+	* \param visitor The visitor we accept */
+	virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitButton(this); }
+	
 
 private:
 	// Poiner to item images

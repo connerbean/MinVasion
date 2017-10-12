@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-
+#include "Game.h"
+#include "CharacterGru.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace Testing
@@ -15,9 +16,30 @@ namespace Testing
 			::SetCurrentDirectory(g_dir);
 		}
 		
-		TEST_METHOD(TestNothing)
+		TEST_METHOD(TestCCharacterGruHitTest)
 		{
-			// This is an empty test just to ensure the system is working
+			//Create a game to test
+			CGame game;
+			CCharacterGru Gru(&game);
+
+			// Give it a location
+			// Always make the numbers different, in case they are mixed up
+			Gru.SetLocation(100, 200);
+
+			// Center of Gru should be a true
+			Assert::IsTrue(Gru.HitTest(100, 200));
+
+			// Left of Gru
+			Assert::IsFalse(Gru.HitTest(10, 200));
+
+			// Right of Gru
+			Assert::IsFalse(Gru.HitTest(200, 200));
+
+			// Above Gru
+			Assert::IsFalse(Gru.HitTest(100, 0));
+
+			// Below Gru
+			Assert::IsFalse(Gru.HitTest(100, 300));
 		}
 
 	};

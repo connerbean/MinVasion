@@ -11,11 +11,16 @@
 #include "CharacterGru.h"
 #include "CharacterMinion.h"
 #include "RestartSide.h"
+#include "CharacterVillain.h"
+
 /**
  * Constructor
  */
 CGame::CGame()
 {
+
+
+
 }
 
 
@@ -57,6 +62,11 @@ int CGame::ConvertY(int y)
 {
 	y = (y - mYOffset) / mScale;
 	return y;
+}
+
+void CGame::Restart()
+{
+	
 }
 
 /**
@@ -178,8 +188,7 @@ void CGame::OnDraw(Gdiplus::Graphics * graphics, int width, int height)
 	{
 		item->Draw(graphics);
 	}
-	CRestartSide Restart;
-	Restart.Draw(graphics);
+	
 
 
 }

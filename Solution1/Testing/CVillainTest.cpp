@@ -2,7 +2,7 @@
 #include "CppUnitTest.h"
 
 #include "Game.h"
-#include "Villain.h"
+#include "CharacterVillain.h"
 
 using namespace std;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -22,17 +22,17 @@ namespace Testing
 		TEST_METHOD(TestConstructor)
 		{
 			CGame game;
-			CVillain arya(&game, CVillain::Types::Arya);
-			CVillain juicer(&game, CVillain::Types::Juicer);
-			CVillain pokeball(&game, CVillain::Types::Pokeball);
+			CCharacterVillain arya(&game, CCharacterVillain::Types::Arya);
+			CCharacterVillain juicer(&game, CCharacterVillain::Types::Juicer);
+			CCharacterVillain pokeball(&game, CCharacterVillain::Types::Pokeball);
 		}
 
 		TEST_METHOD(TestHitTest)
 		{
 			CGame game;
-			CVillain arya(&game, CVillain::Types::Arya);
-			CVillain juicer(&game, CVillain::Types::Juicer);
-			CVillain pokeball(&game, CVillain::Types::Pokeball);
+			CCharacterVillain arya(&game, CCharacterVillain::Types::Arya);
+			CCharacterVillain juicer(&game, CCharacterVillain::Types::Juicer);
+			CCharacterVillain pokeball(&game, CCharacterVillain::Types::Pokeball);
 
 			arya.SetLocation(0, -250);
 			Assert::IsTrue(arya.HitTest(0, -250), L"Arya center image Hit Test");

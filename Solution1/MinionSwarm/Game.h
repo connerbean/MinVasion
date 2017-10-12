@@ -39,6 +39,7 @@ public:
 	*/
 	void CGame::Update(double elapsed);
 
+	void CGame::Restart();
 	/**
 	* Add fish to the aquarium
 	*/
