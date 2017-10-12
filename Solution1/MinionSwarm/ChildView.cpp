@@ -29,9 +29,6 @@ CChildView::CChildView()
 	Gru->SetLocation(0, 400);
 	mGame.Add(Gru);
 
-	auto Minion = make_shared<CCharacterMinion>(&mGame);
-	mGame.Add(Minion);
-
 	auto villainArya = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Arya);
 	villainArya->SetLocation(0, 220);
 	mGame.Add(villainArya);

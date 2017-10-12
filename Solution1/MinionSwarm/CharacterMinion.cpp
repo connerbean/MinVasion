@@ -1,3 +1,9 @@
+/**
+ * \file CharacterMinion.cpp
+ *
+ * \author Conner Bean
+ */
+
 #include "stdafx.h"
 #include <string>
 #include "CharacterMinion.h"
@@ -10,16 +16,19 @@ const wstring MinionImageName = L"images/dave.png";
 
 /** Constructor
 * \param game The Game this is a member of
+* \param name The file name that we load for the minion image
+* \param scoreValue The score associated with destroying the minion
 */
-CCharacterMinion::CCharacterMinion(CGame *game) : CCharacter(game)
+CCharacterMinion::CCharacterMinion(CGame *game, const wstring name, int scoreValue) : CCharacter(game)
 {
-	mMinionImage = unique_ptr<Bitmap>(Bitmap::FromFile(MinionImageName.c_str()));
+	mMinionImage = unique_ptr<Bitmap>(Bitmap::FromFile(wstring(name.begin(),name.end()).c_str()));
 	if (mMinionImage->GetLastStatus() != Ok)
 	{
 		wstring msg(L"Failed to open ");
 		msg += MinionImageName;
 		AfxMessageBox(msg.c_str());
 	}
+	mScoreValue = scoreValue;
 }
 
 /**
