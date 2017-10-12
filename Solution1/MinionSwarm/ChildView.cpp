@@ -26,13 +26,14 @@ const int FrameDuration = 30;
 CChildView::CChildView()
 {
 	auto Gru = make_shared<CCharacterGru>(&mGame);
+	Gru->SetLocation(0, 400);
 	mGame.Add(Gru);
 
 	auto Minion = make_shared<CCharacterMinion>(&mGame);
 	mGame.Add(Minion);
 
 	auto villainArya = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Arya);
-	villainArya->SetLocation(0, 250);
+	villainArya->SetLocation(0, 220);
 	mGame.Add(villainArya);
 
 	auto villainJuicer = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Juicer);
