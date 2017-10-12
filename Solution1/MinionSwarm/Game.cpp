@@ -1,3 +1,9 @@
+/**
+ * \file Game.cpp
+ *
+ * \author Conner Bean
+ */
+
 #include "stdafx.h"
 #include "Game.h"
 #include "Character.h"
@@ -5,11 +11,17 @@
 #include "CharacterGru.h"
 #include "CharacterMinion.h"
 #include "RestartSide.h"
+/**
+ * Constructor
+ */
 CGame::CGame()
 {
 }
 
 
+/**
+ * destructor
+ */
 CGame::~CGame()
 {
 }
@@ -25,6 +37,7 @@ void CGame::Add(std::shared_ptr<CCharacter> item)
 
 /**
 * Finds and deletes the selected item
+* \param item The item to delete
 */
 void CGame::Delete(std::shared_ptr<CCharacter> item)
 {
@@ -35,14 +48,22 @@ void CGame::Delete(std::shared_ptr<CCharacter> item)
 	}
 }
 
-///Converts the Y value so pieces can be moved in the game
+/**
+ * Converts the Y value so pieces can be moved in the game
+ * \param y The int to convert
+ * \returns y The converted int
+ */
 int CGame::ConvertY(int y)
 {
 	y = (y - mYOffset) / mScale;
 	return y;
 }
 
-///Converts the X value so pieces can be moved in the game
+/**
+ * Converts the X value so pieces can be moved in the game
+ * \param x The number to convert
+ * \returns x The converted int
+ */
 int CGame::ConvertX(int x)
 {
 	x = (x - mXOffset) / mScale;
@@ -51,6 +72,9 @@ int CGame::ConvertX(int x)
 
 /**
 * Test to see if things in the aquarium have been hit
+* \param x pointX
+* \param y pointY
+* \returns item if hit, null if not
 */
 std::shared_ptr<CCharacter> CGame::HitTest(int x, int y)
 {
@@ -67,17 +91,64 @@ std::shared_ptr<CCharacter> CGame::HitTest(int x, int y)
 	return  nullptr;
 }
 
+const int spawnLocationY = -450; ///< Y starting location for minion spawn
+								
+const wstring StuartImageName = L"images/stuart.png";  ///< Stuart filename 
+const wstring MutantImageName = L"images/mutant.png";  ///< Mutant filename 
+const wstring JerryImageName = L"images/jerry.png";  ///< Jerry filename 
+
 /** Handle updates for animation
 * \param elapsed The time since the last update
 */
 void CGame::Update(double elapsed)
 {
+	mUpdateTime += elapsed;
+
+	// Following is minion spawning code
+	if (mUpdateTime > 0.5)
+	{
+		int MinionPicker = (rand() % 101) + 1;
+		int spawnLocationX = (rand() % 950) - 475;
+
+		if (MinionPicker <= 10)		// 10% of time give a mutant
+		{
+			auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, 5);
+			Add(newMinion);
+			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+		}
+
+		else if (MinionPicker > 10 && MinionPicker <= 55) // give 45% chance for Stuart
+		{
+			auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, 1);
+			Add(newMinion);
+			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+		}
+
+		else // and last 45% chance for Jerry
+		{
+			auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, 1);
+			Add(newMinion);
+			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+		}
+
+
+		mUpdateTime = 0 + (rand()%3)/4;
+	}
+
+	// Then update rest of items in game
 	for (auto item : mItems)
 	{
 		item->Update(elapsed);
 	}
 }
 
+
+/**
+ * On draw function to draw game
+ * \param graphics our settings
+ * \param width width of display
+ * \param height height of display
+ */
 void CGame::OnDraw(Gdiplus::Graphics * graphics, int width, int height)
 {
 	// Fill the background with black

@@ -52,6 +52,8 @@ void CClock::Update(double elapsed)
 	}
 }
 
+const REAL ClockXLocation = 1050; ///<Clock's X location to display at
+const REAL ClockYLocation = -550; ///<Clock's Y Location to display at
 
 /**
 * DisplayTime used to display current time
@@ -74,5 +76,5 @@ void CClock::DisplayTime(Gdiplus::Graphics *graphics)
 	Gdiplus::Font font(&fontFamily, 46);
 
 	SolidBrush green(Color(0, 94, 0));
-	graphics->DrawString(fin.c_str(), -1, &font, PointF(1050, -550), &green);
+	graphics->DrawString(fin.c_str(), -1, &font, PointF(ClockXLocation, ClockYLocation), &green);
 }

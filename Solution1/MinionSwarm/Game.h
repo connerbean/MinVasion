@@ -28,6 +28,8 @@ public:
 	///Converts the Y value so pieces can be moved in the game
 	int CGame::ConvertY(int y);
 
+	///Deletes item from game
+	///\param item The item to delete
 	void CGame::Delete(std::shared_ptr<CCharacter> item);
 
 	/**
@@ -42,8 +44,8 @@ public:
 	*/
 	void CGame::Add(std::shared_ptr<CCharacter> item);
 
-	CGame();
-	virtual ~CGame();
+	CGame(); ///<Constructor
+	virtual ~CGame(); ///<Virtual destructor
 
 	/** Test an x,y click location to see if it clicked
 	* on some item in the aquarium.
@@ -77,6 +79,8 @@ private:
 	*/
 	Gdiplus::REAL mYOffset = 0;
 
-	std::vector<std::shared_ptr<CCharacter> > mItems;
+	double mUpdateTime = 0; ///< double used to keep track of update time in seconds
+
+	std::vector<std::shared_ptr<CCharacter> > mItems; ///< Vector of all items in the game
 };
 
