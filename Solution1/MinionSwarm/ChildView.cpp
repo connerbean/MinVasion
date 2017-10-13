@@ -25,26 +25,8 @@ const int FrameDuration = 30;
 
 CChildView::CChildView()
 {
-	auto Gru = make_shared<CCharacterGru>(&mGame);
-	Gru->SetLocation(0, 400);
-	mGame.Add(Gru);
-
-	auto villainArya = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Arya);
-	villainArya->SetLocation(0, 220);
-	mGame.Add(villainArya);
-
-	auto villainJuicer = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Juicer);
-	villainJuicer->SetLocation(-250, -250);
-	mGame.Add(villainJuicer);
-
-	auto villainPokeball = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Pokeball);
-	villainPokeball->SetLocation(250, -250);
-	mGame.Add(villainPokeball);
-
-	auto restartSide = make_shared<CRestartSide>(&mGame);
-	restartSide->SetLocation(-650, -420);
-	mGame.Add(restartSide);
-
+	mNewGameButton = make_shared<CRestartSide>();
+	mNewGameButton->SetLocation(-650, -420);
 }
 
 CChildView::~CChildView()
@@ -118,7 +100,9 @@ void CChildView::OnPaint()
 
 	mClock.Update(elapsed);		// adds elapsed time to overall time
 	mGame.Update(elapsed);
+	mNewGameButton->Update(elapsed);
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
+	mNewGameButton->Draw(&graphics);
 
 	mClock.DisplayTime(&graphics);	// displays timer in correct location in correct format
 	
@@ -160,34 +144,12 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 	mGrabbedItem = mGame.HitTest(point.x, point.y);
 	if (mGrabbedItem != nullptr)
 	{
-		// We have selected an item
-		// Move it to the end of the list of items
-		mGame.Delete(mGrabbedItem);
-		mGame.Add(mGrabbedItem);
+
 	}
-	if (mGrabbedItem->IsButton() == true)
+	// TODO: remove dependency of CGame for x and y conversion
+	if (mNewGameButton->HitTest(mGame.ConvertX(point.x), mGame.ConvertY(point.y)))
 	{
-		mGame.Restart();
-		mClock.Update(0);
-		auto Gru = make_shared<CCharacterGru>(&mGame);
-		Gru->SetLocation(0, 400);
-		mGame.Add(Gru);
-
-		auto villainArya = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Arya);
-		villainArya->SetLocation(0, 220);
-		mGame.Add(villainArya);
-
-		auto villainJuicer = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Juicer);
-		villainJuicer->SetLocation(-250, -250);
-		mGame.Add(villainJuicer);
-
-		auto villainPokeball = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Pokeball);
-		villainPokeball->SetLocation(250, -250);
-		mGame.Add(villainPokeball);
-
-		auto restartSide = make_shared<CRestartSide>(&mGame);
-		restartSide->SetLocation(-650, -420);
-		mGame.Add(restartSide);
+		mGame.Reset();
 	}
 }
 

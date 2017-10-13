@@ -19,6 +19,21 @@ void CRestartSide::Draw(Gdiplus::Graphics *graphics)
 }
 
 
+/**
+* Constructor
+* \param game Game this item is a member of
+*/
+CRestartSide::CRestartSide()
+{
+	mRestartImage = unique_ptr<Bitmap>(Bitmap::FromFile(NewGameImageName.c_str()));
+	if (mRestartImage->GetLastStatus() != Ok)
+	{
+		wstring msg(L"Failed to open ");
+		msg += NewGameImageName;
+		AfxMessageBox(msg.c_str());
+	}
+}
+
 CRestartSide::~CRestartSide()
 {
 }
@@ -61,20 +76,5 @@ bool CRestartSide::HitTest(int x, int y)
 	}
 	else {
 		return true;
-	}
-}
-
-/**
-* Constructor
-* \param game Game this item is a member of
-*/
-CRestartSide::CRestartSide(CGame *game) : CCharacter(game)
-{
-	mRestartImage = unique_ptr<Bitmap>(Bitmap::FromFile(NewGameImageName.c_str()));
-	if (mRestartImage->GetLastStatus() != Ok)
-	{
-		wstring msg(L"Failed to open ");
-		msg += NewGameImageName;
-		AfxMessageBox(msg.c_str());
 	}
 }

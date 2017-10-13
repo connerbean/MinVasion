@@ -6,6 +6,7 @@
 #pragma once
 #include "Game.h"
 #include "Clock.h"
+#include "RestartSide.h"
 
 // CChildView window
 
@@ -35,6 +36,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 private:
+	std::shared_ptr<CRestartSide> mNewGameButton; ///< New Game button
 	CGame mGame;			///< game we are currently playing
 	CClock mClock;			///< clock object for keeping time
 	bool mFirstDraw = true; ///< Boolean for first draw

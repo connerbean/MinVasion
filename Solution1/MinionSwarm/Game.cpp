@@ -18,9 +18,7 @@
  */
 CGame::CGame()
 {
-
-
-
+	Reset();
 }
 
 
@@ -64,11 +62,33 @@ int CGame::ConvertY(int y)
 	return y;
 }
 
-void CGame::Restart()
+void CGame::Reset()
 {
-	mItems.clear();
+	// Reset time
 	mUpdateTime = 0;
-	
+
+	// Reset characters
+	mItems.clear();
+
+	// Villains on bottom...
+	auto villainArya = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Arya);
+	villainArya->SetLocation(0, 220);
+	Add(villainArya);
+
+	auto villainJuicer = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Juicer);
+	villainJuicer->SetLocation(-250, -250);
+	Add(villainJuicer);
+
+	auto villainPokeball = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Pokeball);
+	villainPokeball->SetLocation(250, -250);
+	Add(villainPokeball);
+
+	// ... then Gru...
+	auto gru = make_shared<CCharacterGru>(this);
+	gru->SetLocation(0, 400);
+	Add(gru);
+
+	// ... then any minions
 }
 
 /**

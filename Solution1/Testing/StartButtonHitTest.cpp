@@ -19,9 +19,7 @@ namespace Testing
 		
 		TEST_METHOD(TestRestartButtonHitTest)
 		{
-			//Create a game to test
-			CGame game;
-			CRestartSide Restart(&game);
+			CRestartSide Restart;
 
 			// Give it a location
 			// Always make the numbers different, in case they are mixed up
