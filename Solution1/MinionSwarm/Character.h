@@ -29,6 +29,11 @@ public:
 
 	void SetImage(const std::wstring &file);
 
+	/**  Constrain the Items to MAX/MIN
+	* \param x X location
+	* \param y Y location */
+	void Constraints(int x, int y);
+
 	/**  Get the file name for this tile image
 	* \returns Filename or blank if none */
 	std::wstring GetFile() { return mFile; }
@@ -100,5 +105,11 @@ private:
 
 	/// The image of this tile
 	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
+
+	/// Max X Position
+	int mMax = 500;
+	/// Min X Position
+	int mMin = -500;
+
 };
 

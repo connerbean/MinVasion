@@ -42,5 +42,35 @@ namespace Testing
 			Assert::IsFalse(Gru.HitTest(100, 300));
 		}
 
+		TEST_METHOD(TestCCharacterGruConstraints)
+		{
+			CGame game;
+			CCharacterGru Gru(&game);
+
+			Gru.SetLocation(560,0 );
+
+			Gru.Constraints(Gru.GetX(), Gru.GetY());
+
+			Assert::IsTrue(Gru.HitTest(500, 0));
+
+			Gru.SetLocation(-560, 0);
+
+			Gru.Constraints(Gru.GetX(), Gru.GetY());
+
+			Assert::IsTrue(Gru.HitTest(-500, 0));
+
+			Gru.SetLocation(0, 600);
+
+			Gru.Constraints(Gru.GetX(), Gru.GetY());
+
+			Assert::IsTrue(Gru.HitTest(0, 500));
+
+			Gru.SetLocation(0, -600);
+
+			Gru.Constraints(Gru.GetX(), Gru.GetY());
+
+			Assert::IsTrue(Gru.HitTest(0, -500));
+		}
+
 	};
 }

@@ -117,3 +117,31 @@ void CCharacter::SetImage(const std::wstring &file)
 
 	mFile = file;
 }
+
+
+/**
+ * Constrains the Item to the board
+ * \param x Location
+ * \param y Location
+ */
+void CCharacter::Constraints(int x, int y)
+{
+
+	if (x >= mMax)
+	{
+		mX = mMax;
+	}
+	if (x <= mMin)
+	{
+		mX = mMin;
+	}
+	if (y >= mMax)
+	{
+		mY = mMax;
+	}
+	if (y <= mMin)
+	{
+		mY = mMin;
+	}
+
+}

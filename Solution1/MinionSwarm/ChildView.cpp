@@ -195,6 +195,9 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 			if (mGrabbedItem->IsDraggable())
 			{
 				mGrabbedItem->SetLocation(x, y);
+
+				mGrabbedItem->Constraints(mGrabbedItem->GetX(), mGrabbedItem->GetY());
+
 			}
 			
 			/*if (mGrabbedItem->Killer() == true)
