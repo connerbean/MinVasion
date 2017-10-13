@@ -19,7 +19,7 @@ namespace Testing
 			::SetCurrentDirectory(g_dir);
 		}
 
-		TEST_METHOD(TestConstructor)
+		TEST_METHOD(TestVillainConstructor)
 		{
 			CGame game;
 			CCharacterVillain arya(&game, CCharacterVillain::Types::Arya);
@@ -27,7 +27,7 @@ namespace Testing
 			CCharacterVillain pokeball(&game, CCharacterVillain::Types::Pokeball);
 		}
 
-		TEST_METHOD(TestHitTest)
+		TEST_METHOD(TestVillainHitTest)
 		{
 			CGame game;
 			CCharacterVillain arya(&game, CCharacterVillain::Types::Arya);

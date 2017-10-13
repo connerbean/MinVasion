@@ -96,6 +96,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="GruHitTest.cpp">
       <SubType>
       </SubType>

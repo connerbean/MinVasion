@@ -44,8 +44,8 @@ void CGame::Add(std::shared_ptr<CCharacter> item)
 */
 void CGame::Delete(std::shared_ptr<CCharacter> item)
 {
-	auto loc = find(begin(mItems), end(mItems), item);
-	if (loc != end(mItems))
+	auto loc = find(::begin(mItems), ::end(mItems), item);
+	if (loc != ::end(mItems))
 	{
 		mItems.erase(loc);
 	}

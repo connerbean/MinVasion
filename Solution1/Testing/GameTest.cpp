@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 
 #include "Game.h"
+#include "CharacterMinion.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -30,35 +31,46 @@ namespace Testing
 			// Construct a game object
 			CGame game;
 
-			// Add some minions
-			auto minion1 = make_shared<CCharacterMinion>(MutantImageName, 5);
-			auto minion2 = make_shared<CCharacterMinion>(StuartImageName, 1);
-			auto minion3 = make_shared<CCharacterMinion>(JerryImageName, 1);
-
-			game.AddMinion(minion1);
-			game.AddMinion(minion2);
-			game.AddMinion(minion3);
-
 			// Begin points to the first item
 			auto iter1 = game.begin();
 
 			// End points after the last item
 			auto iter2 = game.end();
 
-			auto villain1 = *iter1;
+			// There should be 4 items iterated by default - Gru and 3 villains
+			Assert::IsTrue(iter1 != iter2);
 			++iter1;
-			auto villain2 = *iter1;
+			Assert::IsTrue(iter1 != iter2);
 			++iter1;
-			auto villain3 = *iter1;
+			Assert::IsTrue(iter1 != iter2);
 			++iter1;
-			auto gru = *iter1;
+			Assert::IsTrue(iter1 != iter2);
+			++iter1;
+			Assert::IsFalse(iter1 != iter2);
+
+			// Add some minions
+			auto minion1 = make_shared<CCharacterMinion>(&game, MutantImageName, 5);
+			auto minion2 = make_shared<CCharacterMinion>(&game, StuartImageName, 1);
+			auto minion3 = make_shared<CCharacterMinion>(&game, JerryImageName, 1);
+
+			game.Add(minion1);
+			game.Add(minion2);
+			game.Add(minion3);
+
+			iter1 = game.begin();
+			iter2 = game.end();
+
+			// Skip the 4 auto-added characters
+			++iter1;
+			++iter1;
+			++iter1;
 			++iter1;
 
-			Assert::IsTrue(minion1 == *iter1, L"First item correct");
+			Assert::IsTrue(minion1 == *iter1, L"First minion correct");
 			++iter1;
-			Assert::IsTrue(minion2 == *iter1, L"Second item correct");
+			Assert::IsTrue(minion2 == *iter1, L"Second minion correct");
 			++iter1;
-			Assert::IsTrue(minion3 == *iter1, L"Third item correct");
+			Assert::IsTrue(minion3 == *iter1, L"Third minion correct");
 			++iter1;
 			Assert::IsFalse(iter1 != iter2);
 		}
