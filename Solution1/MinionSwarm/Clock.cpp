@@ -12,6 +12,10 @@
 using namespace Gdiplus;
 using namespace std;
 
+
+const REAL ClockXLocation = 1050; ///<Clock's X location to display at
+const REAL ClockYLocation = -550; ///<Clock's Y Location to display at
+
 /**
  * Constructor
  */
@@ -34,47 +38,28 @@ CClock::~CClock()
  *
  * \param elapsed 
  */
-void CClock::Update(double elapsed)
+void CClock::Update(double elapsed, Gdiplus::Graphics *graphics)
 {
 	mTimePassed += elapsed;
 
-	if (mTimePassed > 1)	// if its been a second
-	{
-		mSeconds++;
+	int seconds = (int) fmod(mTimePassed, 60);
+	int minutes = (int) mTimePassed / 60;
 
-		if (mSeconds >= 60) // if over 60 seconds, increment minute, reset second
-		{
-			mMinutes++;
-			mSeconds -= 60;
-		}
+	// time to display clock
+	wstring s = to_wstring(seconds); // total seconds
 
-		mTimePassed = mTimePassed - 1;		// Get remainder, basically modulo for doubles
-	}
-}
+	if (seconds < 10) s = L"0" + s;  // formatting single digit seconds
 
-const REAL ClockXLocation = 1050; ///<Clock's X location to display at
-const REAL ClockYLocation = -550; ///<Clock's Y Location to display at
-
-/**
-* DisplayTime used to display current time
-*
-* Should be called in OnPaint in ChildView
-*
-* \param graphics
-*/
-void CClock::DisplayTime(Gdiplus::Graphics *graphics)
-{
-	wstring s = to_wstring(mSeconds); // total seconds
-
-	if (mSeconds < 10) s = L"0" + s;  // formatting single digit seconds
-
-	wstring m = to_wstring(mMinutes); // total minutes
+	wstring m = to_wstring(minutes); // total minutes
 
 	wstring fin = m + L":" + s;	      // final printable wstring
 
-	FontFamily fontFamily(L"Arial");
-	Gdiplus::Font font(&fontFamily, 46);
+	if (graphics != NULL)
+	{
+		FontFamily fontFamily(L"Arial");
+		Gdiplus::Font font(&fontFamily, 46);
 
-	SolidBrush green(Color(0, 94, 0));
-	graphics->DrawString(fin.c_str(), -1, &font, PointF(ClockXLocation, ClockYLocation), &green);
+		SolidBrush green(Color(0, 94, 0));
+		graphics->DrawString(fin.c_str(), -1, &font, PointF(ClockXLocation, ClockYLocation), &green);
+	}
 }

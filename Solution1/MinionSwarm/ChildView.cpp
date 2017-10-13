@@ -98,15 +98,12 @@ void CChildView::OnPaint()
 	double elapsed = double(diff) / mTimeFreq;
 	mLastTime = time.QuadPart;
 
-	mClock.Update(elapsed);		// adds elapsed time to overall time
 	mGame.Update(elapsed);
 	mNewGameButton->Update(elapsed);
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
 	mNewGameButton->Draw(&graphics);
 
-	mClock.DisplayTime(&graphics);	// displays timer in correct location in correct format
-	
-	
+	mClock.Update(elapsed, &graphics);		// adds elapsed time to overall time
 }
 
 

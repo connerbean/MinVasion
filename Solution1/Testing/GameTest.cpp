@@ -75,5 +75,19 @@ namespace Testing
 			Assert::IsFalse(iter1 != iter2);
 		}
 
+		TEST_METHOD(TestCGameMinionSpawn)
+		{
+			CGame game;
+
+			// update the game one second
+			game.Update(1);
+
+			// check to see we have items now, 5 in total for 3 villains, gru, and one min
+			Assert::IsTrue(game.GetItemsSize() == 5);
+
+			game.Reset(); // nuke the game, check to make sure we got rid of minions
+			Assert::IsTrue(game.GetItemsSize() == 4);
+		}
+
 	};
 }

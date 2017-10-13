@@ -64,6 +64,10 @@ public:
 	*/
 	void CGame::OnDraw(Gdiplus::Graphics *graphics, int width, int height);
 
+	/// Get items length
+	/// \returns mItems size
+	int GetItemsSize() { return mItems.size(); }
+
 private:
 	/**
 	* mScale is the average of scaleX and scaleY

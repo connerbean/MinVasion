@@ -23,14 +23,17 @@ public:
 	/// Destructor
 	~CClock();
 
-	/// Update function \param elapsed is time elapsed
-	void Update(double elapsed);
-	/// DisplayTime displays time \param graphics for drawing
-	void DisplayTime(Gdiplus::Graphics *graphics);
+	/// Update function \param elapsed is time elapsed \param graphics Used for drawing
+	void Update(double elapsed, Gdiplus::Graphics *graphics);
+
+	/// Getter for mTimePassed
+	/// \returns mTimePassed
+	double GetTimePassed() { return mTimePassed; }
+
+	/// Reset all variables related to the clock
+	void Reset() { mTimePassed = 0; }
 
 private:
 	double mTimePassed = 0;		///< Total time passed
-	int mSeconds = 0;			///< Total seconds passed
-	int mMinutes = 0;			///< Total minutes passed
 };
 
