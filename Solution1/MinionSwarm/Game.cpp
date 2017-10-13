@@ -68,6 +68,7 @@ void CGame::Restart()
 {
 	mItems.clear();
 	mUpdateTime = 0;
+	
 }
 
 /**

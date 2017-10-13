@@ -169,6 +169,25 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 	{
 		mGame.Restart();
 		mClock.Update(0);
+		auto Gru = make_shared<CCharacterGru>(&mGame);
+		Gru->SetLocation(0, 400);
+		mGame.Add(Gru);
+
+		auto villainArya = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Arya);
+		villainArya->SetLocation(0, 220);
+		mGame.Add(villainArya);
+
+		auto villainJuicer = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Juicer);
+		villainJuicer->SetLocation(-250, -250);
+		mGame.Add(villainJuicer);
+
+		auto villainPokeball = make_shared<CCharacterVillain>(&mGame, CCharacterVillain::Types::Pokeball);
+		villainPokeball->SetLocation(250, -250);
+		mGame.Add(villainPokeball);
+
+		auto restartSide = make_shared<CRestartSide>(&mGame);
+		restartSide->SetLocation(-650, -420);
+		mGame.Add(restartSide);
 	}
 }
 
