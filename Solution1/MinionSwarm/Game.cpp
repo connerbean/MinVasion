@@ -66,7 +66,8 @@ int CGame::ConvertY(int y)
 
 void CGame::Restart()
 {
-	
+	mItems.clear();
+	mUpdateTime = 0;
 }
 
 /**

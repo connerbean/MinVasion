@@ -168,6 +168,7 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 	if (mGrabbedItem->IsButton() == true)
 	{
 		mGame.Restart();
+		mClock.Update(0);
 	}
 }
 
