@@ -91,6 +91,7 @@ void CGame::Reset()
 	// ... then any minions
 }
 
+
 /**
  * Converts the X value so pieces can be moved in the game
  * \param x The number to convert
@@ -128,6 +129,7 @@ const int spawnLocationY = -450; ///< Y starting location for minion spawn
 const wstring StuartImageName = L"images/stuart.png";  ///< Stuart filename 
 const wstring MutantImageName = L"images/mutant.png";  ///< Mutant filename 
 const wstring JerryImageName = L"images/jerry.png";  ///< Jerry filename 
+const wstring DaveImageName = L"images/dave.png";  ///< Dave filename 
 
 /** Handle updates for animation
 * \param elapsed The time since the last update
@@ -139,7 +141,7 @@ void CGame::Update(double elapsed)
 	// Following is minion spawning code
 	if (mUpdateTime > 0.5)
 	{
-		int MinionPicker = (rand() % 101) + 1;
+		int MinionPicker = (rand() % 101) - 1;
 		int spawnLocationX = (rand() % 950) - 475;
 
 		if (MinionPicker <= 10)		// 10% of time give a mutant
@@ -149,14 +151,21 @@ void CGame::Update(double elapsed)
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
 		}
 
-		else if (MinionPicker > 10 && MinionPicker <= 55) // give 45% chance for Stuart
+		else if (MinionPicker <= 40)		// 30% of time give a mutant
+		{
+			auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, 1);
+			Add(newMinion);
+			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+		}
+
+		else if (MinionPicker <= 70) // give 30% chance for Stuart
 		{
 			auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, 1);
 			Add(newMinion);
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
 		}
 
-		else // and last 45% chance for Jerry
+		else // and last 30% chance for Jerry
 		{
 			auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, 1);
 			Add(newMinion);

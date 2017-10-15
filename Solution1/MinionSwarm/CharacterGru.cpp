@@ -83,3 +83,8 @@ bool CCharacterGru::HitTest(int x, int y)
 		return true;
 	}
 }
+
+//bool accecpt(CGruVisitor v) override
+//{
+//	v.VusutGru(this)
+//}
