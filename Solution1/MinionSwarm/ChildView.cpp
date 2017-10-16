@@ -87,9 +87,7 @@ void CChildView::OnPaint()
 	Graphics graphics(dc.m_hDC);
 
 	CRect rect;
-	GetClientRect(&rect);
-
-	
+	GetClientRect(&rect);	
 
 	
 
@@ -148,6 +146,7 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 	if (mNewGameButton->HitTest(mGame.ConvertX(point.x), mGame.ConvertY(point.y)))
 	{
 		mGame.Reset();
+		mClock.Reset();
 	}
 }
 
