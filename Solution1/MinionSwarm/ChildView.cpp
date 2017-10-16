@@ -12,6 +12,7 @@
 #include "CharacterVillain.h"
 #include "RestartSide.h"
 #include <algorithm>
+#include<memory>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -175,7 +176,7 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 			{
 				mGrabbedItem->SetLocation(x, y);
 
-				mGrabbedItem->Constraints(mGrabbedItem->GetX(), mGrabbedItem->GetY());
+				mGrabbedItem->Constraints(mGrabbedItem);
 
 			}
 			

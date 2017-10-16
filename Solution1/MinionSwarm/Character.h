@@ -28,7 +28,7 @@ public:
 	/**  Constrain the Items to MAX/MIN
 	* \param x X location
 	* \param y Y location */
-	void Constraints(int x, int y);
+	void Constraints(shared_ptr<CCharacter>item);
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */

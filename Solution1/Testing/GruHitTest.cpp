@@ -2,6 +2,12 @@
 #include "CppUnitTest.h"
 #include "Game.h"
 #include "CharacterGru.h"
+#include "Game.h"
+#include "Clock.h"
+#include "RestartSide.h"
+#include<memory>
+#include <vector>
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace Testing
@@ -45,31 +51,33 @@ namespace Testing
 		TEST_METHOD(TestCCharacterGruConstraints)
 		{
 			CGame game;
-			CCharacterGru Gru(&game);
+			shared_ptr<CCharacter>Gru = make_shared<CCharacterGru>(&game);
+		
+			Assert::IsTrue(Gru != nullptr);
 
-			Gru.SetLocation(560,0 );
+			Gru->SetLocation(560, 0);
 
-			Gru.Constraints(Gru.GetX(), Gru.GetY());
+			Gru->Constraints(Gru);
 
-			Assert::IsTrue(Gru.HitTest(500, 0));
+			Assert::IsTrue(Gru->HitTest(500, 0));
 
-			Gru.SetLocation(-560, 0);
+			Gru->SetLocation(-560, 0);
 
-			Gru.Constraints(Gru.GetX(), Gru.GetY());
+			Gru->Constraints(Gru);
 
-			Assert::IsTrue(Gru.HitTest(-500, 0));
+			Assert::IsTrue(Gru->HitTest(-500, 0));
 
-			Gru.SetLocation(0, 600);
+			Gru->SetLocation(0, 600);
 
-			Gru.Constraints(Gru.GetX(), Gru.GetY());
+			Gru->Constraints(Gru);
 
-			Assert::IsTrue(Gru.HitTest(0, 500));
+			Assert::IsTrue(Gru->HitTest(0, 500));
 
-			Gru.SetLocation(0, -600);
+			Gru->SetLocation(0, -600);
 
-			Gru.Constraints(Gru.GetX(), Gru.GetY());
+			Gru->Constraints(Gru);
 
-			Assert::IsTrue(Gru.HitTest(0, -500));
+			Assert::IsTrue(Gru->HitTest(0, -500));
 		}
 
 	};

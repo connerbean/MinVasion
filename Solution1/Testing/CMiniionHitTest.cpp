@@ -2,6 +2,8 @@
 #include "CppUnitTest.h"
 #include "Game.h"
 #include "CharacterMinion.h"
+#include "CharacterVillain.h"
+#include<memory>
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace Testing
@@ -47,31 +49,32 @@ namespace Testing
 		{
 			CGame game;
 			const wstring name = L"images/stuart.png";
-			CCharacterMinion Minion(&game, name, 1);
+			//CCharacterMinion Minion(&game, name, 1);
+			shared_ptr<CCharacter>Minion = make_shared<CCharacterMinion>(&game, name, 1);
 
-			Minion.SetLocation(550, 0);
+			Minion->SetLocation(550, 0);
 
-			Minion.Constraints(Minion.GetX(), Minion.GetY());
+			Minion->Constraints(Minion);
 
-			Assert::IsTrue(Minion.HitTest(500, 0));
+			Assert::IsTrue(Minion->HitTest(500, 0));
 
-			Minion.SetLocation(-550, 0);
+			Minion->SetLocation(-550, 0);
 
-			Minion.Constraints(Minion.GetX(), Minion.GetY());
+			Minion->Constraints(Minion);
 
-			Assert::IsTrue(Minion.HitTest(-500, 0));
+			Assert::IsTrue(Minion->HitTest(-500, 0));
 
-			Minion.SetLocation(0, 600);
+			Minion->SetLocation(0, 600);
 
-			Minion.Constraints(Minion.GetX(), Minion.GetY());
+			Minion->Constraints(Minion);
 
-			Assert::IsTrue(Minion.HitTest(0, 500));
+			Assert::IsTrue(Minion->HitTest(0, 500));
 
-			Minion.SetLocation(0, -600);
+			Minion->SetLocation(0, -600);
 
-			Minion.Constraints(Minion.GetX(), Minion.GetY());
+			Minion->Constraints(Minion);
 
-			Assert::IsTrue(Minion.HitTest(0, -500));
+			Assert::IsTrue(Minion->HitTest(0, -500));
 		}
 
 	};
