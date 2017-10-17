@@ -21,6 +21,7 @@ CCharacterGru::CCharacterGru(CGame *game) : CCharacter(game)
         msg += GruImageName;
         AfxMessageBox(msg.c_str());
     }
+	mP = make_shared<CVector>(GetX(), GetY());
 }
 
 /**

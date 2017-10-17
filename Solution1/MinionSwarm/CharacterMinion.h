@@ -10,6 +10,8 @@
 #pragma once
 
 #include "Character.h"
+#include "GruVisitor.h"
+
 /**
  * Character Minion class in character
  */
@@ -45,9 +47,19 @@ public:
     * \param visitor The visitor we accept */
     virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitMinion(this); }
 
+	/**
+	**/
+	void Update(int elapsed)
+	{
+		CGruVisitor visitor;
+		Accept(&visitor);
+		GruLocation = visitor.GetLocation();
+	}
 private:
 	// Poiner to item images
 	std::unique_ptr<Gdiplus::Bitmap> mMinionImage;
 
 	int mScoreValue; ///< Individual score value for the minions
+
+	std::shared_ptr<CVector> GruLocation;
 };

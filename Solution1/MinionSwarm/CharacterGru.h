@@ -1,5 +1,8 @@
 #pragma once
 #include "Character.h"
+#include "Vector.h"
+#include <memory>
+
 class CCharacterGru : public CCharacter
 {
 public:
@@ -26,8 +29,12 @@ public:
     * \param visitor The visitor we accept */
     virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitGru(this); }
 
+	auto GetmP() { return mP; }
+
 private:
     // Poiner to item images
     std::unique_ptr<Gdiplus::Bitmap> mGruImage;
+
+	std::shared_ptr<CVector> mP;
 
 };

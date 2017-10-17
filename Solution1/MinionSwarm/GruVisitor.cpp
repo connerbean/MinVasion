@@ -25,7 +25,3 @@ CGruVisitor::~CGruVisitor()
 }
 
 
-void CGruVisitor::VisitGru(CCharacterGru *gru)
-{
-
-}

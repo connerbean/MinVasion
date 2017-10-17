@@ -9,6 +9,7 @@
 #include <memory>
 #include <vector>
 
+
 using namespace Gdiplus;
 using namespace std;
 
@@ -55,6 +56,15 @@ public:
 	* \returns Pointer to item we clicked on or nullptr if none.
 	*/
 	std::shared_ptr<CCharacter> CGame::HitTest(int x, int y);
+
+
+	/*void CGame::Accept(CCharacterVisitor *visitor)
+	{
+		for (auto item : mItems)
+		{
+			item->Accept(visitor);
+		}
+	}*/
 
 	/**
 	* Draw the game area

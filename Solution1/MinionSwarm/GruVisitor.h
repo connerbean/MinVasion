@@ -8,7 +8,9 @@
 
 #pragma once
 #include "CharacterVisitor.h"
-
+#include "Vector.h"
+#include <memory>
+#include "CharacterGru.h"
 
 /**
  * Gru Visitor
@@ -21,8 +23,16 @@ public:
 	/// Destructor
 	~CGruVisitor();
 
+	auto GetLocation() { return Location; };
+
 	/// Vistor Function
 	///\param gru Is the Gru Type
-	void VisitGru(CCharacterGru *gru);
+	void VisitGru(CCharacterGru *gru)
+	{
+		auto Location = gru->GetmP();
+	}
+
+private:
+	std::shared_ptr<CVector> Location;
 };
 

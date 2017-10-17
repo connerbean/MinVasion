@@ -51,6 +51,8 @@ void CCharacterMinion::Draw(Gdiplus::Graphics *graphics)
 		float(mMinionImage->GetWidth()), float(mMinionImage->GetHeight()));
 }
 
+
+
 /**
 * Test to see if we hit this object with a mouse.
 * \param x X position to test

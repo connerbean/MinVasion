@@ -12,7 +12,7 @@
 #include "CharacterMinion.h"
 #include "RestartSide.h"
 #include "CharacterVillain.h"
-
+#include "GruVisitor.h"
 /**
  * Constructor
  */
@@ -176,11 +176,14 @@ void CGame::Update(double elapsed)
 		mUpdateTime = 0 + (rand()%3)/4;
 	}
 
+
 	// Then update rest of items in game
 	for (auto item : mItems)
 	{
 		item->Update(elapsed);
 	}
+
+
 }
 
 
