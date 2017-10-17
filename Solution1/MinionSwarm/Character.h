@@ -38,16 +38,14 @@ public:
 	 * \return true if draggable, otherwise false*/
 	virtual bool IsDraggable() = 0;
 
-	///  Get the city this item is in
-	/// \returns City pointer
-	CGame *GetGame() { return mGame; }
 	
 protected:
 	CCharacter(CGame *game);
 
-private:
 	/// The game this character is contained in
 	CGame *mGame;
+private:
+	
 
 	/// Max X Position
 	int mMax = 500;

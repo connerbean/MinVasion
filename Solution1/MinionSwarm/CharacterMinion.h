@@ -12,6 +12,7 @@
 #include "Character.h"
 #include "GruVisitor.h"
 
+
 /**
  * Character Minion class in character
  */
@@ -49,17 +50,14 @@ public:
 
 	/**
 	**/
-	void Update(int elapsed)
-	{
-		CGruVisitor visitor;
-		Accept(&visitor);
-		GruLocation = visitor.GetLocation();
-	}
+	void Update(int elapsed);
+
 private:
 	// Poiner to item images
 	std::unique_ptr<Gdiplus::Bitmap> mMinionImage;
 
 	int mScoreValue; ///< Individual score value for the minions
 
+	///location
 	std::shared_ptr<CVector> GruLocation;
 };

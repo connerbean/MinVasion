@@ -13,6 +13,8 @@
 #include "RestartSide.h"
 #include "CharacterVillain.h"
 #include "GruVisitor.h"
+#include "CharacterVisitor.h"
+
 /**
  * Constructor
  */
@@ -60,6 +62,14 @@ int CGame::ConvertY(int y)
 {
 	y = (y - mYOffset) / mScale;
 	return y;
+}
+
+void CGame::Accept(CCharacterVisitor *visitor)
+{
+	for (std::shared_ptr<CCharacter> item : mItems)
+	{
+		item->Accept(visitor);
+	}
 }
 
 void CGame::Reset()

@@ -14,6 +14,7 @@ using namespace Gdiplus;
 using namespace std;
 
 class CCharacter;
+class CCharacterVisitor;
 
 class CGame
 {
@@ -58,13 +59,7 @@ public:
 	std::shared_ptr<CCharacter> CGame::HitTest(int x, int y);
 
 
-	/*void CGame::Accept(CCharacterVisitor *visitor)
-	{
-		for (auto item : mItems)
-		{
-			item->Accept(visitor);
-		}
-	}*/
+	void CGame::Accept(CCharacterVisitor *visitor);
 
 	/**
 	* Draw the game area

@@ -8,6 +8,7 @@
 
 #pragma once
 
+
  // Forward references to all item types
 class CCharacterMinion;
 class CCharacterGru;

@@ -7,6 +7,7 @@
 #include "stdafx.h"
 #include <string>
 #include "CharacterMinion.h"
+#include "Game.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -51,7 +52,13 @@ void CCharacterMinion::Draw(Gdiplus::Graphics *graphics)
 		float(mMinionImage->GetWidth()), float(mMinionImage->GetHeight()));
 }
 
-
+void CCharacterMinion::Update(int elapsed)
+{
+		CGruVisitor visitor;
+		mGame->Accept(&visitor);
+		GruLocation = visitor.GetLocation();
+	
+}
 
 /**
 * Test to see if we hit this object with a mouse.
