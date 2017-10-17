@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "Clock.h"
 #include "RestartSide.h"
+#include<memory>
 
 // CChildView window
 

@@ -29,8 +29,11 @@ CCharacter::~CCharacter()
  * \param x Location
  * \param y Location
  */
-void CCharacter::Constraints(int x, int y)
+void CCharacter::Constraints(shared_ptr<CCharacter>item)
 {
+	auto x = item->GetX();
+	auto y = item->GetY();
+
 	if (x >= mMax)
 	{
 		x = mMax;
