@@ -52,6 +52,11 @@ namespace Testing
 		{
 			CGame game;
 			shared_ptr<CCharacter>Gru = make_shared<CCharacterGru>(&game);
+			const wstring GruImageName = L"images/gru.png";
+			auto GruImage = unique_ptr<Bitmap>(Bitmap::FromFile(GruImageName.c_str()));
+			const int height = GruImage->GetHeight() / 2;
+			const int width = GruImage->GetWidth() / 2;
+
 		
 			Assert::IsTrue(Gru != nullptr);
 
@@ -59,25 +64,25 @@ namespace Testing
 
 			Gru->Constraints(Gru);
 
-			Assert::IsTrue(Gru->HitTest(500, 0));
+			Assert::IsTrue(Gru->HitTest(500 - width, 0));
 
 			Gru->SetLocation(-560, 0);
 
 			Gru->Constraints(Gru);
 
-			Assert::IsTrue(Gru->HitTest(-500, 0));
+			Assert::IsTrue(Gru->HitTest(-500 + width, 0));
 
 			Gru->SetLocation(0, 600);
 
 			Gru->Constraints(Gru);
 
-			Assert::IsTrue(Gru->HitTest(0, 500));
+			Assert::IsTrue(Gru->HitTest(0, 500 - height));
 
 			Gru->SetLocation(0, -600);
 
 			Gru->Constraints(Gru);
 
-			Assert::IsTrue(Gru->HitTest(0, -500));
+			Assert::IsTrue(Gru->HitTest(0, -500 + height));
 		}
 
 	};

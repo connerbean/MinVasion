@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include <string>
 #include "CharacterGru.h"
+//#include "Character.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -89,3 +90,42 @@ bool CCharacterGru::HitTest(int x, int y)
 //{
 //	v.VusutGru(this)
 //}
+
+/**
+* Constrains the Item to the board
+* \param x Location
+* \param y Location
+*/
+void CCharacterGru::Constraints(shared_ptr<CCharacter>item)
+{
+	const int height = mGruImage->GetHeight()/2;
+	const int width = mGruImage->GetWidth()/2;
+
+	auto x = item->GetX();
+	auto y = item->GetY();
+
+	if ((x + width) > mMax)
+	{
+		mMax -= width;
+		x = mMax;
+	}
+	else if ((x - width) < mMin)
+	{
+		mMin += width;
+		x = mMin;
+	}
+	if ((y + height) > mMax)
+	{
+		mMax -= height;
+		y = mMax;
+	}
+	else if ((y - height) <= mMin)
+	{
+		mMin += height;
+		y = mMin;
+	}
+	SetLocation(x, y);
+
+	mMax = 500;
+	mMin = -500;
+}

@@ -40,6 +40,8 @@ public:
 	// Detects if two images overlap
 	bool HitTest(int x, int y);
 
+	virtual void Constraints(shared_ptr<CCharacter> item);
+
 	/// Set's minions to undraggable
 	/// \return bool false 
 	bool IsDraggable() override { return false; }
@@ -63,4 +65,9 @@ private:
 
 	///location
 	std::shared_ptr<CVector> mGruLocation;
+
+	/// Max X Position
+	int mMax = 500;
+	/// Min X Position
+	int mMin = -500;
 };

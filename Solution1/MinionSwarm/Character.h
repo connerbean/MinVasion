@@ -26,9 +26,8 @@ public:
 	virtual ~CCharacter();
 
 	/**  Constrain the Items to MAX/MIN
-	* \param x X location
-	* \param y Y location */
-	void Constraints(shared_ptr<CCharacter>item);
+	* \param item The item we are giving constraints */
+	virtual void Constraints(shared_ptr<CCharacter>item) {};
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
@@ -47,10 +46,7 @@ protected:
 private:
 	
 
-	/// Max X Position
-	int mMax = 500;
-	/// Min X Position
-	int mMin = -500;
+
 
 };
 

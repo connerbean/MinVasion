@@ -23,6 +23,11 @@ public:
     // Detects if two images overlap
     bool HitTest(int x, int y);
 
+	/**  Constrain the Items to MAX/MIN
+	* \param item The item we are giving constraints */
+	virtual void Constraints(shared_ptr<CCharacter> item);
+
+	/// Overrides the IsDraggable function
 	bool IsDraggable() override { return true; }
 
     /** Accept a visitor
@@ -36,5 +41,10 @@ private:
     std::unique_ptr<Gdiplus::Bitmap> mGruImage;
 
 	std::shared_ptr<CVector> mP;
+
+	/// Max X Position
+	int mMax = 500;
+	/// Min X Position
+	int mMin = -500;
 
 };

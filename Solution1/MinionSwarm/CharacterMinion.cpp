@@ -99,3 +99,42 @@ bool CCharacterMinion::HitTest(int x, int y)
 		return true;
 	}
 }
+
+/**
+* Constrains the Item to the board
+* \param x Location
+* \param y Location
+*/
+void CCharacterMinion::Constraints(shared_ptr<CCharacter>item)
+{
+	const int height = mMinionImage->GetHeight() / 2;
+	const int width = mMinionImage->GetWidth() / 2;
+
+	auto x = item->GetX();
+	auto y = item->GetY();
+
+	if ((x + width) > mMax)
+	{
+		mMax -= width;
+		x = mMax;
+	}
+	else if ((x - width) < mMin)
+	{
+		mMin += width;
+		x = mMin;
+	}
+	if ((y + height) > mMax)
+	{
+		mMax -= height;
+		y = mMax;
+	}
+	else if ((y - height) <= mMin)
+	{
+		mMin += height;
+		y = mMin;
+	}
+	SetLocation(x, y);
+
+	mMax = 500;
+	mMin = -500;
+}

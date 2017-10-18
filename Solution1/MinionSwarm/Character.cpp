@@ -24,31 +24,3 @@ CCharacter::~CCharacter()
 {
 }
 
-/**
- * Constrains the Item to the board
- * \param x Location
- * \param y Location
- */
-void CCharacter::Constraints(shared_ptr<CCharacter>item)
-{
-	auto x = item->GetX();
-	auto y = item->GetY();
-
-	if (x >= mMax)
-	{
-		x = mMax;
-	}
-	else if (x <= mMin)
-	{
-		x = mMin;
-	}
-	if (y >= mMax)
-	{
-		y = mMax;
-	}
-	else if (y <= mMin)
-	{
-		y = mMin;
-	}
-	SetLocation(x, y);
-}
