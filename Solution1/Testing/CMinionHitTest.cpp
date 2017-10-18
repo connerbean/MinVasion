@@ -23,7 +23,7 @@ namespace Testing
 			//Create a game to test
 			CGame game;
 			const wstring name = L"images/stuart.png";
-			CCharacterMinion Minion(&game,name, 1);
+			CCharacterMinion Minion(&game,name, 1, 0);
 
 			// Give it a location
 			// Always make the numbers different, in case they are mixed up
@@ -50,7 +50,7 @@ namespace Testing
 			CGame game;
 			const wstring name = L"images/stuart.png";
 			//CCharacterMinion Minion(&game, name, 1);
-			shared_ptr<CCharacter>Minion = make_shared<CCharacterMinion>(&game, name, 1);
+			shared_ptr<CCharacter>Minion = make_shared<CCharacterMinion>(&game, name, 1, 0);
 
 			Minion->SetLocation(550, 0);
 

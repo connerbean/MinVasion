@@ -49,9 +49,9 @@ namespace Testing
 			Assert::IsFalse(iter1 != iter2);
 
 			// Add some minions
-			auto minion1 = make_shared<CCharacterMinion>(&game, MutantImageName, 5);
-			auto minion2 = make_shared<CCharacterMinion>(&game, StuartImageName, 1);
-			auto minion3 = make_shared<CCharacterMinion>(&game, JerryImageName, 1);
+			auto minion1 = make_shared<CCharacterMinion>(&game, MutantImageName, 5, 0);
+			auto minion2 = make_shared<CCharacterMinion>(&game, StuartImageName, 1, 0);
+			auto minion3 = make_shared<CCharacterMinion>(&game, JerryImageName, 1, 0);
 
 			game.Add(minion1);
 			game.Add(minion2);
