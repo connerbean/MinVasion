@@ -53,7 +53,7 @@ void CCharacterMinion::Draw(Gdiplus::Graphics *graphics)
 		float(mMinionImage->GetWidth()), float(mMinionImage->GetHeight()));
 }
 
-void CCharacterMinion::Update(int elapsed)
+void CCharacterMinion::Update(double elapsed)
 {
 	//SetSpeed(5);
 	CElement::Update(elapsed);

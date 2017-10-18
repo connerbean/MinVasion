@@ -45,8 +45,8 @@ public:
 		CGruVisitor visitor;
 		mGame->Accept(&visitor);
 		mGruLocation = visitor.GetLocation();
-		mSpeedX = ((double)rand() / RAND_MAX) * x *mGruLocation->X();
-		mSpeedY = ((double)rand() / RAND_MAX) * x *mGruLocation->Y();
+		mSpeedX = (int)(((double)rand() / RAND_MAX) * x *mGruLocation->X());
+		mSpeedY = (int)(((double)rand() / RAND_MAX) * x *mGruLocation->Y());
 	};
 
 
@@ -72,7 +72,7 @@ public:
 
 	/**
 	**/
-	void Update(int elapsed);
+	void Update(double elapsed);
 
 	/// Gets the score value of this minion
 	int GetScoreValue() { return mScoreValue; }

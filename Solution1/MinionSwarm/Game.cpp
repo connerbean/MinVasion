@@ -79,7 +79,7 @@ void CGame::DeleteMinion(std::shared_ptr<CCharacterMinion> minion)
  */
 int CGame::ConvertY(int y)
 {
-	y = (y - mYOffset) / mScale;
+	y = int((y - mYOffset) / mScale);
 	return y;
 }
 
@@ -133,7 +133,7 @@ void CGame::Reset()
  */
 int CGame::ConvertX(int x)
 {
-	x = (x - mXOffset) / mScale;
+	x = int((x - mXOffset) / mScale);
 	return x;
 }
 
@@ -145,8 +145,8 @@ int CGame::ConvertX(int x)
 */
 std::shared_ptr<CCharacter> CGame::HitTest(int x, int y)
 {
-	x = (x - mXOffset) / mScale;
-	y = (y - mYOffset) / mScale;
+	x = int((x - mXOffset) / mScale);
+	y = int((y - mYOffset) / mScale);
  	for (auto i = mItems.rbegin(); i != mItems.rend(); i++)
 	{
 		if ((*i)->HitTest(x, y))
