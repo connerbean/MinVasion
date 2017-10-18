@@ -57,8 +57,18 @@ void CCharacterMinion::Update(double elapsed)
 {
 	//SetSpeed(5);
 	CElement::Update(elapsed);
-	mRunX += mSpeedX * elapsed;
-	mRunY += mSpeedY * elapsed;
+	CGruVisitor visitor;
+	mGame->Accept(&visitor);
+	CVector mGruP = *visitor.GetLocation();
+	CVector mMinP = *make_shared<CVector>(GetX(), GetY());
+	CVector GruV = mGruP - mMinP;
+	if (GruV.Length() > 0)
+	{
+		GruV.Normalize();
+	}
+	GruV *= 100;
+	CVector newP = mMinP + (GruV * elapsed);
+	SetLocation(newP.X(), newP.Y());
 }
 
 /**
