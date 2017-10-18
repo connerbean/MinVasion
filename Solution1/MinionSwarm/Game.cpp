@@ -79,7 +79,7 @@ void CGame::DeleteMinion(std::shared_ptr<CCharacterMinion> minion)
  */
 int CGame::ConvertY(int y)
 {
-	y = (y - mYOffset) / mScale;
+	y = int((y - mYOffset) / mScale);
 	return y;
 }
 
@@ -133,7 +133,7 @@ void CGame::Reset()
  */
 int CGame::ConvertX(int x)
 {
-	x = (x - mXOffset) / mScale;
+	x = int((x - mXOffset) / mScale);
 	return x;
 }
 
@@ -145,8 +145,8 @@ int CGame::ConvertX(int x)
 */
 std::shared_ptr<CCharacter> CGame::HitTest(int x, int y)
 {
-	x = (x - mXOffset) / mScale;
-	y = (y - mYOffset) / mScale;
+	x = int((x - mXOffset) / mScale);
+	y = int((y - mYOffset) / mScale);
  	for (auto i = mItems.rbegin(); i != mItems.rend(); i++)
 	{
 		if ((*i)->HitTest(x, y))
@@ -170,53 +170,61 @@ const wstring DaveImageName = L"images/dave.png";  ///< Dave filename
 */
 void CGame::Update(double elapsed)
 {
-	mUpdateTime += elapsed;
-
-	// Following is minion spawning code
-	if (mUpdateTime > 0.5)
+	// Only spawn new minions if Gru is alive
+	if (!IsGameOver())
 	{
-		int MinionPicker = (rand() % 101) - 1;
-		int spawnLocationX = (rand() % 950) - 475;
+		mUpdateTime += elapsed;
 
-		if (MinionPicker <= 10)		// 10% of time give a mutant
+		// Following is minion spawning code
+		if (mUpdateTime > 0.5)
 		{
-			auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, 5);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
-			Add(newMinion);
-			mMinions.push_back(newMinion);
+			int MinionPicker = (rand() % 101) - 1;
+			int spawnLocationX = (rand() % 950) - 475;
+
+			if (MinionPicker <= 10)		// 10% of time give a mutant
+			{
+				auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, 5, 200);
+				newMinion->SetLocation(spawnLocationX, spawnLocationY);
+				Add(newMinion);
+				mMinions.push_back(newMinion);
+			}
+
+			else if (MinionPicker <= 40)		// 30% of time give a mutant
+			{
+				auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, 1, 100);
+				newMinion->SetLocation(spawnLocationX, spawnLocationY);
+				Add(newMinion);
+				mMinions.push_back(newMinion);
+			}
+
+			else if (MinionPicker <= 70) // give 30% chance for Stuart
+			{
+				auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, 1, 100);
+				newMinion->SetLocation(spawnLocationX, spawnLocationY);
+				Add(newMinion);
+				mMinions.push_back(newMinion);
+			}
+
+			else // and last 30% chance for Jerry
+			{
+				auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, 1, 100);
+				newMinion->SetLocation(spawnLocationX, spawnLocationY);
+				Add(newMinion);
+				mMinions.push_back(newMinion);
+			}
+
+
+			mUpdateTime = 0 + (rand() % 3) / 4;
 		}
-
-		else if (MinionPicker <= 40)		// 30% of time give a mutant
-		{
-			auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, 1);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
-			Add(newMinion);
-			mMinions.push_back(newMinion);
-		}
-
-		else if (MinionPicker <= 70) // give 30% chance for Stuart
-		{
-			auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, 1);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
-			Add(newMinion);
-			mMinions.push_back(newMinion);
-		}
-
-		else // and last 30% chance for Jerry
-		{
-			auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, 1);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
-			Add(newMinion);
-			mMinions.push_back(newMinion);
-		}
-
-
-		mUpdateTime = 0 + (rand()%3)/4;
 	}
 
 
 	// Then update rest of items in game
 	for (auto item : mItems)
+	{
+		item->Update(elapsed);
+	}
+	for (auto item : mMinions)
 	{
 		item->Update(elapsed);
 	}
@@ -227,7 +235,7 @@ void CGame::Update(double elapsed)
 		// Check if Gru hits any villain or minion
 		for (auto item : mItems)
 		{
-			if (item != mGru && mGru->HitTest(item->GetX(), item->GetY()))
+			if (item != mGru && mGru->HitTest((int)item->GetX(), (int)item->GetY()))
 			{
 				Delete(mGru);
 				mGru = nullptr;
@@ -242,7 +250,7 @@ void CGame::Update(double elapsed)
 		{
 			for (auto minion : mMinions)
 			{
-				if (minion->HitTest(villain->GetX(), villain->GetY()))
+				if (villain->HitTest((int)minion->GetX(), (int)minion->GetY()))
 				{
 					// If it did, grant points and delete the minion
 					villain->AddPoints(minion->GetScoreValue());

@@ -29,7 +29,7 @@ public:
 	///\param gru Is the Gru Type
 	void VisitGru(CCharacterGru *gru)
 	{
-		auto Location = gru->GetmP();
+		Location = gru->GetmP();
 	}
 
 private:

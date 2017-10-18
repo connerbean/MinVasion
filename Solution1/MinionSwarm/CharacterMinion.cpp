@@ -20,7 +20,7 @@ const wstring MinionImageName = L"images/dave.png";
 * \param name The file name that we load for the minion image
 * \param scoreValue The score associated with destroying the minion
 */
-CCharacterMinion::CCharacterMinion(CGame *game, const wstring name, int scoreValue) : CCharacter(game)
+CCharacterMinion::CCharacterMinion(CGame *game, const wstring name, int scoreValue, int speed) : CCharacter(game)
 {
 	mMinionImage = unique_ptr<Bitmap>(Bitmap::FromFile(wstring(name.begin(),name.end()).c_str()));
 	if (mMinionImage->GetLastStatus() != Ok)
@@ -30,6 +30,7 @@ CCharacterMinion::CCharacterMinion(CGame *game, const wstring name, int scoreVal
 		AfxMessageBox(msg.c_str());
 	}
 	mScoreValue = scoreValue;
+	mSpeed = speed;
 }
 
 /**
@@ -48,15 +49,42 @@ void CCharacterMinion::Draw(Gdiplus::Graphics *graphics)
 	double wid = mMinionImage->GetWidth();
 	double hit = mMinionImage->GetHeight();
 	graphics->DrawImage(mMinionImage.get(),
-		float(GetX() - wid / 2), float(GetY() - hit / 2),
+		float(GetX() - wid / 2)+ mRunX, float(GetY() - hit / 2) + mRunY,
 		float(mMinionImage->GetWidth()), float(mMinionImage->GetHeight()));
 }
 
-void CCharacterMinion::Update(int elapsed)
+void CCharacterMinion::Update(double elapsed)
 {
-	CGruVisitor visitor;
-	mGame->Accept(&visitor);
-	mGruLocation = visitor.GetLocation();
+	//SetSpeed(5);
+	CElement::Update(elapsed);
+
+	// If the game is not over, flock towars Gru
+	if (!mGame->IsGameOver())
+	{
+		CGruVisitor visitor;
+		mGame->Accept(&visitor);
+		CVector mGruP = *visitor.GetLocation();
+		CVector mMinP = *make_shared<CVector>(GetX(), GetY());
+		CVector GruV = mGruP - mMinP;
+
+		double offset;
+		if (GetX() < 0) offset = -0.5f;
+		else offset = 0.5f;
+
+		if (GruV.Length() > 0)
+		{
+			GruV.Normalize();
+		}
+		GruV *= mSpeed;
+		CVector newP = mMinP + (GruV * elapsed);
+		SetLocation(newP.X() + offset, newP.Y());
+	}
+	// Otherwise, stay still (for now)
+	else
+	{
+		SetLocation(GetX(), GetY());
+	}
+
 }
 
 /**

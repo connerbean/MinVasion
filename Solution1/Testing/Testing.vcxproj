@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClockTest.cpp" />
-    <ClCompile Include="CMiniionHitTest.cpp">
+    <ClCompile Include="CMinionHitTest.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -115,11 +115,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="initialize.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="C:\Users\collin\Source\Repos\cse335-omar-project1\Solution1\MinionSwarm\MinionSwarm.vcxproj">
-      <Project>{b9178318-541d-4861-a1d8-78ecdbc8d54d}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

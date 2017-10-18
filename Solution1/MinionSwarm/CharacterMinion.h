@@ -19,11 +19,12 @@
 class CCharacterMinion : public CCharacter
 {
 public:
+
 	/// Constructor for minion
 	/// \param game The game the minion is in
 	/// \param name The filename for the minion image
 	/// \param scoreValue the value attached to minion
-    CCharacterMinion(CGame *game, const wstring name, int scoreValue);
+    CCharacterMinion(CGame *game, const wstring name, int scoreValue, int speed);
 
     /// Default constructor (disabled)
     CCharacterMinion() = delete;
@@ -52,7 +53,7 @@ public:
 
 	/**
 	**/
-	void Update(int elapsed);
+	void Update(double elapsed);
 
 	/// Gets the score value of this minion
 	int GetScoreValue() { return mScoreValue; }
@@ -63,8 +64,16 @@ private:
 
 	int mScoreValue; ///< Individual score value for the minions
 
+	int mSpeed; ///< Individual speed value for the minions
+
 	///location
 	std::shared_ptr<CVector> mGruLocation;
+
+	/// Speed that gets added to the minions location
+	int mRunX = 0;
+
+	/// Speed that the minion runs in the Y direction
+	int mRunY = 0;
 
 	/// Max X Position
 	int mMax = 500;

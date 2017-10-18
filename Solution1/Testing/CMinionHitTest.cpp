@@ -23,7 +23,7 @@ namespace Testing
 			//Create a game to test
 			CGame game;
 			const wstring name = L"images/stuart.png";
-			CCharacterMinion Minion(&game,name, 1);
+			CCharacterMinion Minion(&game,name, 1, 0);
 
 			// Give it a location
 			// Always make the numbers different, in case they are mixed up
