@@ -30,6 +30,7 @@ CCharacterMinion::CCharacterMinion(CGame *game, const wstring name, int scoreVal
 		AfxMessageBox(msg.c_str());
 	}
 	mScoreValue = scoreValue;
+	//SetSpeed(4);
 }
 
 /**
@@ -48,15 +49,16 @@ void CCharacterMinion::Draw(Gdiplus::Graphics *graphics)
 	double wid = mMinionImage->GetWidth();
 	double hit = mMinionImage->GetHeight();
 	graphics->DrawImage(mMinionImage.get(),
-		float(GetX() - wid / 2), float(GetY() - hit / 2),
+		float(GetX() - wid / 2)+ mRunX, float(GetY() - hit / 2) + mRunY,
 		float(mMinionImage->GetWidth()), float(mMinionImage->GetHeight()));
 }
 
 void CCharacterMinion::Update(int elapsed)
 {
-	CGruVisitor visitor;
-	mGame->Accept(&visitor);
-	mGruLocation = visitor.GetLocation();
+	SetSpeed(5);
+	CElement::Update(elapsed);
+	mRunX += mSpeedX * elapsed;
+	mRunY += mSpeedY * elapsed;
 }
 
 /**

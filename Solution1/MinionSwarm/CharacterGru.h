@@ -29,7 +29,11 @@ public:
     * \param visitor The visitor we accept */
     virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitGru(this); }
 
-	auto GetmP() { return mP; }
+	auto GetmP()
+	{ 
+		mP = make_shared<CVector>(GetX(), GetY());
+		return mP;
+	}
 
 private:
     // Poiner to item images

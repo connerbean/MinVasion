@@ -220,6 +220,10 @@ void CGame::Update(double elapsed)
 	{
 		item->Update(elapsed);
 	}
+	for (auto item : mMinions)
+	{
+		item->Update(elapsed);
+	}
 
 	// TODO: potentially move these to visitor classes
 	if (!IsGameOver())
