@@ -170,48 +170,52 @@ const wstring DaveImageName = L"images/dave.png";  ///< Dave filename
 */
 void CGame::Update(double elapsed)
 {
-	mUpdateTime += elapsed;
-
-	// Following is minion spawning code
-	if (mUpdateTime > 0.5)
+	// Only spawn new minions if Gru is alive
+	if (!IsGameOver())
 	{
-		int MinionPicker = (rand() % 101) - 1;
-		int spawnLocationX = (rand() % 950) - 475;
+		mUpdateTime += elapsed;
 
-		if (MinionPicker <= 10)		// 10% of time give a mutant
+		// Following is minion spawning code
+		if (mUpdateTime > 0.5)
 		{
-			auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, 5, 200);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
-			Add(newMinion);
-			mMinions.push_back(newMinion);
+			int MinionPicker = (rand() % 101) - 1;
+			int spawnLocationX = (rand() % 950) - 475;
+
+			if (MinionPicker <= 10)		// 10% of time give a mutant
+			{
+				auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, 5, 200);
+				newMinion->SetLocation(spawnLocationX, spawnLocationY);
+				Add(newMinion);
+				mMinions.push_back(newMinion);
+			}
+
+			else if (MinionPicker <= 40)		// 30% of time give a mutant
+			{
+				auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, 1, 100);
+				newMinion->SetLocation(spawnLocationX, spawnLocationY);
+				Add(newMinion);
+				mMinions.push_back(newMinion);
+			}
+
+			else if (MinionPicker <= 70) // give 30% chance for Stuart
+			{
+				auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, 1, 100);
+				newMinion->SetLocation(spawnLocationX, spawnLocationY);
+				Add(newMinion);
+				mMinions.push_back(newMinion);
+			}
+
+			else // and last 30% chance for Jerry
+			{
+				auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, 1, 100);
+				newMinion->SetLocation(spawnLocationX, spawnLocationY);
+				Add(newMinion);
+				mMinions.push_back(newMinion);
+			}
+
+
+			mUpdateTime = 0 + (rand() % 3) / 4;
 		}
-
-		else if (MinionPicker <= 40)		// 30% of time give a mutant
-		{
-			auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, 1, 100);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
-			Add(newMinion);
-			mMinions.push_back(newMinion);
-		}
-
-		else if (MinionPicker <= 70) // give 30% chance for Stuart
-		{
-			auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, 1, 100);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
-			Add(newMinion);
-			mMinions.push_back(newMinion);
-		}
-
-		else // and last 30% chance for Jerry
-		{
-			auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, 1, 100);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
-			Add(newMinion);
-			mMinions.push_back(newMinion);
-		}
-
-
-		mUpdateTime = 0 + (rand()%3)/4;
 	}
 
 

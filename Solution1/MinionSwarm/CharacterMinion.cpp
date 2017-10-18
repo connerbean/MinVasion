@@ -57,18 +57,28 @@ void CCharacterMinion::Update(double elapsed)
 {
 	//SetSpeed(5);
 	CElement::Update(elapsed);
-	CGruVisitor visitor;
-	mGame->Accept(&visitor);
-	CVector mGruP = *visitor.GetLocation();
-	CVector mMinP = *make_shared<CVector>(GetX(), GetY());
-	CVector GruV = mGruP - mMinP;
-	if (GruV.Length() > 0)
+
+	// If the game is not over, flock towars Gru
+	if (!mGame->IsGameOver())
 	{
-		GruV.Normalize();
+		CGruVisitor visitor;
+		mGame->Accept(&visitor);
+		CVector mGruP = *visitor.GetLocation();
+		CVector mMinP = *make_shared<CVector>(GetX(), GetY());
+		CVector GruV = mGruP - mMinP;
+		if (GruV.Length() > 0)
+		{
+			GruV.Normalize();
+		}
+		GruV *= mSpeed;
+		CVector newP = mMinP + (GruV * elapsed);
+		SetLocation(newP.X(), newP.Y());
 	}
-	GruV *= mSpeed;
-	CVector newP = mMinP + (GruV * elapsed);
-	SetLocation(newP.X(), newP.Y());
+	// Otherwise, stay still (for now)
+	else
+	{
+		SetLocation(GetX(), GetY());
+	}
 
 }
 
