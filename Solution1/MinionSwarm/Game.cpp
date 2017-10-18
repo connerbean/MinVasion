@@ -250,7 +250,7 @@ void CGame::Update(double elapsed)
 		{
 			for (auto minion : mMinions)
 			{
-				if (minion->HitTest(villain->GetX(), villain->GetY()))
+				if (villain->HitTest(minion->GetX(), minion->GetY()))
 				{
 					// If it did, grant points and delete the minion
 					villain->AddPoints(minion->GetScoreValue());
