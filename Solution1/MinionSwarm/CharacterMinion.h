@@ -20,35 +20,14 @@ class CCharacterMinion : public CCharacter
 {
 public:
 
-	/// constant to keep track of the maximim speed a minion can go
-	const int MaxSpeed = 50;
-
-	/// constant to keep track of the minimum speed
-	const int MinSpeed = -50;
-
 	/// Constructor for minion
 	/// \param game The game the minion is in
 	/// \param name The filename for the minion image
 	/// \param scoreValue the value attached to minion
-    CCharacterMinion(CGame *game, const wstring name, int scoreValue);
+    CCharacterMinion(CGame *game, const wstring name, int scoreValue, int speed);
 
     /// Default constructor (disabled)
     CCharacterMinion() = delete;
-
-
-	/**
-	* Sets the speed for the minion
-	* \param x the speed that the visitor passes in
-	*/
-	void SetSpeed(double x) 
-	{ 
-		CGruVisitor visitor;
-		mGame->Accept(&visitor);
-		mGruLocation = visitor.GetLocation();
-		mSpeedX = (int)(((double)rand() / RAND_MAX) * x *mGruLocation->X());
-		mSpeedY = (int)(((double)rand() / RAND_MAX) * x *mGruLocation->Y());
-	};
-
 
     /// Copy constructor (disabled)
     CCharacterMinion(const CCharacterMinion &) = delete;
@@ -83,17 +62,13 @@ private:
 
 	int mScoreValue; ///< Individual score value for the minions
 
+	int mSpeed; ///< Individual speed value for the minions
+
 	///location
 	std::shared_ptr<CVector> mGruLocation;
 
 	/// Speed that gets added to the minions location
 	int mRunX = 0;
-
-	/// Speed that the random number is assigned to 
-	int mSpeedX = 0;
-
-
-	int mSpeedY = 0;
 
 	/// Speed that the minion runs in the Y direction
 	int mRunY = 0;

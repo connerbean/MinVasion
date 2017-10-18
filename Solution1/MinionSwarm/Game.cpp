@@ -180,7 +180,7 @@ void CGame::Update(double elapsed)
 
 		if (MinionPicker <= 10)		// 10% of time give a mutant
 		{
-			auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, 5);
+			auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, 5, 200);
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
 			Add(newMinion);
 			mMinions.push_back(newMinion);
@@ -188,7 +188,7 @@ void CGame::Update(double elapsed)
 
 		else if (MinionPicker <= 40)		// 30% of time give a mutant
 		{
-			auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, 1);
+			auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, 1, 100);
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
 			Add(newMinion);
 			mMinions.push_back(newMinion);
@@ -196,7 +196,7 @@ void CGame::Update(double elapsed)
 
 		else if (MinionPicker <= 70) // give 30% chance for Stuart
 		{
-			auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, 1);
+			auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, 1, 100);
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
 			Add(newMinion);
 			mMinions.push_back(newMinion);
@@ -204,7 +204,7 @@ void CGame::Update(double elapsed)
 
 		else // and last 30% chance for Jerry
 		{
-			auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, 1);
+			auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, 1, 100);
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
 			Add(newMinion);
 			mMinions.push_back(newMinion);

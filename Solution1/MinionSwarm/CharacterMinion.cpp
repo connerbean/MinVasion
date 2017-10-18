@@ -20,7 +20,7 @@ const wstring MinionImageName = L"images/dave.png";
 * \param name The file name that we load for the minion image
 * \param scoreValue The score associated with destroying the minion
 */
-CCharacterMinion::CCharacterMinion(CGame *game, const wstring name, int scoreValue) : CCharacter(game)
+CCharacterMinion::CCharacterMinion(CGame *game, const wstring name, int scoreValue, int speed) : CCharacter(game)
 {
 	mMinionImage = unique_ptr<Bitmap>(Bitmap::FromFile(wstring(name.begin(),name.end()).c_str()));
 	if (mMinionImage->GetLastStatus() != Ok)
@@ -30,7 +30,7 @@ CCharacterMinion::CCharacterMinion(CGame *game, const wstring name, int scoreVal
 		AfxMessageBox(msg.c_str());
 	}
 	mScoreValue = scoreValue;
-	//SetSpeed(4);
+	mSpeed = speed;
 }
 
 /**
@@ -66,9 +66,10 @@ void CCharacterMinion::Update(double elapsed)
 	{
 		GruV.Normalize();
 	}
-	GruV *= 100;
+	GruV *= mSpeed;
 	CVector newP = mMinP + (GruV * elapsed);
 	SetLocation(newP.X(), newP.Y());
+
 }
 
 /**
