@@ -55,7 +55,7 @@ void CCharacterMinion::Draw(Gdiplus::Graphics *graphics)
 
 void CCharacterMinion::Update(int elapsed)
 {
-	SetSpeed(5);
+	//SetSpeed(5);
 	CElement::Update(elapsed);
 	mRunX += mSpeedX * elapsed;
 	mRunY += mSpeedY * elapsed;
