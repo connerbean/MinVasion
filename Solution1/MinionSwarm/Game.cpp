@@ -235,7 +235,7 @@ void CGame::Update(double elapsed)
 		// Check if Gru hits any villain or minion
 		for (auto item : mItems)
 		{
-			if (item != mGru && mGru->HitTest(item->GetX(), item->GetY()))
+			if (item != mGru && mGru->HitTest((int)item->GetX(), (int)item->GetY()))
 			{
 				Delete(mGru);
 				mGru = nullptr;
@@ -250,7 +250,7 @@ void CGame::Update(double elapsed)
 		{
 			for (auto minion : mMinions)
 			{
-				if (villain->HitTest(minion->GetX(), minion->GetY()))
+				if (villain->HitTest((int)minion->GetX(), (int)minion->GetY()))
 				{
 					// If it did, grant points and delete the minion
 					villain->AddPoints(minion->GetScoreValue());
