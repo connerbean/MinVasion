@@ -54,10 +54,9 @@ void CCharacterMinion::Draw(Gdiplus::Graphics *graphics)
 
 void CCharacterMinion::Update(int elapsed)
 {
-		CGruVisitor visitor;
-		mGame->Accept(&visitor);
-		GruLocation = visitor.GetLocation();
-	
+	CGruVisitor visitor;
+	mGame->Accept(&visitor);
+	mGruLocation = visitor.GetLocation();
 }
 
 /**

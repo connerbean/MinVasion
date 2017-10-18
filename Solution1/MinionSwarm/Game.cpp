@@ -32,7 +32,7 @@ CGame::~CGame()
 }
 
 /**
-* Add an item to the aquarium
+* Add an item to the game
 * \param item New item to add
 */
 void CGame::Add(std::shared_ptr<CCharacter> item)
@@ -50,6 +50,25 @@ void CGame::Delete(std::shared_ptr<CCharacter> item)
 	if (loc != ::end(mItems))
 	{
 		mItems.erase(loc);
+	}
+}
+
+/**
+* Finds and deletes the selected minion
+* \param minion The minion to delete
+*/
+void CGame::DeleteMinion(std::shared_ptr<CCharacterMinion> minion)
+{
+	auto loc = find(::begin(mItems), ::end(mItems), minion);
+	if (loc != ::end(mItems))
+	{
+		mItems.erase(loc);
+	}
+
+	auto minionLoc = find(::begin(mMinions), ::end(mMinions), minion);
+	if (minionLoc != ::end(mMinions))
+	{
+		mMinions.erase(minionLoc);
 	}
 }
 
@@ -79,24 +98,29 @@ void CGame::Reset()
 
 	// Reset characters
 	mItems.clear();
+	mVillains.clear();
+	mMinions.clear();
 
 	// Villains on bottom...
 	auto villainArya = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Arya);
 	villainArya->SetLocation(0, 220);
 	Add(villainArya);
+	mVillains.push_back(villainArya);
 
 	auto villainJuicer = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Juicer);
 	villainJuicer->SetLocation(-250, -250);
 	Add(villainJuicer);
+	mVillains.push_back(villainJuicer);
 
 	auto villainPokeball = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Pokeball);
 	villainPokeball->SetLocation(250, -250);
 	Add(villainPokeball);
+	mVillains.push_back(villainPokeball);
 
 	// ... then Gru...
-	auto gru = make_shared<CCharacterGru>(this);
-	gru->SetLocation(0, 400);
-	Add(gru);
+	mGru = make_shared<CCharacterGru>(this);
+	mGru->SetLocation(0, 400);
+	Add(mGru);
 
 	// ... then any minions
 }
@@ -114,7 +138,7 @@ int CGame::ConvertX(int x)
 }
 
 /**
-* Test to see if things in the aquarium have been hit
+* Test to see if things in the game board have been hit
 * \param x pointX
 * \param y pointY
 * \returns item if hit, null if not
@@ -157,29 +181,33 @@ void CGame::Update(double elapsed)
 		if (MinionPicker <= 10)		// 10% of time give a mutant
 		{
 			auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, 5);
-			Add(newMinion);
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			Add(newMinion);
+			mMinions.push_back(newMinion);
 		}
 
 		else if (MinionPicker <= 40)		// 30% of time give a mutant
 		{
 			auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, 1);
-			Add(newMinion);
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			Add(newMinion);
+			mMinions.push_back(newMinion);
 		}
 
 		else if (MinionPicker <= 70) // give 30% chance for Stuart
 		{
 			auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, 1);
-			Add(newMinion);
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			Add(newMinion);
+			mMinions.push_back(newMinion);
 		}
 
 		else // and last 30% chance for Jerry
 		{
 			auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, 1);
-			Add(newMinion);
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			Add(newMinion);
+			mMinions.push_back(newMinion);
 		}
 
 
@@ -193,7 +221,37 @@ void CGame::Update(double elapsed)
 		item->Update(elapsed);
 	}
 
+	// TODO: potentially move these to visitor classes
+	if (!IsGameOver())
+	{
+		// Check if Gru hits any villain or minion
+		for (auto item : mItems)
+		{
+			if (item != mGru && mGru->HitTest(item->GetX(), item->GetY()))
+			{
+				Delete(mGru);
+				mGru = nullptr;
 
+				// TODO: print Gru Is Dead & stop clock
+				break;
+			}
+		}
+
+		// Check if any minion hit a villain
+		for (auto villain : mVillains)
+		{
+			for (auto minion : mMinions)
+			{
+				if (minion->HitTest(villain->GetX(), villain->GetY()))
+				{
+					// If it did, grant points and delete the minion
+					villain->AddPoints(minion->GetScoreValue());
+					DeleteMinion(minion);
+					break;
+				}
+			}
+		}
+	}
 }
 
 

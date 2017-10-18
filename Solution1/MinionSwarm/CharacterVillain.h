@@ -35,6 +35,9 @@ public:
 
 	bool IsDraggable() override { return false; }
 
+	/// Adds points to this villain
+	void AddPoints(int baseScore) { mPointsAccumulated += baseScore * mMultiplier; }
+
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
 	virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitVillain(this); }
@@ -47,6 +50,9 @@ private:
 
 	/// The point multiplier for this villain
 	int mMultiplier = 1;
+
+	/// Number of points this villain has accumulated
+	int mPointsAccumulated = 0;
 
 	/// Pointer to villain image
 	std::unique_ptr<Gdiplus::Bitmap> mVillainImage;

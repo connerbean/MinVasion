@@ -38,12 +38,17 @@ CClock::~CClock()
  *
  * \param elapsed 
  */
-void CClock::Update(double elapsed, Gdiplus::Graphics *graphics)
+void CClock::Update(double elapsed)
 {
 	mTimePassed += elapsed;
+}
 
-	int seconds = (int) fmod(mTimePassed, 60);
-	int minutes = (int) mTimePassed / 60;
+/** Draw this item
+ * \param graphics The graphics context to draw on */
+void CClock::Draw(Gdiplus::Graphics * graphics)
+{
+	int seconds = (int)fmod(mTimePassed, 60);
+	int minutes = (int)mTimePassed / 60;
 
 	// time to display clock
 	wstring s = to_wstring(seconds); // total seconds

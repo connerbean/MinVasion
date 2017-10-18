@@ -22,7 +22,7 @@ namespace Testing
 			CClock clock;
 
 			// now test update
-			clock.Update(2.0f, NULL);
+			clock.Update(2.0f);
 			// assert time updates correctly
 			Assert::IsTrue(clock.GetTimePassed() == 2.0);
 			

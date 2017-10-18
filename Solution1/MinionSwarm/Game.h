@@ -14,6 +14,9 @@ using namespace Gdiplus;
 using namespace std;
 
 class CCharacter;
+class CCharacterGru;
+class CCharacterMinion;
+class CCharacterVillain;
 class CCharacterVisitor;
 
 class CGame
@@ -43,7 +46,7 @@ public:
 
 	void CGame::Reset();
 	/**
-	* Add fish to the aquarium
+	* Add character to the game
 	*/
 	void CGame::Add(std::shared_ptr<CCharacter> item);
 
@@ -51,7 +54,7 @@ public:
 	virtual ~CGame(); ///<Virtual destructor
 
 	/** Test an x,y click location to see if it clicked
-	* on some item in the aquarium.
+	* on some item in the game.
 	* \param x X location
 	* \param y Y location
 	* \returns Pointer to item we clicked on or nullptr if none.
@@ -73,6 +76,9 @@ public:
 	/// \returns mItems size
 	int GetItemsSize() { return mItems.size(); }
 
+	/// Gets whether Gru died
+	bool IsGameOver() { return mGru == nullptr; }
+
 private:
 	/**
 	* mScale is the average of scaleX and scaleY
@@ -91,7 +97,15 @@ private:
 
 	double mUpdateTime = 0; ///< double used to keep track of update time in seconds
 
-	std::vector<std::shared_ptr<CCharacter> > mItems; ///< Vector of all items in the game
+	std::vector<std::shared_ptr<CCharacter>> mItems; ///< Vector of all characters in the game
+
+	std::shared_ptr<CCharacterGru> mGru; ///< pointer to Gru
+
+	std::vector<std::shared_ptr<CCharacterVillain>> mVillains; ///< Vector of all villains in the game
+
+	std::vector<std::shared_ptr<CCharacterMinion>> mMinions; ///< Vector of all minions in the game
+
+	void DeleteMinion(std::shared_ptr<CCharacterMinion> minion);
 
 public:
 	/** Iterator that iterates over the city tiles */

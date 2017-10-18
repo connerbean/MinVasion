@@ -102,7 +102,24 @@ void CChildView::OnPaint()
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
 	mNewGameButton->Draw(&graphics);
 
-	mClock.Update(elapsed, &graphics);		// adds elapsed time to overall time
+	if (!mGame.IsGameOver())
+	{
+		mClock.Update(elapsed);		// adds elapsed time to overall time
+	}
+	else
+	{
+		wstring deadGruMessage = L"Gru is Dead!";
+		FontFamily fontFamily(L"Arial");
+		Gdiplus::Font font(&fontFamily, 72);
+
+		StringFormat format;
+		format.SetAlignment(StringAlignmentCenter);
+
+		SolidBrush yellow(Color(255, 255, 0));
+
+		graphics.DrawString(deadGruMessage.c_str(), -1, &font, PointF(0, 0), &format, &yellow);
+	}
+	mClock.Draw(&graphics);
 }
 
 
@@ -178,19 +195,6 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 				mGrabbedItem->Constraints(mGrabbedItem);
 
 			}
-			
-			/*if (mGrabbedItem->Killer() == true)
-			{
-				mGame.Delete(mGrabbedItem);
-				mGame.Add(mGrabbedItem);
-				/**mAquarium.Delete(mGrabbedItem);
-				auto fishLocation = mAquarium.HitTest(point.x, point.y);
-				if ( fishLocation != nullptr)
-				{
-				mAquarium.Delete(fishLocation);
-				}
-				mAquarium.Add(mGrabbedItem);
-			}*/
 
 		}
 		else

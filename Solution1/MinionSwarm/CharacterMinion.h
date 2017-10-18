@@ -52,6 +52,9 @@ public:
 	**/
 	void Update(int elapsed);
 
+	/// Gets the score value of this minion
+	int GetScoreValue() { return mScoreValue; }
+
 private:
 	// Poiner to item images
 	std::unique_ptr<Gdiplus::Bitmap> mMinionImage;
@@ -59,5 +62,5 @@ private:
 	int mScoreValue; ///< Individual score value for the minions
 
 	///location
-	std::shared_ptr<CVector> GruLocation;
+	std::shared_ptr<CVector> mGruLocation;
 };
