@@ -35,16 +35,16 @@ public:
 
 	/**  The X location of the center of the tile
 	* \returns X location in pixels */
-	int GetX() const { return mX; }
+	double GetX() const { return mX; }
 
 	/**  The Y location of the center of the tile
 	* \returns Y location in pixels */
-	int GetY() const { return mY; }
+	double GetY() const { return mY; }
 
 	/**  Set the item location
 	* \param x X location
 	* \param y Y location */
-	void SetLocation(int x, int y) { mX = x; mY = y; }
+	void SetLocation(double x, double y) { mX = x; mY = y; }
 
 	/**  Test this item to see if it has been clicked on
 	* \param x X location on the aquarium to test
@@ -61,9 +61,9 @@ public:
 	virtual void Update(double elapsed) {}
 
 private:
-	int mX = 0; ///< X coordinate
+	double mX = 0; ///< X coordinate
 
-	int mY = 0; ///< Y coordinate
+	double mY = 0; ///< Y coordinate
 
 	std::wstring mFile; ///< File name for image
 

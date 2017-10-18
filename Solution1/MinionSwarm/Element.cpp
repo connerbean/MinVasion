@@ -102,8 +102,8 @@ void CElement::Draw(Gdiplus::Graphics *graphics)
 		int hit = mItemImage->GetHeight();
 
 		graphics->DrawImage(mItemImage.get(),
-			mX, mY - hit,
-			wid, hit);
+			(int)mX, (int)(mY - hit),
+			(int)wid, (int)hit);
 	}
 
 }
