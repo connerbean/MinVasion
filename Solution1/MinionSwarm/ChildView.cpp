@@ -22,7 +22,7 @@ using namespace std;
 // CChildView
 
 /// Frame duration in milliseconds
-const int FrameDuration = 30;
+const int FrameDuration = 10;
 
 CChildView::CChildView()
 {

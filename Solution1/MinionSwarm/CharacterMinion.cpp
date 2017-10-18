@@ -66,13 +66,18 @@ void CCharacterMinion::Update(double elapsed)
 		CVector mGruP = *visitor.GetLocation();
 		CVector mMinP = *make_shared<CVector>(GetX(), GetY());
 		CVector GruV = mGruP - mMinP;
+
+		double offset;
+		if (GetX() < 0) offset = -0.5f;
+		else offset = 0.5f;
+
 		if (GruV.Length() > 0)
 		{
 			GruV.Normalize();
 		}
 		GruV *= mSpeed;
 		CVector newP = mMinP + (GruV * elapsed);
-		SetLocation(newP.X(), newP.Y());
+		SetLocation(newP.X() + offset, newP.Y());
 	}
 	// Otherwise, stay still (for now)
 	else
