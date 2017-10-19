@@ -11,11 +11,12 @@
 
 /**
  * Constructor
+ * \param requestor The minion who requested this visitor
  */
-CMinionVisitor::CMinionVisitor()
+CMinionVisitor::CMinionVisitor(CCharacterMinion *requestor)
 {
+	mRequestor = requestor;
 }
-
 
 /**
  * Destructor

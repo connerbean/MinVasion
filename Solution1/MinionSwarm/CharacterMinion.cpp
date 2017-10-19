@@ -61,9 +61,12 @@ void CCharacterMinion::Update(double elapsed)
 	// If the game is not over, flock towars Gru
 	if (!mGame->IsGameOver())
 	{
-		CGruVisitor visitor;
-		mGame->Accept(&visitor);
-		CVector mGruP = *visitor.GetLocation();
+		CMinionVisitor minionVisitor(this);
+		mGame->Accept(&minionVisitor);
+
+		CGruVisitor gruVisitor;
+		mGame->Accept(&gruVisitor);
+		CVector mGruP = *gruVisitor.GetLocation();
 		CVector mMinP = *make_shared<CVector>(GetX(), GetY());
 		CVector GruV = mGruP - mMinP;
 

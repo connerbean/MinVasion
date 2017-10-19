@@ -11,6 +11,7 @@
 
 #include "Character.h"
 #include "GruVisitor.h"
+#include "MinionVisitor.h"
 
 
 /**
@@ -47,9 +48,13 @@ public:
 	/// \return bool false 
 	bool IsDraggable() override { return false; }
 
-    /** Accept a visitor
-    * \param visitor The visitor we accept */
-    virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitMinion(this); }
+	/** Accept a character visitor
+	* \param visitor The character visitor we accept */
+	virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitMinion(this); }
+
+	/** Accept a minion visitor
+	* \param visitor The minion visitor we accept */
+	virtual void Accept(CMinionVisitor *visitor) { visitor->VisitMinion(this); }
 
 	/**
 	**/

@@ -17,7 +17,7 @@ class CMinionVisitor : public CCharacterVisitor
 {
 public:
 	/// Constructor
-	CMinionVisitor();
+	CMinionVisitor(CCharacterMinion *requestor);
 	/// Destructor
 	~CMinionVisitor();
 
@@ -26,5 +26,5 @@ public:
 	void VisitMinion(CCharacterMinion *minion);
 
 private:
-
+	CCharacterMinion *mRequestor;
 };
