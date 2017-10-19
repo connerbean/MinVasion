@@ -193,6 +193,7 @@
     <ClInclude Include="CharacterVisitor.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="CharacterMinion.h" />
+    <ClInclude Include="MinionCollector.h" />
     <ClInclude Include="MinionSwarm.h" />
     <ClInclude Include="MinionVisitor.h" />
     <ClInclude Include="PlayArea.h" />
@@ -202,7 +203,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="CharacterVillain.h" />
     <ClInclude Include="Vector.h" />
-    <ClInclude Include="VillainVisitor.h" />
+    <ClInclude Include="VillainCollector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
@@ -215,6 +216,7 @@
     <ClCompile Include="CharacterVisitor.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="CharacterMinion.cpp" />
+    <ClCompile Include="MinionCollector.cpp" />
     <ClCompile Include="MinionSwarm.cpp" />
     <ClCompile Include="MinionVisitor.cpp" />
     <ClCompile Include="PlayArea.cpp" />
@@ -227,7 +229,7 @@
     </ClCompile>
     <ClCompile Include="CharacterVillain.cpp" />
     <ClCompile Include="Vector.cpp" />
-    <ClCompile Include="VillainVisitor.cpp" />
+    <ClCompile Include="VillainCollector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MinionSwarm.rc" />

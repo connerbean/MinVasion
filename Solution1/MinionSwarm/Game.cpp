@@ -14,6 +14,8 @@
 #include "CharacterVillain.h"
 #include "GruVisitor.h"
 #include "CharacterVisitor.h"
+#include "VillainCollector.h"
+#include "MinionCollector.h"
 
 /**
  * Constructor
@@ -54,21 +56,18 @@ void CGame::Delete(std::shared_ptr<CCharacter> item)
 }
 
 /**
-* Finds and deletes the selected minion
-* \param minion The minion to delete
+* Finds and deletes the selected item
+* \param item The item to delete
 */
-void CGame::DeleteMinion(std::shared_ptr<CCharacterMinion> minion)
+void CGame::Delete(CCharacter *item)
 {
-	auto loc = find(::begin(mItems), ::end(mItems), minion);
-	if (loc != ::end(mItems))
+	for (std::shared_ptr<CCharacter> character : mItems)
 	{
-		mItems.erase(loc);
-	}
-
-	auto minionLoc = find(::begin(mMinions), ::end(mMinions), minion);
-	if (minionLoc != ::end(mMinions))
-	{
-		mMinions.erase(minionLoc);
+		if (character.get() == item)
+		{
+			Delete(character);
+			break;
+		}
 	}
 }
 
@@ -98,24 +97,19 @@ void CGame::Reset()
 
 	// Reset characters
 	mItems.clear();
-	mVillains.clear();
-	mMinions.clear();
 
 	// Villains on bottom...
 	auto villainArya = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Arya);
 	villainArya->SetLocation(0, 220);
 	Add(villainArya);
-	mVillains.push_back(villainArya);
 
 	auto villainJuicer = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Juicer);
 	villainJuicer->SetLocation(-250, -250);
 	Add(villainJuicer);
-	mVillains.push_back(villainJuicer);
 
 	auto villainPokeball = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Pokeball);
 	villainPokeball->SetLocation(250, -250);
 	Add(villainPokeball);
-	mVillains.push_back(villainPokeball);
 
 	// ... then Gru...
 	mGru = make_shared<CCharacterGru>(this);
@@ -191,7 +185,6 @@ void CGame::Update(double elapsed)
 				auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, mutantValue, mutantSpeed);
 				newMinion->SetLocation(spawnLocationX, spawnLocationY);
 				Add(newMinion);
-				mMinions.push_back(newMinion);
 			}
 
 			else if (MinionPicker <= 40)		// 30% of time give a mutant
@@ -199,7 +192,6 @@ void CGame::Update(double elapsed)
 				auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, minionValue, minionSpeed);
 				newMinion->SetLocation(spawnLocationX, spawnLocationY);
 				Add(newMinion);
-				mMinions.push_back(newMinion);
 			}
 
 			else if (MinionPicker <= 70) // give 30% chance for Stuart
@@ -207,7 +199,6 @@ void CGame::Update(double elapsed)
 				auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, minionValue, minionSpeed);
 				newMinion->SetLocation(spawnLocationX, spawnLocationY);
 				Add(newMinion);
-				mMinions.push_back(newMinion);
 			}
 
 			else // and last 30% chance for Jerry
@@ -215,7 +206,6 @@ void CGame::Update(double elapsed)
 				auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, minionValue, minionSpeed);
 				newMinion->SetLocation(spawnLocationX, spawnLocationY);
 				Add(newMinion);
-				mMinions.push_back(newMinion);
 			}
 
 
@@ -228,11 +218,15 @@ void CGame::Update(double elapsed)
 	for (auto item : mItems)
 	{
 		item->Update(elapsed);
+		item->Constraints(); // make sure items stay in the board
 	}
-	for (auto item : mMinions)
-	{
-		item->Update(elapsed);
-	}
+
+
+	CVillainCollector villainCollector;
+	Accept(&villainCollector);
+
+	CMinionCollector minionCollector;
+	Accept(&minionCollector);
 
 	// TODO: potentially move these to visitor classes
 	if (!IsGameOver())
@@ -245,21 +239,20 @@ void CGame::Update(double elapsed)
 				Delete(mGru);
 				mGru = nullptr;
 
-				// TODO: print Gru Is Dead & stop clock
 				break;
 			}
 		}
 
 		// Check if any minion hit a villain
-		for (auto villain : mVillains)
+		for (auto villain : villainCollector.Retrieve())
 		{
-			for (auto minion : mMinions)
+			for (auto minion : minionCollector.Retrieve())
 			{
 				if (villain->HitTest((int)minion->GetX(), (int)minion->GetY()))
 				{
 					// If it did, grant points and delete the minion
 					villain->AddPoints(minion->GetScoreValue());
-					DeleteMinion(minion);
+					Delete(minion);
 					break;
 				}
 			}

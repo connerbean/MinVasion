@@ -51,9 +51,6 @@
     <ClInclude Include="GruVisitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VillainVisitor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PlayArea.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -84,6 +81,12 @@
     <ClInclude Include="Element.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VillainCollector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MinionCollector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MinionSwarm.cpp">
@@ -108,9 +111,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GruVisitor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VillainVisitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlayArea.cpp">
@@ -138,6 +138,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Element.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VillainCollector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinionCollector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

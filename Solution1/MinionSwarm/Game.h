@@ -37,6 +37,10 @@ public:
 	///\param item The item to delete
 	void CGame::Delete(std::shared_ptr<CCharacter> item);
 
+	///Deletes item from game
+	///\param item The item to delete
+	void CGame::Delete(CCharacter *item);
+
 	/**
 	* Declartion for Update function
 	*
@@ -100,12 +104,6 @@ private:
 	std::vector<std::shared_ptr<CCharacter>> mItems; ///< Vector of all characters in the game
 
 	std::shared_ptr<CCharacterGru> mGru; ///< pointer to Gru
-
-	std::vector<std::shared_ptr<CCharacterVillain>> mVillains; ///< Vector of all villains in the game
-
-	std::vector<std::shared_ptr<CCharacterMinion>> mMinions; ///< Vector of all minions in the game
-
-	void DeleteMinion(std::shared_ptr<CCharacterMinion> minion);
 
 public:
 	/** Iterator that iterates over the city tiles */
