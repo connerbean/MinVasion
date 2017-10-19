@@ -18,7 +18,6 @@ class CCharacterGru;
 class CCharacterMinion;
 class CCharacterVillain;
 class CCharacterVisitor;
-class CMinionVisitor;
 
 class CGame
 {
@@ -64,8 +63,6 @@ public:
 
 
 	void CGame::Accept(CCharacterVisitor *visitor);
-
-	void CGame::Accept(CMinionVisitor *visitor);
 
 	/**
 	* Draw the game area

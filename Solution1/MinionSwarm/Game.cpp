@@ -91,14 +91,6 @@ void CGame::Accept(CCharacterVisitor *visitor)
 	}
 }
 
-void CGame::Accept(CMinionVisitor *visitor)
-{
-	for (std::shared_ptr<CCharacterMinion> minion : mMinions)
-	{
-		minion->Accept(visitor);
-	}
-}
-
 void CGame::Reset()
 {
 	// Reset time
