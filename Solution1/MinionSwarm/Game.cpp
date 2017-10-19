@@ -173,6 +173,11 @@ const wstring MutantImageName = L"images/mutant.png";  ///< Mutant filename
 const wstring JerryImageName = L"images/jerry.png";  ///< Jerry filename 
 const wstring DaveImageName = L"images/dave.png";  ///< Dave filename 
 
+const int minionSpeed = 100; ///< Regular minion speed
+const int mutantSpeed = 200; ///< Mutant minion speed
+const int minionValue = 1; ///< Regular minion value
+const int mutantValue = 5; ///< Mutant minon value
+
 /** Handle updates for animation
 * \param elapsed The time since the last update
 */
@@ -191,7 +196,7 @@ void CGame::Update(double elapsed)
 
 			if (MinionPicker <= 10)		// 10% of time give a mutant
 			{
-				auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, 5, 200);
+				auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, mutantValue, mutantSpeed);
 				newMinion->SetLocation(spawnLocationX, spawnLocationY);
 				Add(newMinion);
 				mMinions.push_back(newMinion);
@@ -199,7 +204,7 @@ void CGame::Update(double elapsed)
 
 			else if (MinionPicker <= 40)		// 30% of time give a mutant
 			{
-				auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, 1, 100);
+				auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, minionValue, minionSpeed);
 				newMinion->SetLocation(spawnLocationX, spawnLocationY);
 				Add(newMinion);
 				mMinions.push_back(newMinion);
@@ -207,7 +212,7 @@ void CGame::Update(double elapsed)
 
 			else if (MinionPicker <= 70) // give 30% chance for Stuart
 			{
-				auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, 1, 100);
+				auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, minionValue, minionSpeed);
 				newMinion->SetLocation(spawnLocationX, spawnLocationY);
 				Add(newMinion);
 				mMinions.push_back(newMinion);
@@ -215,7 +220,7 @@ void CGame::Update(double elapsed)
 
 			else // and last 30% chance for Jerry
 			{
-				auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, 1, 100);
+				auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, minionValue, minionSpeed);
 				newMinion->SetLocation(spawnLocationX, spawnLocationY);
 				Add(newMinion);
 				mMinions.push_back(newMinion);
