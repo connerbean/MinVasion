@@ -23,9 +23,8 @@ public:
     // Detects if two images overlap
     bool HitTest(int x, int y);
 
-	/**  Constrain the Items to MAX/MIN
-	* \param item The item we are giving constraints */
-	virtual void Constraints(shared_ptr<CCharacter> item);
+	/**  Constrain the Items to MAX/MIN */
+	virtual void Constraints();
 
 	/// Overrides the IsDraggable function
 	bool IsDraggable() override { return true; }

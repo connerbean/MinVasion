@@ -62,25 +62,25 @@ namespace Testing
 
 			Gru->SetLocation(560, 0);
 
-			Gru->Constraints(Gru);
+			Gru->Constraints();
 
 			Assert::IsTrue(Gru->HitTest(500 - width, 0));
 
 			Gru->SetLocation(-560, 0);
 
-			Gru->Constraints(Gru);
+			Gru->Constraints();
 
 			Assert::IsTrue(Gru->HitTest(-500 + width, 0));
 
 			Gru->SetLocation(0, 600);
 
-			Gru->Constraints(Gru);
+			Gru->Constraints();
 
 			Assert::IsTrue(Gru->HitTest(0, 500 - height));
 
 			Gru->SetLocation(0, -600);
 
-			Gru->Constraints(Gru);
+			Gru->Constraints();
 
 			Assert::IsTrue(Gru->HitTest(0, -500 + height));
 		}

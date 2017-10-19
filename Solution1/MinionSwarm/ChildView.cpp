@@ -192,8 +192,6 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 			{
 				mGrabbedItem->SetLocation(x, y);
 
-				mGrabbedItem->Constraints(mGrabbedItem);
-
 			}
 
 		}

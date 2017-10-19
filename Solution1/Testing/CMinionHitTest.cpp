@@ -50,31 +50,31 @@ namespace Testing
 			CGame game;
 			const wstring name = L"images/stuart.png";
 			auto MinionImage = unique_ptr<Bitmap>(Bitmap::FromFile(wstring(name.begin(), name.end()).c_str()));
-			shared_ptr<CCharacter>Minion = make_shared<CCharacterMinion>(&game, name, 1);
+			shared_ptr<CCharacter>Minion = make_shared<CCharacterMinion>(&game, name, 1, 0);
 			const int height = MinionImage->GetHeight() / 2;
 			const int width = MinionImage->GetWidth() / 2;
 
 			Minion->SetLocation(550, 0);
 
-			Minion->Constraints(Minion);
+			Minion->Constraints();
 
 			Assert::IsTrue(Minion->HitTest(500 - width, 0));
 
 			Minion->SetLocation(-550, 0);
 
-			Minion->Constraints(Minion);
+			Minion->Constraints();
 
 			Assert::IsTrue(Minion->HitTest(-500 + width, 0));
 
 			Minion->SetLocation(0, 600);
 
-			Minion->Constraints(Minion);
+			Minion->Constraints();
 
 			Assert::IsTrue(Minion->HitTest(0, 500 - height));
 
 			Minion->SetLocation(0, -600);
 
-			Minion->Constraints(Minion);
+			Minion->Constraints();
 
 			Assert::IsTrue(Minion->HitTest(0, -500 + height));
 		}

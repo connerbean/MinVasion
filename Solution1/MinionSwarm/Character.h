@@ -25,9 +25,8 @@ public:
 
 	virtual ~CCharacter();
 
-	/**  Constrain the Items to MAX/MIN
-	* \param item The item we are giving constraints */
-	virtual void Constraints(shared_ptr<CCharacter>item) {};
+	/**  Constrain the Items to MAX/MIN */
+	virtual void Constraints() {};
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */

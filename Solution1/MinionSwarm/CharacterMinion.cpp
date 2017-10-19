@@ -87,7 +87,6 @@ void CCharacterMinion::Update(double elapsed)
 	{
 		SetLocation(GetX(), GetY());
 	}
-
 }
 
 /**
@@ -133,16 +132,14 @@ bool CCharacterMinion::HitTest(int x, int y)
 
 /**
 * Constrains the Item to the board
-* \param x Location
-* \param y Location
 */
-void CCharacterMinion::Constraints(shared_ptr<CCharacter>item)
+void CCharacterMinion::Constraints()
 {
 	const int height = mMinionImage->GetHeight() / 2;
 	const int width = mMinionImage->GetWidth() / 2;
 
-	auto x = item->GetX();
-	auto y = item->GetY();
+	auto x = GetX();
+	auto y = GetY();
 
 	if ((x + width) > mMax)
 	{

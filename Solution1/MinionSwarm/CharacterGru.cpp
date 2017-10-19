@@ -86,23 +86,16 @@ bool CCharacterGru::HitTest(int x, int y)
 	}
 }
 
-//bool accecpt(CGruVisitor v) override
-//{
-//	v.VusutGru(this)
-//}
-
 /**
 * Constrains the Item to the board
-* \param x Location
-* \param y Location
 */
-void CCharacterGru::Constraints(shared_ptr<CCharacter>item)
+void CCharacterGru::Constraints()
 {
 	const int height = mGruImage->GetHeight()/2;
 	const int width = mGruImage->GetWidth()/2;
 
-	auto x = item->GetX();
-	auto y = item->GetY();
+	auto x = GetX();
+	auto y = GetY();
 
 	if ((x + width) > mMax)
 	{

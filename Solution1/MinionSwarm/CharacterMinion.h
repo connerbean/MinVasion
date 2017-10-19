@@ -42,7 +42,8 @@ public:
 	// Detects if two images overlap
 	bool HitTest(int x, int y);
 
-	virtual void Constraints(shared_ptr<CCharacter> item);
+	/**  Constrain the Items to MAX/MIN */
+	virtual void Constraints();
 
 	/// Set's minions to undraggable
 	/// \return bool false 
