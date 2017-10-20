@@ -12,6 +12,7 @@ using namespace std;
 
 const REAL ClockXLocation = 550; ///<Clock's X location to display at
 const REAL ClockYLocation = -510; ///<Clock's Y Location to display at
+const int SecondsInMinute = 60; ///< Number of seconds in a minute
 
 /**
  * Constructor
@@ -41,8 +42,8 @@ void CClock::Update(double elapsed)
  * \param graphics The graphics context to draw on */
 void CClock::Draw(Gdiplus::Graphics * graphics)
 {
-	int seconds = (int)fmod(mTimePassed, 60);
-	int minutes = (int)mTimePassed / 60;
+	int seconds = (int)fmod(mTimePassed, SecondsInMinute);
+	int minutes = (int)mTimePassed / SecondsInMinute;
 
 	// time to display clock
 	wstring s = to_wstring(seconds); // total seconds

@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "RestartSide.h"
+#include <memory>
 #include <string>
+
+using namespace std;
 
 /// Item filename 
 const wstring NewGameImageName = L"images/new-game.png";

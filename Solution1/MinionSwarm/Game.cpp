@@ -16,12 +16,22 @@
 #include "VillainCollector.h"
 #include "MinionCollector.h"
 
+const int AryaLocationX = 0; ///< The Arya villain's X location
+const int AryaLocationY = 220; ///< The Arya villain's Y location
+const int JuicerLocationX = -250; ///< The Juicer villain's X location
+const int JuicerLocationY = -250; ///< The Juicer villain's Y location
+const int PokeballLocationX = 250; ///< The Pokeball villain's X location
+const int PokeballLocationY = -250; ///< The Pokeball villain's Y location
+
+const int GruInitialLocationX = 0; ///< Gru's intial X location
+const int GruInitialLocationY = 0; ///< Gru's initial Y location
+
 /**
  * Constructor
  */
 CGame::CGame()
 {
-	srand(time(nullptr));
+	srand((unsigned int)time(nullptr));
 	Reset();
 }
 
@@ -100,20 +110,20 @@ void CGame::Reset()
 
 	// Villains on bottom...
 	auto villainJuicer = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Juicer);
-	villainJuicer->SetLocation(-250, -250);
+	villainJuicer->SetLocation(JuicerLocationX, JuicerLocationY);
 	Add(villainJuicer);
 
 	auto villainPokeball = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Pokeball);
-	villainPokeball->SetLocation(250, -250);
+	villainPokeball->SetLocation(PokeballLocationX, PokeballLocationY);
 	Add(villainPokeball);
 
 	auto villainArya = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Arya);
-	villainArya->SetLocation(0, 220);
+	villainArya->SetLocation(AryaLocationX, AryaLocationY);
 	Add(villainArya);
 
 	// ... then Gru...
 	mGru = make_shared<CCharacterGru>(this);
-	mGru->SetLocation(0, 0);
+	mGru->SetLocation(GruInitialLocationX, GruInitialLocationY);
 	Add(mGru);
 
 	// ... then any minions
@@ -152,17 +162,17 @@ std::shared_ptr<CCharacter> CGame::HitTest(int x, int y)
 	return  nullptr;
 }
 
-const int spawnLocationY = -450; ///< Y starting location for minion spawn
+const int MinionSpawnLocationY = -450; ///< Y starting location for minion spawn
 								
-const wstring StuartImageName = L"images/stuart.png";  ///< Stuart filename 
-const wstring MutantImageName = L"images/mutant.png";  ///< Mutant filename 
-const wstring JerryImageName = L"images/jerry.png";  ///< Jerry filename 
-const wstring DaveImageName = L"images/dave.png";  ///< Dave filename 
+const wstring MinionStuartImageName = L"images/stuart.png";  ///< Stuart filename 
+const wstring MinionMutantImageName = L"images/mutant.png";  ///< Mutant filename 
+const wstring MinionJerryImageName = L"images/jerry.png";  ///< Jerry filename 
+const wstring MinionDaveImageName = L"images/dave.png";  ///< Dave filename 
 
-const int minionSpeed = 100; ///< Regular minion speed
-const int mutantSpeed = 200; ///< Mutant minion speed
-const int minionValue = 1; ///< Regular minion value
-const int mutantValue = 5; ///< Mutant minon value
+const int MinionSpeed = 100; ///< Regular minion speed
+const int MinionMutantSpeed = 200; ///< Mutant minion speed
+const int MinionPointsValue = 1; ///< Regular minion value
+const int MinionMutantPointsValue = 5; ///< Mutant minon value
 
 /** Handle updates for animation
 * \param elapsed The time since the last update
@@ -174,34 +184,34 @@ void CGame::Update(double elapsed)
 	// Following is minion spawning code
 	if (mUpdateTime >= 1.0)
 	{
-		int MinionPicker = (rand() % 101) - 1;
-		int spawnLocationX = (rand() % 950) - 475;
+		int minionPicker = (rand() % 100);
+		int minionSpawnLocationX = (rand() % 950) - 475;
 
-		if (MinionPicker <= 10)		// 10% of time give a mutant
+		if (minionPicker <= 10)		// 10% of time give a mutant
 		{
-			auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, mutantValue, mutantSpeed);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			auto newMinion = make_shared<CCharacterMinion>(this, MinionMutantImageName, MinionMutantPointsValue, MinionMutantSpeed);
+			newMinion->SetLocation(minionSpawnLocationX, MinionSpawnLocationY);
 			Add(newMinion);
 		}
 
-		else if (MinionPicker <= 40)		// 30% of time give a Dave
+		else if (minionPicker <= 40)		// 30% of time give a Dave
 		{
-			auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, minionValue, minionSpeed);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			auto newMinion = make_shared<CCharacterMinion>(this, MinionDaveImageName, MinionPointsValue, MinionSpeed);
+			newMinion->SetLocation(minionSpawnLocationX, MinionSpawnLocationY);
 			Add(newMinion);
 		}
 
-		else if (MinionPicker <= 70) // give 30% chance for Stuart
+		else if (minionPicker <= 70) // give 30% chance for Stuart
 		{
-			auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, minionValue, minionSpeed);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			auto newMinion = make_shared<CCharacterMinion>(this, MinionStuartImageName, MinionPointsValue, MinionSpeed);
+			newMinion->SetLocation(minionSpawnLocationX, MinionSpawnLocationY);
 			Add(newMinion);
 		}
 
 		else // and last 30% chance for Jerry
 		{
-			auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, minionValue, minionSpeed);
-			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			auto newMinion = make_shared<CCharacterMinion>(this, MinionJerryImageName, MinionPointsValue, MinionSpeed);
+			newMinion->SetLocation(minionSpawnLocationX, MinionSpawnLocationY);
 			Add(newMinion);
 		}
 

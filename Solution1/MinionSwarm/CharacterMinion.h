@@ -87,10 +87,4 @@ private:
 
 	/// The position of the minion
 	CVector mMinP;
-
-	/// Max X Position
-	int mMax = 500;
-
-	/// Min X Position
-	int mMin = -500;
 };

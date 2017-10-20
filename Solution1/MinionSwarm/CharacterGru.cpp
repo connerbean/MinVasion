@@ -1,13 +1,18 @@
 #include "stdafx.h"
 #include <string>
 #include "CharacterGru.h"
-//#include "Character.h"
 
 using namespace Gdiplus;
 using namespace std;
 
 /// Item filename 
 const wstring GruImageName = L"images/gru.png";
+
+/// Max X or Y Position
+const int MaxVal = 500;
+
+/// Min X or Y Position
+const int MinVal = -500;
 
 /**
 * Constructor
@@ -97,28 +102,21 @@ void CCharacterGru::Constraints()
 	auto x = GetX();
 	auto y = GetY();
 
-	if ((x + width) > mMax)
+	if ((x + width) > MaxVal)
 	{
-		mMax -= width;
-		x = mMax;
+		x = MaxVal - width;
 	}
-	else if ((x - width) < mMin)
+	else if ((x - width) < MinVal)
 	{
-		mMin += width;
-		x = mMin;
+		x = MinVal + width;
 	}
-	if ((y + height) > mMax)
+	if ((y + height) > MaxVal)
 	{
-		mMax -= height;
-		y = mMax;
+		y = MaxVal - height;
 	}
-	else if ((y - height) <= mMin)
+	else if ((y - height) <= MinVal)
 	{
-		mMin += height;
-		y = mMin;
+		y = MinVal + height;
 	}
 	SetLocation(x, y);
-
-	mMax = 500;
-	mMin = -500;
 }

@@ -8,7 +8,7 @@
 #include "Clock.h"
 #include "Scoreboard.h"
 #include "RestartSide.h"
-#include<memory>
+#include <memory>
 
 
 /**

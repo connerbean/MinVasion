@@ -13,7 +13,7 @@
 #include "RestartSide.h"
 #include "Scoreboard.h"
 #include <algorithm>
-#include<memory>
+#include <memory>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -25,10 +25,16 @@ using namespace std;
 /// Frame duration in milliseconds
 const int FrameDuration = 10;
 
+/// New Game button X location
+const int NewGameButtonX = -650;
+
+/// New Game button Y location
+const int NewGameButtonY = -420;
+
 CChildView::CChildView() : mScoreboard(&mGame)
 {
 	mNewGameButton = make_shared<CRestartSide>();
-	mNewGameButton->SetLocation(-650, -420);
+	mNewGameButton->SetLocation(NewGameButtonX, NewGameButtonY);
 }
 
 CChildView::~CChildView()

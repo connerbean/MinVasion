@@ -70,8 +70,8 @@ void CCharacterVillain::Draw(Gdiplus::Graphics *graphics)
  */
 float CCharacterVillain::DrawAt(Gdiplus::Graphics *graphics, float centerX, float topY)
 {
-	float wid = mVillainImage->GetWidth();
-	float hit = mVillainImage->GetHeight();
+	float wid = (float)mVillainImage->GetWidth();
+	float hit = (float)mVillainImage->GetHeight();
 
 	graphics->DrawImage(mVillainImage.get(), centerX - (wid / 2), topY, wid, hit);
 

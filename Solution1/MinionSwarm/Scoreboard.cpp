@@ -50,7 +50,7 @@ void CScoreboard::Draw(Gdiplus::Graphics * graphics)
 	CVillainCollector villainCollector;
 	mGame->Accept(&villainCollector);
 
-	double yLocation = TopYLocation;
+	float yLocation = TopYLocation;
 
 	for (auto villain : villainCollector.Retrieve())
 	{

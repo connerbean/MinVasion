@@ -45,10 +45,5 @@ protected:
 
 	/// The game this character is contained in
 	CGame *mGame;
-private:
-	
-
-
-
 };
 

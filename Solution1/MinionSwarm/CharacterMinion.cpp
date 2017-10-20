@@ -15,6 +15,19 @@ using namespace std;
 /// Item filename 
 const wstring MinionImageName = L"images/dave.png";
 
+/// Max X or Y Position
+const int MaxVal = 500;
+
+/// Min X or Y Position
+const int MinVal = -500;
+
+const int CohesionMultiplier = 1;	///< Cohesion multiplier for minion movement vector
+const int SeperationMultiplier = 3;	///< Seperation multiplier for minion movement vector
+const int AlignmentMultiplier = 5;	///< Alignment multiplier for minion movement vector
+const int GruMultiplier = 10;		///< Gru multiplier for minion movement vector
+
+const int MinionRadius = 200; ///< The max pixels away another minion can be for consideration of alignment
+
 /** Constructor
 * \param game The Game this is a member of
 * \param name The file name that we load for the minion image
@@ -100,7 +113,7 @@ void CCharacterMinion::Update(double elapsed)
 		totalMinions++;
 
 		// Calculating alignment vector
-		if (distanceTo <= 200)
+		if (distanceTo <= MinionRadius)
 		{
 			alignment += (mGruP - minionVector).Normalize();
 		}
@@ -126,7 +139,11 @@ void CCharacterMinion::Update(double elapsed)
 	{
 		mV = sv;
 	}
-	else{ mV = cv * 1 + sv * 3 + av * 5 + GruV * 10; }
+	else
+	{
+		mV = cv * CohesionMultiplier + sv * SeperationMultiplier
+			+ av * AlignmentMultiplier + GruV * GruMultiplier;
+	}
 	
 	// Normalize and add correct speed to minion
 	mV.Normalize();
@@ -189,28 +206,21 @@ void CCharacterMinion::Constraints()
 	auto x = GetX();
 	auto y = GetY();
 
-	if ((x + width) > mMax)
+	if ((x + width) > MaxVal)
 	{
-		mMax -= width;
-		x = mMax;
+		x = MaxVal - width;
 	}
-	else if ((x - width) < mMin)
+	else if ((x - width) < MinVal)
 	{
-		mMin += width;
-		x = mMin;
+		x = MinVal + width;
 	}
-	if ((y + height) > mMax)
+	if ((y + height) > MaxVal)
 	{
-		mMax -= height;
-		y = mMax;
+		y = MaxVal - height;
 	}
-	else if ((y - height) <= mMin)
+	else if ((y - height) <= MinVal)
 	{
-		mMin += height;
-		y = mMin;
+		y = MinVal + height;
 	}
 	SetLocation(x, y);
-
-	mMax = 500;
-	mMin = -500;
 }

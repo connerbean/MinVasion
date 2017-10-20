@@ -100,7 +100,7 @@ private:
 	/**
 	* mScale is the average of scaleX and scaleY
 	*/
-	Gdiplus::REAL  mScale = 0;
+	Gdiplus::REAL mScale = 0;
 
 	/**
 	* Offset for X

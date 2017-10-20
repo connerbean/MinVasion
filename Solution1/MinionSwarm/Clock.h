@@ -9,9 +9,6 @@
 
 #pragma once
 
-
-
-
 /**
  * CClock Class
  */

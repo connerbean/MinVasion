@@ -63,10 +63,4 @@ private:
 	/// Grus location that the minions need
 	std::shared_ptr<CVector> mP;
 
-	/// Max X Position
-	int mMax = 500;
-
-	/// Min X Position
-	int mMin = -500;
-
 };

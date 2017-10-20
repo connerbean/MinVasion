@@ -8,7 +8,7 @@
 
 #pragma once
 #include "Game.h"
-#include<memory>
+#include <memory>
 
 /**
 * Class definition for the the area with all the game 
@@ -23,11 +23,11 @@ public:
 	~CPlayArea();
 
 	///Size of the grid
-	const static double GridSize;
+	const static REAL GridSize;
 	///Radius of the grid
-	const static double GridRadius;
+	const static REAL GridRadius;
 	///Grid Margins
-	const static double GridMargin;
+	const static REAL GridMargin;
 
 	/// Draws grid
 	///\param graphics the window
