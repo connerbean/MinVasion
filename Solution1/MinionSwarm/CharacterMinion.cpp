@@ -64,7 +64,11 @@ void CCharacterMinion::Update(double elapsed)
 	CGruVisitor gruVisitor;
 	mGame->Accept(&gruVisitor);
 
-	CVector mGruP = *gruVisitor.GetLocation();
+	CVector mGruP = *make_shared<CVector>(0, 0);
+	if (!mGame->IsGameOver())
+	{
+		mGruP = *gruVisitor.GetLocation();
+	}
 	CVector mMinP = *make_shared<CVector>(GetX(), GetY());
 	CVector GruV = mGruP - mMinP;
 
@@ -76,26 +80,28 @@ void CCharacterMinion::Update(double elapsed)
 	std::vector<CCharacterMinion*> mMinionList = minionVisitor.GetList();
 
 	CVector cohesion;
-	CVector alignment;
-	CVector seperation;
+	CVector alignment = *make_shared<CVector>(0, 0);
+	CVector seperation = *make_shared<CVector>(0, 0);
 	int i = 0;
 	double closest = 0;
-	for (auto minion : mMinionList)
+	for (auto minion : minionVisitor.GetList())
 	{
-		cohesion += MakeVector(minion);
+		CVector minionVector = minion->MakeVector();
+		double distanceTo = mMinP.Distance(minionVector);
+		cohesion += minionVector;
 		i++;
 
-		if (mMinP.Distance(MakeVector(minion)) <= 200)
+		if (distanceTo <= 200)
 		{
-			alignment += (mGruP - MakeVector(minion)).Normalize();
+			alignment += (mGruP - minionVector).Normalize();
 		}
 
-		if (mMinP.Distance(MakeVector(minion)) > 0)
+		if (distanceTo > 0)
 		{
-			if (closest == 0 || closest > mMinP.Distance(MakeVector(minion)))
+			if (closest == 0 || closest > distanceTo)
 			{
-				closest = mMinP.Distance(MakeVector(minion));
-				seperation = ((MakeVector(minion) - mMinP) * -1);
+				closest = distanceTo;
+				seperation = ((minionVector - mMinP) * -1);
 			}
 		}
 	}
@@ -108,7 +114,7 @@ void CCharacterMinion::Update(double elapsed)
 		GruV.SetY(0);
 	}
 
-	CVector mV = cv * 1 + av * 5 + GruV * 10;
+	CVector mV = cv * 1 + sv * 3 + av * 5 + GruV * 10;
 	mV.Normalize();
 	mV *= mSpeed;
 	CVector newP = mMinP + (mV * elapsed);

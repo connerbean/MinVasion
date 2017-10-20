@@ -211,7 +211,15 @@ a.Normalize();   // a is now (0.9904, 0.1380)
 CVector &CVector::Normalize()
 {
 	double l = Length();
-	mX /= l;
-	mY /= l;
+	if (l == 0)
+	{
+		mX = 0;
+		mY = 0;
+	}
+	else
+	{
+		mX /= l;
+		mY /= l;
+	}
 	return *this;
 }

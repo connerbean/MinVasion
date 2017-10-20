@@ -66,7 +66,7 @@ public:
 	*/
 	int GetScoreValue() { return mScoreValue; }
 
-	CVector MakeVector(CCharacterMinion* minion)
+	CVector MakeVector()
 	{
 		CVector mMinionVector = *make_shared<CVector>(GetX(), GetY());
 		return mMinionVector;
