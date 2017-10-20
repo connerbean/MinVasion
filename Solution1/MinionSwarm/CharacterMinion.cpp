@@ -97,6 +97,7 @@ void CCharacterMinion::Update(double elapsed)
 		double distanceTo = mMinP.Distance(minionVector);
 		
 		cohesion += minionVector;
+		totalMinions++;
 
 		// Calculating alignment vector
 		if (distanceTo <= 200)
