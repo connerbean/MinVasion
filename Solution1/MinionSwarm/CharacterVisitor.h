@@ -33,9 +33,5 @@ public:
 	/** Visit a CCharacterVillain object
 	 * \param villain Villain we are visiting */
 	virtual void VisitVillain(CCharacterVillain *villain) {}
-
-	/** Visit a CRestart object
-	* \param button Button we are visiting */
-	virtual void VisitButton(CRestartSide *button) {}
 };
 

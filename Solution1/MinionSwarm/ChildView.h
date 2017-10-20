@@ -6,6 +6,7 @@
 #pragma once
 #include "Game.h"
 #include "Clock.h"
+#include "Scoreboard.h"
 #include "RestartSide.h"
 #include<memory>
 
@@ -41,6 +42,7 @@ protected:
 private:
 	std::shared_ptr<CRestartSide> mNewGameButton; ///< New Game button
 	CGame mGame;			///< game we are currently playing
+	CScoreboard mScoreboard;	///< scoreboard for the current game
 	CClock mClock;			///< clock object for keeping time
 	bool mFirstDraw = true; ///< Boolean for first draw
 	long long mLastTime;    ///< Last time we read the timer

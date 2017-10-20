@@ -55,47 +55,27 @@ CCharacterVillain::~CCharacterVillain()
  * \param graphics The graphics context to draw on */
 void CCharacterVillain::Draw(Gdiplus::Graphics *graphics)
 {
-	REAL yLocation = 0, xLocation = 0, pointX = 0;
-
-	if (mPointsAccumulated < 10) pointX = 585;
-	else pointX = 575;
-
 	double wid = mVillainImage->GetWidth();
 	double hit = mVillainImage->GetHeight();
 	graphics->DrawImage(mVillainImage.get(),
 		float(GetX() - wid / 2), float(GetY() - hit / 2),
 		float(mVillainImage->GetWidth()), float(mVillainImage->GetHeight()));
+}
 
-	
-	// Code following this determines position for each 
-	//  of the villains to be drawn on the scoreboard
-	if (mType == Types::Arya)
-	{
-		yLocation = 0;
-		xLocation = 530;
-	}
-	else if (mType == Types::Juicer)
-	{
-		yLocation = -450;
-		xLocation = 555;
-	}
-	else if (mType == Types::Pokeball)
-	{
-		yLocation = -175;
-		xLocation = 575;
-	}
+/** Draw this villain at the specified location
+ * \param graphics The graphics context to draw on
+ * \param centerX The (centered) X location
+ * \param topY The (top of image) Y location
+ * \return the height of the drawed image
+ */
+float CCharacterVillain::DrawAt(Gdiplus::Graphics *graphics, float centerX, float topY)
+{
+	float wid = mVillainImage->GetWidth();
+	float hit = mVillainImage->GetHeight();
 
-	graphics->DrawImage(mVillainImage.get(),
-		(xLocation), yLocation,
-		float(mVillainImage->GetWidth()), float(mVillainImage->GetHeight()));
+	graphics->DrawImage(mVillainImage.get(), centerX - (wid / 2), topY, wid, hit);
 
-
-	// now draw points below each image
-	wstring points = to_wstring(mPointsAccumulated);
-	FontFamily fontFamily(L"Arial");
-	Gdiplus::Font font(&fontFamily, 26);
-	SolidBrush green(Color(0, 140, 0));
-	graphics->DrawString(points.c_str(), -1, &font, PointF(pointX, REAL(yLocation + hit + 10)), &green);
+	return hit;
 }
 
 /**

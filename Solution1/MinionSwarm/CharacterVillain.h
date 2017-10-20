@@ -31,12 +31,16 @@ public:
 
 	virtual void Draw(Gdiplus::Graphics * graphics) override;
 
+	float DrawAt(Gdiplus::Graphics * graphics, float centerX, float topY);
+
 	bool HitTest(int x, int y) override;
 
 	bool IsDraggable() override { return false; }
 
 	/// Adds points to this villain
 	void AddPoints(int baseScore) { mPointsAccumulated += baseScore * mMultiplier; }
+
+	int GetPoints() { return mPointsAccumulated; }
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */

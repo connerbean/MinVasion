@@ -100,10 +100,6 @@ void CGame::Reset()
 	mItems.clear();
 
 	// Villains on bottom...
-	auto villainArya = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Arya);
-	villainArya->SetLocation(0, 220);
-	Add(villainArya);
-
 	auto villainJuicer = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Juicer);
 	villainJuicer->SetLocation(-250, -250);
 	Add(villainJuicer);
@@ -111,6 +107,10 @@ void CGame::Reset()
 	auto villainPokeball = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Pokeball);
 	villainPokeball->SetLocation(250, -250);
 	Add(villainPokeball);
+
+	auto villainArya = make_shared<CCharacterVillain>(this, CCharacterVillain::Types::Arya);
+	villainArya->SetLocation(0, 220);
+	Add(villainArya);
 
 	// ... then Gru...
 	mGru = make_shared<CCharacterGru>(this);
@@ -170,45 +170,45 @@ const int mutantValue = 5; ///< Mutant minon value
 */
 void CGame::Update(double elapsed)
 {
-		mUpdateTime += elapsed;
+	mUpdateTime += elapsed;
 
-		// Following is minion spawning code
-		if (mUpdateTime >= 1.0)
+	// Following is minion spawning code
+	if (mUpdateTime >= 1.0)
+	{
+		int MinionPicker = (rand() % 101) - 1;
+		int spawnLocationX = (rand() % 950) - 475;
+
+		if (MinionPicker <= 10)		// 10% of time give a mutant
 		{
-			int MinionPicker = (rand() % 101) - 1;
-			int spawnLocationX = (rand() % 950) - 475;
-
-			if (MinionPicker <= 10)		// 10% of time give a mutant
-			{
-				auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, mutantValue, mutantSpeed);
-				newMinion->SetLocation(spawnLocationX, spawnLocationY);
-				Add(newMinion);
-			}
-
-			else if (MinionPicker <= 40)		// 30% of time give a mutant
-			{
-				auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, minionValue, minionSpeed);
-				newMinion->SetLocation(spawnLocationX, spawnLocationY);
-				Add(newMinion);
-			}
-
-			else if (MinionPicker <= 70) // give 30% chance for Stuart
-			{
-				auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, minionValue, minionSpeed);
-				newMinion->SetLocation(spawnLocationX, spawnLocationY);
-				Add(newMinion);
-			}
-
-			else // and last 30% chance for Jerry
-			{
-				auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, minionValue, minionSpeed);
-				newMinion->SetLocation(spawnLocationX, spawnLocationY);
-				Add(newMinion);
-			}
-
-
-			mUpdateTime = (rand() % 1000) / 2000.0;
+			auto newMinion = make_shared<CCharacterMinion>(this, MutantImageName, mutantValue, mutantSpeed);
+			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			Add(newMinion);
 		}
+
+		else if (MinionPicker <= 40)		// 30% of time give a mutant
+		{
+			auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, minionValue, minionSpeed);
+			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			Add(newMinion);
+		}
+
+		else if (MinionPicker <= 70) // give 30% chance for Stuart
+		{
+			auto newMinion = make_shared<CCharacterMinion>(this, StuartImageName, minionValue, minionSpeed);
+			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			Add(newMinion);
+		}
+
+		else // and last 30% chance for Jerry
+		{
+			auto newMinion = make_shared<CCharacterMinion>(this, JerryImageName, minionValue, minionSpeed);
+			newMinion->SetLocation(spawnLocationX, spawnLocationY);
+			Add(newMinion);
+		}
+
+
+		mUpdateTime = (rand() % 1000) / 2000.0;
+	}
 
 
 	// Then update rest of items in game
@@ -293,7 +293,5 @@ void CGame::OnDraw(Gdiplus::Graphics * graphics, int width, int height)
 	{
 		item->Draw(graphics);
 	}
-	
-
 
 }

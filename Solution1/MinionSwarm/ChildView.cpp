@@ -11,6 +11,7 @@
 #include "CharacterMinion.h"
 #include "CharacterVillain.h"
 #include "RestartSide.h"
+#include "Scoreboard.h"
 #include <algorithm>
 #include<memory>
 
@@ -24,7 +25,7 @@ using namespace std;
 /// Frame duration in milliseconds
 const int FrameDuration = 10;
 
-CChildView::CChildView()
+CChildView::CChildView() : mScoreboard(&mGame)
 {
 	mNewGameButton = make_shared<CRestartSide>();
 	mNewGameButton->SetLocation(-650, -420);
@@ -120,6 +121,7 @@ void CChildView::OnPaint()
 		graphics.DrawString(deadGruMessage.c_str(), -1, &font, PointF(0, 0), &format, &yellow);
 	}
 	mClock.Draw(&graphics);
+	mScoreboard.Draw(&graphics);
 }
 
 
@@ -155,11 +157,6 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	mGrabbedItem = mGame.HitTest(point.x, point.y);
-	if (mGrabbedItem != nullptr)
-	{
-
-	}
-	// TODO: remove dependency of CGame for x and y conversion
 	if (mNewGameButton->HitTest(mGame.ConvertX(point.x), mGame.ConvertY(point.y)))
 	{
 		mGame.Reset();
