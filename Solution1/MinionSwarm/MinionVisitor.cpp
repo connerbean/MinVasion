@@ -15,7 +15,6 @@
  */
 CMinionVisitor::CMinionVisitor(CCharacterMinion *requestor)
 {
-	mRequestor = requestor;
 }
 
 /**
@@ -23,10 +22,4 @@ CMinionVisitor::CMinionVisitor(CCharacterMinion *requestor)
  */
 CMinionVisitor::~CMinionVisitor()
 {
-}
-
-
-void CMinionVisitor::VisitMinion(CCharacterMinion *minion)
-{
-
 }

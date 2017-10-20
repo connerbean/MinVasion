@@ -65,6 +65,11 @@ public:
 	*/
 	int GetScoreValue() { return mScoreValue; }
 
+	CVector MakeVector(CCharacterMinion* minion)
+	{
+		CVector mMinionVector = *make_shared<CVector>(GetX(), GetY());
+		return mMinionVector;
+	}
 private:
 	/// Poiner to item images
 	std::unique_ptr<Gdiplus::Bitmap> mMinionImage;
@@ -72,9 +77,6 @@ private:
 	int mScoreValue; ///< Individual score value for the minions
 
 	int mSpeed; ///< Individual speed value for the minions
-
-	///location
-	std::shared_ptr<CVector> mGruLocation;
 
 	/// Speed that gets added to the minions location
 	int mRunX = 0;

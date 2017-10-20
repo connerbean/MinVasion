@@ -8,7 +8,7 @@
 
 #pragma once
 #include "CharacterVisitor.h"
-
+#include <vector>
 
 /**
  * Minion visitor
@@ -23,8 +23,14 @@ public:
 
 	/// Visitor Function
 	/// \param minion IS the Minion type
-	void VisitMinion(CCharacterMinion *minion);
+	void VisitMinion(CCharacterMinion *minion)
+	{
+		mMinions.push_back(minion);
+	}
+
+	auto GetList() { return mMinions; }
 
 private:
-	CCharacterMinion *mRequestor;
+
+	std::vector<CCharacterMinion*> mMinions;
 };

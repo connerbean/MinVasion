@@ -58,35 +58,61 @@ void CCharacterMinion::Update(double elapsed)
 	//SetSpeed(5);
 	CElement::Update(elapsed);
 
-	// If the game is not over, flock towars Gru
-	if (!mGame->IsGameOver())
+	CMinionVisitor minionVisitor(this);
+	mGame->Accept(&minionVisitor);
+
+	CGruVisitor gruVisitor;
+	mGame->Accept(&gruVisitor);
+
+	CVector mGruP = *gruVisitor.GetLocation();
+	CVector mMinP = *make_shared<CVector>(GetX(), GetY());
+	CVector GruV = mGruP - mMinP;
+
+	if (GruV.Length() > 0)
 	{
-		CMinionVisitor minionVisitor(this);
-		mGame->Accept(&minionVisitor);
+		GruV.Normalize();
+	}
 
-		CGruVisitor gruVisitor;
-		mGame->Accept(&gruVisitor);
-		CVector mGruP = *gruVisitor.GetLocation();
-		CVector mMinP = *make_shared<CVector>(GetX(), GetY());
-		CVector GruV = mGruP - mMinP;
+	std::vector<CCharacterMinion*> mMinionList = minionVisitor.GetList();
 
-		double offset;
-		if (GetX() < 0) offset = -0.5f;
-		else offset = 0.5f;
+	CVector cohesion;
+	CVector alignment;
+	CVector seperation;
+	int i = 0;
+	double closest = 0;
+	for (auto minion : mMinionList)
+	{
+		cohesion += MakeVector(minion);
+		i++;
 
-		if (GruV.Length() > 0)
+		if (mMinP.Distance(MakeVector(minion)) <= 200)
 		{
-			GruV.Normalize();
+			alignment += (mGruP - MakeVector(minion)).Normalize();
 		}
-		GruV *= mSpeed;
-		CVector newP = mMinP + (GruV * elapsed);
-		SetLocation(newP.X() + offset, newP.Y());
+
+		if (mMinP.Distance(MakeVector(minion)) > 0)
+		{
+			if (closest == 0 || closest > mMinP.Distance(MakeVector(minion)))
+			{
+				closest = mMinP.Distance(MakeVector(minion));
+				seperation = ((MakeVector(minion) - mMinP) * -1);
+			}
+		}
 	}
-	// Otherwise, stay still (for now)
-	else
+	CVector cv = ((cohesion / i) - mGruP).Normalize();
+	CVector av = alignment.Normalize();
+	CVector sv = seperation.Normalize();
+	if (mGame->IsGameOver())
 	{
-		SetLocation(GetX(), GetY());
+		GruV.SetX(0);
+		GruV.SetY(0);
 	}
+
+	CVector mV = cv * 1 + av * 5 + GruV * 10;
+	mV.Normalize();
+	mV *= mSpeed;
+	CVector newP = mMinP + (mV * elapsed);
+	SetLocation(newP.X(), newP.Y());
 }
 
 /**
