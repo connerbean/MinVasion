@@ -52,6 +52,10 @@ public:
 	*/
 	void CGame::Update(double elapsed);
 
+	/**
+	* Function that sets the game to 
+	* it's original position
+	*/
 	void CGame::Reset();
 	/**
 	* Add character to the game
@@ -69,7 +73,10 @@ public:
 	*/
 	std::shared_ptr<CCharacter> CGame::HitTest(int x, int y);
 
-
+	/**
+	* Accept for Gru which is needed for his visitor
+	* \param visitor the visitor that gets accepted
+	*/
 	void CGame::Accept(CCharacterVisitor *visitor);
 
 	/**
@@ -84,7 +91,9 @@ public:
 	/// \returns mItems size
 	int GetItemsSize() { return mItems.size(); }
 
-	/// Gets whether Gru died
+	/** Gets whether Gru died
+	*	\returns the value of (is gru alive or not)
+	*/
 	bool IsGameOver() { return mGru == nullptr; }
 
 private:

@@ -45,6 +45,8 @@ var NAVTREEINDEX0 =
 "_minion_collector_8cpp.html":[1,0,0,18],
 "_minion_collector_8h.html":[1,0,0,19],
 "_minion_collector_8h_source.html":[1,0,0,19],
+"_minion_swarm_8h.html":[1,0,0,20],
+"_minion_swarm_8h.html#ac03aa8856a409faf0414ef698edc046e":[1,0,0,20,1],
 "_minion_swarm_8h_source.html":[1,0,0,20],
 "_minion_visitor_8cpp.html":[1,0,0,21],
 "_minion_visitor_8h.html":[1,0,0,22],
@@ -52,6 +54,7 @@ var NAVTREEINDEX0 =
 "_play_area_8cpp.html":[1,0,0,23],
 "_play_area_8h.html":[1,0,0,24],
 "_play_area_8h_source.html":[1,0,0,24],
+"_restart_side_8h.html":[1,0,0,26],
 "_restart_side_8h_source.html":[1,0,0,26],
 "_vector_8cpp.html":[1,0,0,29],
 "_vector_8cpp.html#a11ab1f912f653548f09b1eccb0ab2bd6":[1,0,0,29,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "class_c_restart_side.html":[0,0,15],
 "class_c_restart_side.html#a49ac8f53273c6a937db6723f38789d34":[0,0,15,6],
 "class_c_restart_side.html#a554630ffe158a5581501df74037a8653":[0,0,15,0],
-"class_c_restart_side.html#a6d73d8f515b1d21d711da83e5998723b":[0,0,15,4],
-"class_c_restart_side.html#aa545e55b42e4c7dc0149553ed8d38a69":[0,0,15,5],
-"class_c_restart_side.html#aadfb6363af0d4ba46fd00b162f345312":[0,0,15,3],
-"class_c_restart_side.html#ae057f94bdb3e1e8cc65749218c60bdf7":[0,0,15,1]
+"class_c_restart_side.html#a6d73d8f515b1d21d711da83e5998723b":[0,0,15,4]
 };

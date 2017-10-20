@@ -21,10 +21,11 @@ class CCharacterMinion : public CCharacter
 {
 public:
 
-	/// Constructor for minion
-	/// \param game The game the minion is in
-	/// \param name The filename for the minion image
-	/// \param scoreValue the value attached to minion
+	/** Constructor for minion
+	* \param game The game the minion is in
+	* \param name The filename for the minion image
+	* \param scoreValue the value attached to minion
+	*/
     CCharacterMinion(CGame *game, const wstring name, int scoreValue, int speed);
 
     /// Default constructor (disabled)
@@ -54,14 +55,18 @@ public:
 	virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitMinion(this); }
 
 	/**
+	* Update function that 
+	* \param elapsed the time that passes
 	**/
 	void Update(double elapsed);
 
-	/// Gets the score value of this minion
+	/** Gets the score value of this minion
+	* \returns the score for each villian
+	*/
 	int GetScoreValue() { return mScoreValue; }
 
 private:
-	// Poiner to item images
+	/// Poiner to item images
 	std::unique_ptr<Gdiplus::Bitmap> mMinionImage;
 
 	int mScoreValue; ///< Individual score value for the minions

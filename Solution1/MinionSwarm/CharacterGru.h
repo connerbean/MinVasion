@@ -37,13 +37,19 @@ public:
 	/**  Constrain the Items to MAX/MIN */
 	virtual void Constraints();
 
-	/// Overrides the IsDraggable function
+	/** Overrides the IsDraggable function
+	* \returns true because Gru is the 
+	* only draggable object
+	*/
 	bool IsDraggable() override { return true; }
 
     /** Accept a visitor
     * \param visitor The visitor we accept */
     virtual void Accept(CCharacterVisitor *visitor) override { visitor->VisitGru(this); }
 
+	/** Gets Gru's location for the minions
+	* \returns mP Gru's location
+	*/ 
 	auto GetmP()
 	{ 
 		mP = make_shared<CVector>(GetX(), GetY());
@@ -51,13 +57,15 @@ public:
 	}
 
 private:
-    // Poiner to item images
+    /// Poiner to item images
     std::unique_ptr<Gdiplus::Bitmap> mGruImage;
 
+	/// Grus location that the minions need
 	std::shared_ptr<CVector> mP;
 
 	/// Max X Position
 	int mMax = 500;
+
 	/// Min X Position
 	int mMin = -500;
 

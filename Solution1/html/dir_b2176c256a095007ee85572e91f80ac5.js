@@ -39,7 +39,7 @@ var dir_b2176c256a095007ee85572e91f80ac5 =
     [ "MinionCollector.h", "_minion_collector_8h.html", [
       [ "CMinionCollector", "class_c_minion_collector.html", "class_c_minion_collector" ]
     ] ],
-    [ "MinionSwarm.h", "_minion_swarm_8h_source.html", null ],
+    [ "MinionSwarm.h", "_minion_swarm_8h.html", "_minion_swarm_8h" ],
     [ "MinionVisitor.cpp", "_minion_visitor_8cpp.html", null ],
     [ "MinionVisitor.h", "_minion_visitor_8h.html", [
       [ "CMinionVisitor", "class_c_minion_visitor.html", "class_c_minion_visitor" ]
@@ -49,7 +49,9 @@ var dir_b2176c256a095007ee85572e91f80ac5 =
       [ "CPlayArea", "class_c_play_area.html", "class_c_play_area" ]
     ] ],
     [ "resource.h", "resource_8h_source.html", null ],
-    [ "RestartSide.h", "_restart_side_8h_source.html", null ],
+    [ "RestartSide.h", "_restart_side_8h.html", [
+      [ "CRestartSide", "class_c_restart_side.html", "class_c_restart_side" ]
+    ] ],
     [ "stdafx.h", "stdafx_8h_source.html", null ],
     [ "targetver.h", "targetver_8h_source.html", null ],
     [ "Vector.cpp", "_vector_8cpp.html", "_vector_8cpp" ],
