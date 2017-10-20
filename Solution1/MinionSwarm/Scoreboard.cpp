@@ -19,6 +19,7 @@ const float TextYHeight = 50;
 
 /**
  * Constructor
+ * \param game The Game this is a member of
  */
 CScoreboard::CScoreboard(CGame *game)
 {

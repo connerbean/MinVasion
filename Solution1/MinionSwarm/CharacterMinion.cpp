@@ -55,13 +55,13 @@ void CCharacterMinion::Draw(Gdiplus::Graphics *graphics)
 
 /**
 * Updates minion positon
-* \takes in elapsed time and calculates the new
-* \minion position using the flocking formulas
-* \and sets the minions new position
+* takes in elapsed time and calculates the new
+* minion position using the flocking formulas
+* and sets the minions new position
+* \param elapsed the time that has passed since this was last called
 */
 void CCharacterMinion::Update(double elapsed)
 {
-	//SetSpeed(5);
 	CElement::Update(elapsed);
 
 	CMinionCollector minionCollector;

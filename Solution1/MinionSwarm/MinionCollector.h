@@ -28,6 +28,9 @@ public:
 	///\param minion The visiting minion
 	void VisitMinion(CCharacterMinion *minion);
 
+	/** Returns a list of all the minions that have been visited
+	 * \return a list of minions that were visited
+	 */
 	std::vector<CCharacterMinion*> Retrieve() { return mMinions; }
 
 private:

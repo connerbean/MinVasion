@@ -135,7 +135,10 @@ public:
 #endif
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+	/** DDX/DDV support
+	 * \param pDX data exchange
+	 */
+	virtual void DoDataExchange(CDataExchange* pDX);
 
 // Implementation
 protected:

@@ -31,8 +31,8 @@ public:
 
 	/// Draws grid
 	///\param graphics the window
-	///\width width of the window
-	///\height height of the window
+	///\param width of the window
+	///\param height of the window
 	void DrawGrid(Graphics * graphics, int width, int height);
 };
 

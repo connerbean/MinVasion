@@ -49,4 +49,5 @@ private:
 	ULONG_PTR gdiplusToken;
 };
 
+/// The one and only CCharacterMinionSwarmApp object
 extern CCharacterMinionSwarmApp theApp;

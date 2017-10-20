@@ -19,7 +19,7 @@ const wstring JuicerImage = L"juicer.png";
 const wstring PokeballImage = L"pokeball.png";
 
 /** Constructor.
- * \param city The game this is a member of
+ * \param game The game this is a member of
  * \param villainType The type of villain this object will be
  */
 CCharacterVillain::CCharacterVillain(CGame * game, Types villainType) : CCharacter(game)

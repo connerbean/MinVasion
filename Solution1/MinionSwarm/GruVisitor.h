@@ -23,16 +23,19 @@ public:
 	/// Destructor
 	~CGruVisitor();
 
-	auto GetLocation() { return Location; };
+	/** Gets a vector containing Gru's location
+	 * \return a pointer to the vector of Gru's location
+	 */
+	auto GetLocation() { return mLocation; };
 
 	/// Vistor Function
-	///\param gru Is the Gru Type
+	/// \param gru Is the Gru Type
 	void VisitGru(CCharacterGru *gru)
 	{
-		Location = gru->GetmP();
+		mLocation = gru->GetmP();
 	}
 
 private:
-	std::shared_ptr<CVector> Location;
+	std::shared_ptr<CVector> mLocation; ///< A pointer to the vector containing Gru's location
 };
 

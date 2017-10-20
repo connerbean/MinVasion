@@ -22,6 +22,7 @@ public:
 	* \param game The game the minion is in
 	* \param name The filename for the minion image
 	* \param scoreValue the value attached to minion
+	* \param speed the speed of the minion
 	*/
     CCharacterMinion(CGame *game, const wstring name, int scoreValue, int speed);
 

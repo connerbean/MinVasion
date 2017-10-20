@@ -32,15 +32,15 @@ public:
 
 	void SetImage(const std::wstring &file);
 
-	/**  Get the file name for this tile image
+	/**  Get the file name for this element's image
 	* \returns Filename or blank if none */
 	std::wstring GetFile() { return mFile; }
 
-	/**  The X location of the center of the tile
+	/**  The X location of the center of the element
 	* \returns X location in pixels */
 	double GetX() const { return mX; }
 
-	/**  The Y location of the center of the tile
+	/**  The Y location of the center of the element
 	* \returns Y location in pixels */
 	double GetY() const { return mY; }
 
@@ -50,8 +50,8 @@ public:
 	void SetLocation(double x, double y) { mX = x; mY = y; }
 
 	/**  Test this item to see if it has been clicked on
-	* \param x X location on the aquarium to test
-	* \param y Y location on the aquarium to test
+	* \param x X location on the game board to test
+	* \param y Y location on the game board to test
 	* \return true if clicked on */
 	virtual bool HitTest(int x, int y) = 0;
 

@@ -47,7 +47,7 @@ private:
 	bool mFirstDraw = true; ///< Boolean for first draw
 	long long mLastTime;    ///< Last time we read the timer
 	double mTimeFreq;       ///< Rate the timer updates						
-	std::shared_ptr<CCharacter> mGrabbedItem;	/// Any item we are currently dragging
+	std::shared_ptr<CCharacter> mGrabbedItem;	///< Any item we are currently dragging
 public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);	///< Event handler for update on timer function
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);		///< Event handler for erasing flicker

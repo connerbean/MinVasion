@@ -23,10 +23,8 @@ public:
 	/// Destructor
 	~CClock();
 
-	/// Update function \param elapsed is time elapsed \param graphics Used for drawing
 	void Update(double elapsed);
 
-	/// Draws the clock on the screen
 	void Draw(Gdiplus::Graphics *graphics);
 
 	/// Getter for mTimePassed

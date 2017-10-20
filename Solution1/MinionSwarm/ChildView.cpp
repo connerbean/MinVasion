@@ -150,10 +150,10 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 	return FALSE;
 }
 
-/** Called when there is a left mouse button press
-* \param nFlags Flags associated with the mouse button press
-* \param point Where the button was pressed
-*/
+/** Called when there is a left mouse button press (down)
+ * \param nFlags Flags associated with the mouse button press
+ * \param point Where the button was pressed
+ */
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	mGrabbedItem = mGame.HitTest(point.x, point.y);
@@ -164,13 +164,19 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 }
 
-
+/** Called when there is a left mouse button press (up)
+* \param nFlags Flags associated with the mouse button press
+* \param point Where the button was pressed
+*/
 void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	OnMouseMove(nFlags, point);
 }
 
-
+/** Called when the mouse is moved
+* \param nFlags Flags associated with the mouse movement
+* \param point Where the mouse is pointing
+*/
 void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// See if an item is currently being moved by the mouse
@@ -188,9 +194,7 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 			if (mGrabbedItem->IsDraggable())
 			{
 				mGrabbedItem->SetLocation(x, y);
-
 			}
-
 		}
 		else
 		{

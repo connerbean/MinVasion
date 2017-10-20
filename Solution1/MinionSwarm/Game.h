@@ -119,7 +119,7 @@ private:
 	std::shared_ptr<CCharacterGru> mGru; ///< pointer to Gru
 
 public:
-	/** Iterator that iterates over the city tiles */
+	/** Iterator that iterates over the game characters */
 	class Iter
 	{
 	public:

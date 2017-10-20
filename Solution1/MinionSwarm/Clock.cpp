@@ -30,17 +30,14 @@ CClock::~CClock()
 /**
  * Update used to increment overall time
  *
- * Should be called after MinionSwarm.Update in 
- *		ChildView
- *
- * \param elapsed 
+ * \param elapsed time passed since this was last called
  */
 void CClock::Update(double elapsed)
 {
 	mTimePassed += elapsed;
 }
 
-/** Draw this item
+/** Draws the clock on the screen
  * \param graphics The graphics context to draw on */
 void CClock::Draw(Gdiplus::Graphics * graphics)
 {

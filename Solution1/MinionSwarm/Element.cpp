@@ -90,7 +90,7 @@ bool CElement::HitTest(int x, int y)
 }
 
 /**
-*  Draw our tile
+*  Draw our element
 * \param graphics The graphics context to draw on
 */
 void CElement::Draw(Gdiplus::Graphics *graphics)
