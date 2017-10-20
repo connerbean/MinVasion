@@ -108,13 +108,13 @@ void CCharacterMinion::Update(double elapsed)
 	CVector cv = ((cohesion / i) - mMinP).Normalize();
 	CVector av = alignment.Normalize();
 	CVector sv = seperation.Normalize();
+	CVector mV;
 	if (mGame->IsGameOver())
 	{
-		GruV.SetX(0);
-		GruV.SetY(0);
+		mV = sv;
 	}
-
-	CVector mV = cv * 1 + sv * 3 + av * 5 + GruV * 10;
+	else{ mV = cv * 1 + sv * 3 + av * 5 + GruV * 10; }
+	
 	mV.Normalize();
 	mV *= mSpeed;
 	CVector newP = mMinP + (mV * elapsed);

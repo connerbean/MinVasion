@@ -169,9 +169,6 @@ const int mutantValue = 5; ///< Mutant minon value
 */
 void CGame::Update(double elapsed)
 {
-	// Only spawn new minions if Gru is alive
-	if (!IsGameOver())
-	{
 		mUpdateTime += elapsed;
 
 		// Following is minion spawning code
@@ -211,7 +208,6 @@ void CGame::Update(double elapsed)
 
 			mUpdateTime = 0 + (rand() % 3) / 4;
 		}
-	}
 
 
 	// Then update rest of items in game
