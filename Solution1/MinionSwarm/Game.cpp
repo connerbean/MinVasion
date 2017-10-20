@@ -113,7 +113,7 @@ void CGame::Reset()
 
 	// ... then Gru...
 	mGru = make_shared<CCharacterGru>(this);
-	mGru->SetLocation(0, 400);
+	mGru->SetLocation(0, 0);
 	Add(mGru);
 
 	// ... then any minions

@@ -1,0 +1,28 @@
+var class_c_game =
+[
+    [ "Iter", "class_c_game_1_1_iter.html", "class_c_game_1_1_iter" ],
+    [ "CGame", "class_c_game.html#aa0b28c798a6198998d018047e96f188e", null ],
+    [ "~CGame", "class_c_game.html#a4db10c09035dc16b32d6c1ef4cca2143", null ],
+    [ "Accept", "class_c_game.html#a4c2fa22e519550fd472029d486bc27df", null ],
+    [ "Add", "class_c_game.html#a463990658c1eae832e5065620878b519", null ],
+    [ "begin", "class_c_game.html#a2742cf55b7299e9420da092c7b84c9da", null ],
+    [ "ConvertX", "class_c_game.html#ad2658ddbd09b503751fff1f02251e162", null ],
+    [ "ConvertY", "class_c_game.html#a856ba1d7f9d98ec1e4fd6141272c8aa1", null ],
+    [ "Delete", "class_c_game.html#ac649353ba9192d4ba9fa8712ebf52710", null ],
+    [ "Delete", "class_c_game.html#a3d0e7be725639d3885d9421e83301974", null ],
+    [ "end", "class_c_game.html#aae942c9af24ea5d99c9c506f625f8f3c", null ],
+    [ "GetItemsSize", "class_c_game.html#a28d7fc88d862a10e215d7888011679c8", null ],
+    [ "HitTest", "class_c_game.html#a6f8638a2d3c01be8484b83c967c9bbb0", null ],
+    [ "IsGameOver", "class_c_game.html#a8eefd936ff6c2b0e3b696e8f9425c6c8", null ],
+    [ "OnDraw", "class_c_game.html#a4b61df495b1cf48ea9c29d8f6efb2c03", null ],
+    [ "Reset", "class_c_game.html#a2542b1ecc06d6df649f858175720fbb7", null ],
+    [ "Update", "class_c_game.html#a8a6aab38aef8cf9ce4abe3259601325c", null ],
+    [ "Height", "class_c_game.html#a1afaa6458f9db494a016bfea8f922f50", null ],
+    [ "mGru", "class_c_game.html#ab5066ece36226a5bd6b881faa6c4ba7d", null ],
+    [ "mItems", "class_c_game.html#aa87eca463e2dd6d1a5329a7ba3c0f17a", null ],
+    [ "mScale", "class_c_game.html#a8d3ccb35c167191f6c06c9c85b7f62ec", null ],
+    [ "mUpdateTime", "class_c_game.html#a03137145ec500089f0eb3966cefe0d70", null ],
+    [ "mXOffset", "class_c_game.html#a9e3c1cdaf31e74a8b5baf5494d4c5dac", null ],
+    [ "mYOffset", "class_c_game.html#a0c49a1b07441b1feeff7c5fc2f98ee6e", null ],
+    [ "Width", "class_c_game.html#a8b9435e8a241bd6f3302293bb33a198f", null ]
+];

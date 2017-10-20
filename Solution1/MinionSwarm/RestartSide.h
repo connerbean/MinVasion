@@ -17,11 +17,13 @@ public:
 
 	// Detects if two images overlap
 	bool HitTest(int x, int y);
-
+	/** returns true because the item we are clicking
+	* \returns true because this is a button
+	*/
 	bool IsButton() { return true; }
 
 
 private:
-	// Pointer to buttom item
+	/// Pointer to buttom item image
 	std::unique_ptr<Gdiplus::Bitmap> mRestartImage;
 };

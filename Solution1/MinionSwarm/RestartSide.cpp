@@ -20,8 +20,7 @@ void CRestartSide::Draw(Gdiplus::Graphics *graphics)
 
 
 /**
-* Constructor
-* \param game Game this item is a member of
+* Constructor for the restart side class
 */
 CRestartSide::CRestartSide()
 {

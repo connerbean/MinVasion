@@ -22,17 +22,27 @@ public:
 
 // Overrides
 public:
+	/// Initializes the intance for the game
+	/// \returns a bool
 	virtual BOOL InitInstance();
+
+	/// Exits the instance for the game
+	/// \returns an int
 	virtual int ExitInstance();
 
 // Implementation
 
 public:
+	/// the documentation for the Minion swarm game
 	afx_msg void OnAppAbout();
 	DECLARE_MESSAGE_MAP()
 
 private:
+
+	/// essential gdiplus component
 	Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+
+	/// essential token that is needed in order to get the graphics working
 	ULONG_PTR gdiplusToken;
 };
 

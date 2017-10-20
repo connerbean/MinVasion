@@ -24,10 +24,14 @@ public:
 	/// Destructor
 	~CVillainCollector();
 
-	/// Visitor Function
-	/// \param villian The visiting villain
+	
+	/// \param villain The visiting villain
 	void VisitVillain(CCharacterVillain *villain);
 
+	/**
+	* Retrieve function 
+	* \returns the information from the villians vector
+	*/
 	std::vector<CCharacterVillain*> Retrieve() { return mVillains; }
 
 private:
