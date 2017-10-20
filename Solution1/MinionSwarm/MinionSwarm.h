@@ -1,6 +1,10 @@
-
-// MinionSwarm.h : main header file for the MinionSwarm application
-//
+/**
+* \file MinionSwarm.h
+*
+* \author Matthew Rhodes
+*
+*  Class that the entire solution is derived from
+*/
 #pragma once
 
 #ifndef __AFXWIN_H__
@@ -10,10 +14,9 @@
 #include "resource.h"       // main symbols
 
 
-// CCharacterMinionSwarmApp:
-// See MinionSwarm.cpp for the implementation of this class
-//
-
+/** CCharacterMinionSwarmApp:
+* See MinionSwarm.cpp for the implementation of this class
+*/
 class CCharacterMinionSwarmApp : public CWinApp
 {
 public:

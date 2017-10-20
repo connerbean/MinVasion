@@ -9,8 +9,10 @@
 #include "RestartSide.h"
 #include<memory>
 
-// CChildView window
 
+/**
+* Class definition for the Childview
+*/
 class CChildView : public CWnd
 {
 // Construction

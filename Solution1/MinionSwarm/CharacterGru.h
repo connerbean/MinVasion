@@ -1,8 +1,19 @@
+/**
+* \file Character.h
+*
+* \author Matthew Rhodes
+*
+*  Class that makes Gru and all Gru related aspects
+*/
 #pragma once
 #include "Character.h"
 #include "Vector.h"
 #include <memory>
 
+/**
+* Class definition for Gru he is what the 
+* minions are flocking to
+*/
 class CCharacterGru : public CCharacter
 {
 public:

@@ -19,6 +19,10 @@ class CCharacterMinion;
 class CCharacterVillain;
 class CCharacterVisitor;
 
+/**
+* Class definition for the game that holds 
+* all the pieces and pictures
+*/
 class CGame
 {
 	/// Game area width in virtual pixels

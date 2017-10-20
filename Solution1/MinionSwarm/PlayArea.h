@@ -10,7 +10,10 @@
 #include "Game.h"
 #include<memory>
 
-
+/**
+* Class definition for the the area with all the game 
+* pieces
+*/
 class CPlayArea : public CGame
 {
 public:

@@ -121,8 +121,9 @@ int CCharacterMinionSwarmApp::ExitInstance()
 // CCharacterMinionSwarmApp message handlers
 
 
-// CAboutDlg dialog used for App About
-
+/** 
+*	CAboutDlg dialog used for App About
+*/
 class CAboutDlg : public CDialogEx
 {
 public:

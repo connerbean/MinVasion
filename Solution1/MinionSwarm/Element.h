@@ -1,7 +1,7 @@
 /**
 * \file Element.h
 *
-* \author Collin Dillinger
+* \author Matthew Rhodes
 *
 * \ Base class for any element visible in the application
 *
@@ -12,7 +12,10 @@
 #include <memory>
 #include "Game.h"
 
-
+/**
+* The single class that all of the objects 
+* on the board are dervided from
+*/
 class CElement
 {
 public:

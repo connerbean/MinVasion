@@ -1,7 +1,18 @@
+/**
+* \file RestartSide.h
+*
+* \author Matthew Rhodes
+*
+*  That holds the Reset button
+*/
 #pragma once
 #include "Character.h"
 #include "Element.h"
 
+/**
+* Class definition for the Restart button that is 
+* extended from the element class
+*/
 class CRestartSide : public CElement
 {
 public:

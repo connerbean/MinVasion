@@ -13,7 +13,10 @@
 #include "CharacterVisitor.h"
 #include "Element.h"
 
-
+/**
+* Class that represents all the pieces inside
+* of the playing area
+*/
 class CCharacter : public CElement
 {
 public:
