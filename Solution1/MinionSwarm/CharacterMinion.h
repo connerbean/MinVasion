@@ -12,6 +12,7 @@
 #include "Character.h"
 #include "GruVisitor.h"
 #include "MinionVisitor.h"
+#include "Vector.h"
 
 
 /**
@@ -84,6 +85,8 @@ private:
 	/// Speed that the minion runs in the Y direction
 	int mRunY = 0;
 
+	/// The position of the minion
+	CVector mMinP;
 	/// Max X Position
 	int mMax = 500;
 	/// Min X Position
