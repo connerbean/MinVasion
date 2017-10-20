@@ -22,6 +22,7 @@
  */
 CGame::CGame()
 {
+	srand(time(nullptr));
 	Reset();
 }
 
@@ -172,7 +173,7 @@ void CGame::Update(double elapsed)
 		mUpdateTime += elapsed;
 
 		// Following is minion spawning code
-		if (mUpdateTime > 0.5)
+		if (mUpdateTime >= 1.0)
 		{
 			int MinionPicker = (rand() % 101) - 1;
 			int spawnLocationX = (rand() % 950) - 475;
@@ -206,7 +207,7 @@ void CGame::Update(double elapsed)
 			}
 
 
-			mUpdateTime = 0 + (rand() % 3) / 4;
+			mUpdateTime = (rand() % 1000) / 2000.0;
 		}
 
 
