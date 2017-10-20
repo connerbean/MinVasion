@@ -1,7 +1,7 @@
 /**
  * \file RestartSide.cpp
  *
- * \author Matthew May
+ * \author Matthew Rhodes
  */
 
 #include "stdafx.h"

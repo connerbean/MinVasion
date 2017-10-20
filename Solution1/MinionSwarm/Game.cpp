@@ -1,7 +1,7 @@
 /**
  * \file Game.cpp
  *
- * \author Conner Bean
+ * \author Matthew Rhodes
  */
 #include "stdafx.h"
 #include "Game.h"
