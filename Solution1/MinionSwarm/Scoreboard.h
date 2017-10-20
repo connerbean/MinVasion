@@ -27,4 +27,3 @@ public:
 private:
 	CGame *mGame;		///< Main game object
 };
-

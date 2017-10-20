@@ -3,7 +3,6 @@
  *
  * \author Conner Bean
  */
-
 #include "stdafx.h"
 #include <string>
 #include "CharacterMinion.h"
@@ -54,6 +53,12 @@ void CCharacterMinion::Draw(Gdiplus::Graphics *graphics)
 		float(mMinionImage->GetWidth()), float(mMinionImage->GetHeight()));
 }
 
+/**
+* Updates minion positon
+* \takes in elapsed time and calculates the new
+* \minion position using the flocking formulas
+* \and sets the minions new position
+*/
 void CCharacterMinion::Update(double elapsed)
 {
 	//SetSpeed(5);
@@ -81,22 +86,28 @@ void CCharacterMinion::Update(double elapsed)
 	CVector cohesion;
 	CVector alignment = *make_shared<CVector>(0, 0);
 	CVector seperation = *make_shared<CVector>(0, 0);
-	int i = 0;
+
+	int totalMinions = 0;
 	double closest = 0;
+
+	// Loop through list of minions on playing boad
 	for (auto minion : minionCollector.Retrieve())
 	{
 		CVector minionVector = minion->MakeVector();
 		double distanceTo = mMinP.Distance(minionVector);
+		
 		cohesion += minionVector;
-		i++;
 
+		// Calculating alignment vector
 		if (distanceTo <= 200)
 		{
 			alignment += (mGruP - minionVector).Normalize();
 		}
 
+		// Calculating seperation vector
 		if (distanceTo > 0)
 		{
+			// Determiniing closest neiegboring minion and storing it's CVector
 			if (closest == 0 || closest > distanceTo)
 			{
 				closest = distanceTo;
@@ -104,18 +115,23 @@ void CCharacterMinion::Update(double elapsed)
 			}
 		}
 	}
-	CVector cv = ((cohesion / i) - mMinP).Normalize();
+	CVector cv = ((cohesion / totalMinions) - mMinP).Normalize();
 	CVector av = alignment.Normalize();
 	CVector sv = seperation.Normalize();
 	CVector mV;
+
+	// Calculating minion vector
 	if (mGame->IsGameOver())
 	{
 		mV = sv;
 	}
 	else{ mV = cv * 1 + sv * 3 + av * 5 + GruV * 10; }
 	
+	// Normalize and add correct speed to minion
 	mV.Normalize();
 	mV *= mSpeed;
+
+	// Adding minion vector to current minion vector to get miions new vector
 	CVector newP = mMinP + (mV * elapsed);
 	SetLocation(newP.X(), newP.Y());
 }

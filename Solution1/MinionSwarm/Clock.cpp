@@ -3,15 +3,12 @@
  *
  * \author Conner Bean
  */
-
-
 #include "stdafx.h"
 #include "Clock.h"
 #include <string>
 
 using namespace Gdiplus;
 using namespace std;
-
 
 const REAL ClockXLocation = 550; ///<Clock's X location to display at
 const REAL ClockYLocation = -510; ///<Clock's Y Location to display at

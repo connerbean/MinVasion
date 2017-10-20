@@ -3,7 +3,6 @@
  *
  * \author Conner Bean
  */
-
 #include "stdafx.h"
 #include "Game.h"
 #include "Character.h"
@@ -185,7 +184,7 @@ void CGame::Update(double elapsed)
 			Add(newMinion);
 		}
 
-		else if (MinionPicker <= 40)		// 30% of time give a mutant
+		else if (MinionPicker <= 40)		// 30% of time give a Dave
 		{
 			auto newMinion = make_shared<CCharacterMinion>(this, DaveImageName, minionValue, minionSpeed);
 			newMinion->SetLocation(spawnLocationX, spawnLocationY);
@@ -206,10 +205,8 @@ void CGame::Update(double elapsed)
 			Add(newMinion);
 		}
 
-
 		mUpdateTime = (rand() % 1000) / 2000.0;
 	}
-
 
 	// Then update rest of items in game
 	for (auto item : mItems)
@@ -217,7 +214,6 @@ void CGame::Update(double elapsed)
 		item->Update(elapsed);
 		item->Constraints(); // make sure items stay in the board
 	}
-
 
 	CVillainCollector villainCollector;
 	Accept(&villainCollector);
@@ -293,5 +289,4 @@ void CGame::OnDraw(Gdiplus::Graphics * graphics, int width, int height)
 	{
 		item->Draw(graphics);
 	}
-
 }

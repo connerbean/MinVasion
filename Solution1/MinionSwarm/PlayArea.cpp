@@ -3,7 +3,6 @@
  *
  * \author Matthew May
  */
-
 #include "stdafx.h"
 #include "PlayArea.h"
 
@@ -23,9 +22,7 @@ const double CPlayArea::GridMargin = 50.0;
  */
 CPlayArea::CPlayArea()
 {
-
 }
-
 
 /**
  * Destructor
@@ -33,8 +30,6 @@ CPlayArea::CPlayArea()
 CPlayArea::~CPlayArea()
 {
 }
-
-
 
 /**
  * Draws the Green Board for play

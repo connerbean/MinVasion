@@ -23,7 +23,6 @@ CElement::~CElement()
 /// The directory containing the file images
 const std::wstring CElement::ImagesDirectory = L"images/";
 
-
 /**
 *  Set the image file to draw
 * \param file The base filename. Blank files are allowed
@@ -105,5 +104,4 @@ void CElement::Draw(Gdiplus::Graphics *graphics)
 			(int)mX, (int)(mY - hit),
 			(int)wid, (int)hit);
 	}
-
 }

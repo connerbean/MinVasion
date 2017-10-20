@@ -16,11 +16,9 @@ CCharacter::CCharacter(CGame *game) : mGame(game)
 {
 }
 
-
 /**
 * Destructor.
 */
 CCharacter::~CCharacter()
 {
 }
-

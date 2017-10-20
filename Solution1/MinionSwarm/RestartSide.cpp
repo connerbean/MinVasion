@@ -18,7 +18,6 @@ void CRestartSide::Draw(Gdiplus::Graphics *graphics)
 		float(mRestartImage->GetWidth()), float(mRestartImage->GetHeight()));
 }
 
-
 /**
 * Constructor for the restart side class
 */

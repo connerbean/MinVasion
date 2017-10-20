@@ -3,11 +3,9 @@
  *
  * \author Collin Dillinger
  */
-
 #include "stdafx.h"
 #include "MinionCollector.h"
 #include "CharacterMinion.h"
-
 
 /**
  * Constructor
@@ -15,7 +13,6 @@
 CMinionCollector::CMinionCollector()
 {
 }
-
 
 /**
  * Destructor

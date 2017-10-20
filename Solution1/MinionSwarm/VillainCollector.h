@@ -5,12 +5,9 @@
  *
  * Collects villains
  */
-
-
 #pragma once
 #include "CharacterVisitor.h"
 #include <vector>
-
 
 /**
  * Villain Visitor
@@ -23,7 +20,6 @@ public:
 
 	/// Destructor
 	~CVillainCollector();
-
 	
 	/// \param villain The visiting villain
 	void VisitVillain(CCharacterVillain *villain);

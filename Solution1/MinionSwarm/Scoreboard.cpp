@@ -3,8 +3,6 @@
  *
  * \author Collin Dillinger
  */
-
-
 #include "stdafx.h"
 #include "Game.h"
 #include "VillainCollector.h"
@@ -18,7 +16,6 @@ const float CenterXLocation = 580;
 const float TopYLocation = -450;
 const float TextTopMargin = 5;
 const float TextYHeight = 50;
-
 
 /**
  * Constructor

@@ -32,8 +32,7 @@ public:
 	* \returns true because this is a button
 	*/
 	bool IsButton() { return true; }
-
-
+	
 private:
 	/// Pointer to buttom item image
 	std::unique_ptr<Gdiplus::Bitmap> mRestartImage;

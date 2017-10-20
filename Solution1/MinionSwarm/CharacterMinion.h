@@ -4,7 +4,7 @@
  * \author Conner Bean
  *
  * Minion class used to draw and update
- * Stuart, Jerry, and Mutant minions
+ * Stuart, Jerry, Dave and Mutant minions
  */
 
 #pragma once
@@ -12,11 +12,8 @@
 #include "Character.h"
 #include "GruVisitor.h"
 #include "Vector.h"
-
-
 /**
- * Character Minion class in character
- */
+ * Character Minion class in character */
 class CCharacterMinion : public CCharacter
 {
 public:
@@ -65,6 +62,9 @@ public:
 	*/
 	int GetScoreValue() { return mScoreValue; }
 
+	/** Gets the CVectro value of the minions
+	* \returns the CVector minions
+	*/
 	CVector MakeVector()
 	{
 		CVector mMinionVector = *make_shared<CVector>(GetX(), GetY());
@@ -86,8 +86,10 @@ private:
 
 	/// The position of the minion
 	CVector mMinP;
+
 	/// Max X Position
 	int mMax = 500;
+
 	/// Min X Position
 	int mMin = -500;
 };
