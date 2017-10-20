@@ -11,7 +11,6 @@
 
 #include "Character.h"
 #include "GruVisitor.h"
-#include "MinionVisitor.h"
 #include "Vector.h"
 
 

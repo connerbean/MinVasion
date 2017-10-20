@@ -195,7 +195,6 @@
     <ClInclude Include="CharacterMinion.h" />
     <ClInclude Include="MinionCollector.h" />
     <ClInclude Include="MinionSwarm.h" />
-    <ClInclude Include="MinionVisitor.h" />
     <ClInclude Include="PlayArea.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RestartSide.h" />
@@ -219,7 +218,6 @@
     <ClCompile Include="CharacterMinion.cpp" />
     <ClCompile Include="MinionCollector.cpp" />
     <ClCompile Include="MinionSwarm.cpp" />
-    <ClCompile Include="MinionVisitor.cpp" />
     <ClCompile Include="PlayArea.cpp" />
     <ClCompile Include="RestartSide.cpp" />
     <ClCompile Include="Scoreboard.cpp" />

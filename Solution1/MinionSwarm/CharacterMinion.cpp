@@ -7,6 +7,7 @@
 #include "stdafx.h"
 #include <string>
 #include "CharacterMinion.h"
+#include "MinionCollector.h"
 #include "Game.h"
 
 using namespace Gdiplus;
@@ -58,8 +59,8 @@ void CCharacterMinion::Update(double elapsed)
 	//SetSpeed(5);
 	CElement::Update(elapsed);
 
-	CMinionVisitor minionVisitor(this);
-	mGame->Accept(&minionVisitor);
+	CMinionCollector minionCollector;
+	mGame->Accept(&minionCollector);
 
 	CGruVisitor gruVisitor;
 	mGame->Accept(&gruVisitor);
@@ -76,15 +77,13 @@ void CCharacterMinion::Update(double elapsed)
 	{
 		GruV.Normalize();
 	}
-
-	std::vector<CCharacterMinion*> mMinionList = minionVisitor.GetList();
-
+	
 	CVector cohesion;
 	CVector alignment = *make_shared<CVector>(0, 0);
 	CVector seperation = *make_shared<CVector>(0, 0);
 	int i = 0;
 	double closest = 0;
-	for (auto minion : minionVisitor.GetList())
+	for (auto minion : minionCollector.Retrieve())
 	{
 		CVector minionVector = minion->MakeVector();
 		double distanceTo = mMinP.Distance(minionVector);
