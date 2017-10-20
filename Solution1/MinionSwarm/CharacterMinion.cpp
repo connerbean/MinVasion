@@ -105,7 +105,7 @@ void CCharacterMinion::Update(double elapsed)
 			}
 		}
 	}
-	CVector cv = ((cohesion / i) - mGruP).Normalize();
+	CVector cv = ((cohesion / i) - mMinP).Normalize();
 	CVector av = alignment.Normalize();
 	CVector sv = seperation.Normalize();
 	if (mGame->IsGameOver())
