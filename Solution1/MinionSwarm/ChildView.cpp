@@ -1,4 +1,8 @@
-
+/**
+ * \file ChildView.cpp
+ *
+ * \author Matthew May
+ */
 // ChildView.cpp : implementation of the CChildView class
 //
 

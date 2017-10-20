@@ -1,3 +1,11 @@
+/**
+ * \file ChildView.h
+ *
+ * \author Matthew May
+ *
+ *  This class describes our window functionality
+ */
+
 
 // ChildView.h : interface of the CChildView class
 //

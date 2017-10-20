@@ -1,3 +1,9 @@
+/**
+ * \file CharacterGru.cpp
+ *
+ * \author Matthew May
+ */
+
 #include "stdafx.h"
 #include <string>
 #include "CharacterGru.h"

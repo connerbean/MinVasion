@@ -1,3 +1,11 @@
+/**
+ * \file MainFrm.h
+ *
+ * \author Matthew May
+ *
+ * This class is for our Main Window
+ */
+
 
 // MainFrm.h : interface of the CMainFrame class
 //

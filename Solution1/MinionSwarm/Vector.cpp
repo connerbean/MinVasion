@@ -1,7 +1,7 @@
 /**
 * \file Vector.cpp
 *
-* \author Charles Owen
+* \author Collin Dillinger
 */
 
 #include "stdafx.h"

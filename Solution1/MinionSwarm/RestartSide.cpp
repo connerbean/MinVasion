@@ -1,3 +1,9 @@
+/**
+ * \file RestartSide.cpp
+ *
+ * \author Matthew May
+ */
+
 #include "stdafx.h"
 #include "RestartSide.h"
 #include <memory>

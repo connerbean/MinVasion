@@ -1,3 +1,9 @@
+/**
+ * \file Element.cpp
+ *
+ * \author Matthew May
+ */
+
 #include "stdafx.h"
 #include "Element.h"
 #include "Game.h"

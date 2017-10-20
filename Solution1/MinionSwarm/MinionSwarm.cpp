@@ -1,3 +1,9 @@
+/**
+ * \file MinionSwarm.cpp
+ *
+ * \author Matthew May
+ */
+
 
 // MinionSwarm.cpp : Defines the class behaviors for the application.
 //

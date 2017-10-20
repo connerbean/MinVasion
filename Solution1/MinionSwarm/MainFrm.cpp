@@ -1,3 +1,9 @@
+/**
+ * \file MainFrm.cpp
+ *
+ * \author Matthew May
+ */
+
 
 // MainFrm.cpp : implementation of the CMainFrame class
 //
